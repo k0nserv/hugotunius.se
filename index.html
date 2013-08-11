@@ -1,21 +1,42 @@
+<!DOCTYPE HTML>
 <html>
-	<head>
-		<link rel="stylesheet" href="style.css"/>
-	</head>
-	<body>
-		<div class="card">
-			<img class="avatar" src="me.png" />
-			<div class="text-container">
-				<h2>Hugo Tunius</h2>
-				<h4>CS Student, Hacker, <br/>
-					Skateboarder</h4>
-			</div>
-
-			<div class="footer">
-				<a class="logo" target="_blank" href="https://twitter.com/K0nserv"><img src="twitter.png"/></a>
-				<a class="logo" target="_blank" href="https://github.com/k0nserv"><img src="github.png"/></a>
-				<a class="logo" target="_blank" href="http://se.linkedin.com/in/hugotunius/"><img src="linkedin.png"/></a>
-			</div>
+<head>
+	<link rel="stylesheet" href="style.css"/>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+</head>
+<body>
+	<div class="card">
+		<div class="banner">
+			<h2 class="right banner-title">Hugo Tunius</h2>
 		</div>
-	</body>
+		<div class="clear relative-container">
+			<img class="avatar left" src="me.png" />
+			<span class="location right clear">
+				<img src="geo.png"/>Gothenburg, Sweden
+			</span>
+		</div>
+
+		<input type="checkbox" id="expander" checked="checked"/>
+		<div class="card-body">
+			<h3>Hello</h3>
+			<p>
+				I am a Swedish programmer from Gothenburg. I am currently
+				studing Computer Science at Gothenburg University. I work as the
+				Business Area Manager of IT at <a href="http://ctk.se" target="_blank">Chalmers Teknologkonsulter</a>.
+			</p>
+			<p>
+				I dabble in everthing from GPUPU to web design. I love learning new techniques, frameworks and languages.
+				Because of this I am very quick at picking up new information
+				and learning by doing.
+			</p>
+		</div>
+
+		<div class="footer clear">
+			<a class="logo twitter" target="_blank" href="https://twitter.com/K0nserv"></a>
+			<a class="logo github" target="_blank" href="https://github.com/k0nserv"></a>
+			<a class="logo linkedin" target="_blank" href="http://se.linkedin.com/in/hugotunius/"></a>
+		</div>
+		<label for="expander" id="expander-label"></label>
+	</div>
+</body>
 </html>
