@@ -1,9 +1,32 @@
 $grayScaleFilter: 90%;
 $bgColor: hsl(0, 0%, 90%);
 $cardColor: #FFFFFF;
+
 $bannerBlue: #2764BD;
 $fontFamily: "Arial Black", "Arial", "Helvetica", sans-serif;
 $avatarYOffset: -95px;
+
+/** Mixins **/
+@mixin box-shadow($params) {
+	-webkit-box-shadow: $params;
+	-moz-box-shadow: $params;
+	-ms-box-shadow: $params;
+	box-shadow: $params
+}
+
+@mixin transition($params) {
+	-webkit-transition: $params;
+	-moz-transition: $params;
+	-ms-transition: $params;
+	transition: $params;
+}
+
+@mixin filter($params) {
+	-webkit-filter: $params;
+	-moz-filter: $params;
+	-ms-filter: $params;
+	filter: $params;
+}
 
 body {
 	background: $bgColor;
@@ -34,6 +57,7 @@ h4 {
 	font-size: 15px;
 }
 
+/** General classes */
 .right {
 	float: right;
 }
@@ -42,66 +66,33 @@ h4 {
 	float: left;
 }
 
+.text-center {
+	text-align: center;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+
+/** Main card body element **/
 .card {
+	@include box-shadow(0px 0px 1px 0px rgba(0,0,0,0.20));
+
 	padding: 0;
-	border-radius: 2px;
-	background: $cardColor;
-	border: 1px solid hsl(0, 0, 25%);
-
-	-moz-box-shadow:    0px 0px 1px 0px rgba(0,0,0,0.20);
-	-webkit-box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.20);
-	box-shadow:         0px 0px 1px 0px rgba(0,0,0,0.20);
-
 	width: 380px;
 	margin: 25px auto;
+	border: 1px solid hsl(0, 0, 25%);
+	border-radius: 2px;
+	background: $cardColor;
 }
 
 .card-body {
+	@include transition(all ease-in 0.4s);
+
 	margin: 12px;
-	-webkit-transition: all ease-in 0.4s;
-	transition: all ease-in 0.4s;
 	overflow: hidden;
 	max-height: 1000px;
-
-
-	&.closed {
-		margin-top: 0px;
-		margin-bottom: 0px;
-		max-height: 0px;
-	}
-}
-
-#expander {
-	position: absolute;
-	top: -9999px;
-	left: -9999px;
-}
-
-#expander-label {
-	display: block;
-	text-align: center;
-	cursor: pointer;
-}
-
-#expander-label:after {
-	font-family: $fontFamily;
-	font-weight: bold;
-	font-size: 15px;
-}
-
-#expander:checked ~ #expander-label:after {
-	content: "More";
-	position: relative;
-}
-
-#expander ~ #expander-label:after {
-	content: "Less";
-}
-
-#expander:checked ~ .card-body {
-	margin-top: 0px;
-	margin-bottom: 0px;
-	max-height: 0px;
 }
 
 .banner {
@@ -124,17 +115,6 @@ h4 {
 	font-size: 30px;
 }
 
-.text-center {
-	text-align: center;
-}
-
-.bold {
-	font-weight: bold;
-}
-
-.flip {
-	-webkit-transform: skewY(90deg);
-}
 
 .avatar {
 	width: 140px;
@@ -172,21 +152,15 @@ h4 {
 }
 
 .logo {
+	@include filter(grayscale($grayScaleFilter));
+	@include transition(padding ease-in 0.1s);
+
 	float: left;
 	display: block;
 	width: 64px;
 	height: 54px;
 	padding-top: 5px;
 	margin-left: 84px;
-	-webkit-filter: grayscale($grayScaleFilter);
-	-moz-filter: grayscale($grayScaleFilter);
-	-ms-filter: grayscale($grayScaleFilter);
-	filter: grayscale($grayScaleFilter);
-
-	-webkit-transition: padding ease-in 0.1s;
-	-moz-transition: padding ease-in 0.1s;
-	-ms-transition: padding ease-in 0.1s;
-	transition: padding ease-in 0.1s;
 
 	background: url('icons.png');
 	background-repeat: no-repeat;
@@ -194,11 +168,6 @@ h4 {
 
 	&:first-child {
 		margin-left: 10px;
-	}
-
-	&:last-child {
-		float: right;
-		margin-right: 10px;
 	}
 
 	&:hover {
@@ -220,4 +189,39 @@ h4 {
 	&.linkedin {
 		background-position: -218px 0px;
 	}
+}
+
+
+/** Expander **/
+#expander {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+}
+
+#expander-label {
+	display: block;
+	text-align: center;
+	cursor: pointer;
+}
+
+#expander-label:after {
+	font-family: $fontFamily;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+#expander:checked ~ #expander-label:after {
+	content: "More";
+	position: relative;
+}
+
+#expander ~ #expander-label:after {
+	content: "Less";
+}
+
+#expander:checked ~ .card-body {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	max-height: 0px;
 }
