@@ -3,28 +3,8 @@ html
   head
     meta charset="utf-8"
       meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"
-        title {  page.title }
+        title | {{page.title}}
         meta content="width=device-width" name="viewport"
           /! Custom CSS
           link href="/stylesheets/screen.css" rel="stylesheet"
   body
-    .site
-      .header
-        h1.title
-          a{:href => "/"} {  site.name }
-        a.extra href="/"
-      | {{ content }}
-      .footer
-        .contact
-          p
-            | Your Name
-            br/
-            | What You Are
-            br/
-            | you@example.com
-        .contact
-          p
-            a href="https://github.com/yourusername"
-            br/
-            a href="https://twitter.com/yourusername"
-            br/
