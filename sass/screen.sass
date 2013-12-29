@@ -1,0 +1,48 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import variables
+@import grid
+
+@import compass/reset
+@import 960/grid
+
+body
+  background-color: $background_color
+
+h1, h2, h3, h4, h5, h6
+  font-family: $sans_serif_font_family
+
+section
+  margin-top: $section_spacing
+  margin-bottom: $section_spacing
+
+@for $i from 1 through 6
+  h#{$i}
+    font-size: 2.7em - 0.2 * $i
+
+
+.container
+  +grid-system(12)
+  margin: 25 auto
+
+.logo
+  font-size: $logo_font_size
+  line-height: $nav_line_height
+
+.nav
+  height: $nav_line_height
+
+ul.nav
+  list-style: none
+
+  & > li
+    line-height: $nav_line_height
+
+.top
+  font-family: $sans_serif_font_family
+
+.text-center
+  text-align: center
