@@ -7,26 +7,35 @@
 @import grid
 
 @import compass/reset
+@import compass/utilities/general/clearfix
+@import compass/css3/box-sizing
 @import 960/grid
 
+
 body
-  background-color: $background_color
+  background: url(/img/bg.png)
 
 h1, h2, h3, h4, h5, h6
   font-family: $sans_serif_font_family
 
+h1
+  font-weight: bold
+
 section
   margin-top: $section_spacing
   margin-bottom: $section_spacing
+  padding: $section_spacing
+  border-bottom: 2px solid $border_color_light
+  +box-sizing(border-box)
+
 
 @for $i from 1 through 6
   h#{$i}
-    font-size: 2.7em - 0.2 * $i
+    font-size: 3.7rem - 0.2 * $i
 
 
 .container
   +grid-system(12)
-  margin: 25 auto
 
 .logo
   font-size: $logo_font_size
@@ -45,6 +54,12 @@ ul.nav
   font-family: $sans_serif_font_family
   margin-top: $top_spacing
   margin-bottom: $top_spacing
+  border-bottom: 2px dashed $border_color
+
+
+.top-outer
+  width: 100%
+  +clearfix
 
 .text-center
   text-align: center

@@ -3,8 +3,12 @@ layout: default
 title: hugotunius.se
 ---
 
-#home
-  h1 Blog Posts
+section.alpha
+  h1 About
+  {% include about.md %}
+
+section.alpha
+  h1 History
   ul.posts
     {% for post in site.posts %}
       li
