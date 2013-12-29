@@ -1,4 +1,4 @@
-doctype
+<!DOCTYPE HTML>
 html
   head
     meta charset="utf-8"
@@ -6,14 +6,16 @@ html
         title | {{page.title}}
         meta content="width=device-width" name="viewport"
           /! Custom CSS
-          link href="/stylesheets/screen.css" rel="stylesheet"
+          link href="/css/screen.css" rel="stylesheet"
   body
-    .container
-      .grid-5
-        h2 Hugo Tunius
+    div.container
+      section.top.grid-12
+        .grid-3.alpha
+          h1.logo Hugo Tunius
 
-      .push-2.grid-5
-        ul.nav
-          li.grid-1.text-center Light
-          li.grid-1.text-center  Home
-          li.grid-1.text-center About
+        .push-8.grid-1.omega
+          ul.nav
+            li.grid-1.text-center.alpha
+              a Light
+
+      | {{ content }}
