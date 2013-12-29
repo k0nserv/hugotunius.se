@@ -8,14 +8,8 @@ html
           /! Custom CSS
           link href="/css/screen.css" rel="stylesheet"
   body
-    div.container
-      section.top.grid-12
-        .grid-3.alpha
-          h1.logo Hugo Tunius
+      | {% slim header.slim %}
 
-        .push-8.grid-1.omega
-          ul.nav
-            li.grid-1.text-center.alpha
-              a Light
-
-      | {{ content }}
+      .container
+        #main.grid-12.alpha
+          | {{ content }}
