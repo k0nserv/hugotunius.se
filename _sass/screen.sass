@@ -88,6 +88,19 @@ ul.nav
   color: $border_color
   font-family: $sans_serif_font_family
 
+.post-info
+  +clearfix
+
+.post-title
+  width: 60%
+  float: left
+
+.post-date
+  width: 40%
+  float: left
+  text-align: right
+  color: $border_color
+
 .social
   width: 150px
   margin: 15px auto
@@ -131,11 +144,9 @@ ul.nav
 
 ul.posts
   width: 100%
+  margin-top: 15px
 
   li
     width: 100%
-    padding: 5px
+    padding-bottom: 5px
     +box-sizing(border-box)
-
-    .date
-      float: right
