@@ -16,5 +16,6 @@ section.alpha
         a href="{{ post.url }}"
           h4.post-preview-title
             | {{ post.title }}
-        | {{ post.excerpt }}
+        span.post-preview-body
+          | {{ post.excerpt }}
     {% endfor %}
