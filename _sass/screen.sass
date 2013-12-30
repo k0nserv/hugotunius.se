@@ -24,8 +24,6 @@ section
 
 #logo
   display: block
-  font-size: $logo_font_size
-  line-height: $nav_line_height
   margin: 0 auto
 
 #top
@@ -52,15 +50,14 @@ section
   width: 40%
 
 .post-preview-title
-  color: #000
+  color: $text_color
 
 .post-preview-body
   color: $border_color
 
 .social
   margin: 15px auto
-  width: 150px
-
+  width: $social_size * 3 + 10px + 2 * 3px
 
   a.icon
     +border-radius(50%)
@@ -69,12 +66,16 @@ section
     color: $border_color
     display: block
     float: left
-    font-size: 20px
-    height: 40px
-    line-height: 40px
+    font-size: $social_size / 2
+    height: $social_size
+    line-height: $social_size
     margin-left: 5px
     text-align: center
-    width: 40px
+    width: $social_size
+
+    &:before
+      line-height: $social_size
+      text-align: center
 
     &:first-child
       margin-left: 0
@@ -144,7 +145,7 @@ a
   text-decoration: none
 
   &:hover
-    color: lighten($highlight_color, 10%)
+    color: lighten($highlight_color, 15%)
 
 
 @for $i from 1 through 6
