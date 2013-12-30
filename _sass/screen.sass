@@ -4,12 +4,12 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 @import variables
-@import grid
 
 @import compass/reset
 @import compass/utilities/general/clearfix
 @import compass/css3/box-sizing
-@import 960/grid
+@import compass/css3/border-radius
+@import compass/css3/transition
 
 
 body
@@ -27,22 +27,43 @@ section
   padding: $section_spacing
   border-bottom: 2px solid $border_color_light
   +box-sizing(border-box)
+  width: 60%
+  margin: 0 auto
+
+p
+  font-family: $serif_font_family
+  margin-bottom: 0.5rem
+  margin-top: 0.5rem
+  font-size: 1.1rem
+  line-height: 1.2rem
+
+a
+  color: $highlight_color
+  text-decoration: none
+
+  &:hover
+    color: lighten($highlight_color, 10%)
 
 
 @for $i from 1 through 6
   h#{$i}
-    font-size: 3.7rem - 0.2 * $i
-
-
-.container
-  +grid-system(12)
+    font-size: 3.3rem - 0.4 * $i
+    line-height: 3.5rem - 0.4 * $i
 
 .logo
   font-size: $logo_font_size
   line-height: $nav_line_height
+  margin: 0 auto
+  display: block
 
 .nav
   height: $nav_line_height
+
+.center
+  text-align: center
+
+.clearfix
+  +clearfix
 
 ul.nav
   list-style: none
@@ -56,10 +77,65 @@ ul.nav
   margin-bottom: $top_spacing
   border-bottom: 2px dashed $border_color
 
-
 .top-outer
   width: 100%
   +clearfix
 
 .text-center
   text-align: center
+
+.gray
+  color: $border_color
+  font-family: $sans_serif_font_family
+
+.social
+  width: 150px
+  margin: 15px auto
+
+
+  a.icon
+    border: 1px solid $border_color
+    width: 40px
+    height: 40px
+    line-height: 40px
+    text-align: center
+    font-size: 20px
+    +border-radius(50%)
+    display: block
+    float: left
+    margin-left: 5px
+    color: $border_color
+    +transition(all, ease-in, 0.2s)
+
+    &:first-child
+      margin-left: 0
+
+    &.icon-twitter:hover
+      color: #00acee
+      border: 1px solid #00acee
+
+    &.icon-github:hover
+      color: #171515
+      border: 1px solid #171515
+
+    &.icon-linkedin:hover
+      color: #0e76a8
+      border: 1px solid #0e76a8
+
+#footer
+  margin-top: 50px
+
+  section
+    border: none
+
+
+ul.posts
+  width: 100%
+
+  li
+    width: 100%
+    padding: 5px
+    +box-sizing(border-box)
+
+    .date
+      float: right

@@ -1,17 +1,21 @@
 ---
 layout: default
-title: hugotunius.se
+title: Hugo Tunius
 ---
 
-section.alpha
+<section class="alpha" id="about">
   h1 About
-  {% include about.md %}
+  {% markdown about.md %}
+</section>
 
 section.alpha
   h1 History
   ul.posts
     {% for post in site.posts %}
       li
-        span {{post.date | date_to_string }}
-        a href="{{ post.url }}" {{ post.title }}
+        h4
+          a href="{{ post.url }}"
+            | {{ post.title }}
+
+          span.date {{ post.date | date_to_string }}
     {% endfor %}

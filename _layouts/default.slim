@@ -5,11 +5,14 @@ html
       meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"
         title | {{page.title}}
         meta content="width=device-width" name="viewport"
-          /! Custom CSS
-          link href="/css/screen.css" rel="stylesheet"
+        /! Custom CSS
+        link href="/css/screen.css" rel="stylesheet"
+        link href="/css/icons.css" rel="stylesheet"
   body
+    #container
       | {% slim header.slim %}
 
-      .container
-        #main.grid-12.alpha
-          | {{ content }}
+      #main
+        | {{ content }}
+
+      | {% slim footer.slim %}
