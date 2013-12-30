@@ -18,9 +18,6 @@ body
 h1, h2, h3, h4, h5, h6
   font-family: $sans_serif_font_family
 
-h1
-  font-weight: bold
-
 section
   margin-top: $section_spacing
   margin-bottom: $section_spacing
@@ -101,6 +98,9 @@ ul.nav
   text-align: right
   color: $border_color
 
+.post-preview-title
+  color: #000
+
 .social
   width: 150px
   margin: 15px auto
@@ -148,5 +148,5 @@ ul.posts
 
   li
     width: 100%
-    padding-bottom: 5px
     +box-sizing(border-box)
+    margin-bottom: 15px

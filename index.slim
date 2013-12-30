@@ -11,9 +11,10 @@ title: Hugo Tunius
 section.alpha
   h1 History
   ul.posts
-    {% for post in site.posts %}
+    {% for post in site.posts limit:5 %}
       li
-        h4
-          a href="{{ post.url }}"
+        a href="{{ post.url }}"
+          h4.post-preview-title
             | {{ post.title }}
+        | {{ post.excerpt }}
     {% endfor %}
