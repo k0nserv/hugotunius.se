@@ -1,2 +1,3 @@
-<p>Hello and welcome to my blog</p>
+I am a Swedish programmer from Stockholm. I work as a developer at [Fishbrain](http://fishbrain.com). Previously I've studied Computer Science at Gothenburg University, during my time in Gothenburg I also worked at [Chalmers Teknologkonsulter](http://ctk.se) as an IT Consultant and during the fall of 2013 I held the position of Business Area Manager for the IT department
 
+I dabble in everthing from GPUPU to web design. I love learning new techniques, frameworks and languages. Because of this I am very quick at picking up new information and learning by doing.
