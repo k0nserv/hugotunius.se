@@ -1,5 +1,5 @@
-name: Your New Jekyll Site
-markdown: redcarpet
+name: Hugo Tunius - Blog
+markdown: kramdown
 pygments: true
 #encoding: UTF-16
 timezone: Europe/Stockholm
