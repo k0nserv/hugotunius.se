@@ -3,3 +3,4 @@ markdown: kramdown
 pygments: true
 #encoding: UTF-16
 timezone: Europe/Stockholm
+exclude: ['config', 'Capfile', 'Gemfile', 'Gemfile.lock', '*.sublime-*', 'lib', 'config']
