@@ -20,7 +20,7 @@ namespace :deploy do
 
   desc 'Run jekyll to update site before uploading'
   task :update_jekyll do
-    %x(rm -rf _site/* && bundle install --path vendor/bundle && jekyll build)
+    %x(rm -rf _site/* && rbenv local 2.0.0-p353 && bundle install --path vendor/bundle && jekyll build)
     %x(shopt -s extglob dotglob && rm -rf !(_site))
   end
 end
