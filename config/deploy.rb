@@ -23,9 +23,6 @@ set :ssh_options, { user: "deployer", forward_agent: true, auth_methods: %w(publ
 
 
 namespace :deploy do
-  after :finishing, "deploy:update_jekyll"
-  after "deploy:update_jekyll", "deploy:clean_jekyll"
-
   [:start, :stop, :restart, :finalize_update].each do |t|
     desc "#{t} task is a no-op with jekyll"
     task t do ; end
@@ -53,4 +50,7 @@ namespace :deploy do
       end
     end
   end
+
+  after :finishing, :update_jekyll
+  after :update_jekyll, :clean_jekyll
 end
