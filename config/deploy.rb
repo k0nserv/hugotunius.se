@@ -40,10 +40,11 @@ namespace :deploy do
     end
   end
 
+  desc 'Remove all, but the _site folder'
   task :clean_jekyll do
     on roles(:app) do
       within release_path do
-        execute "mv css _site"
+        execute "mv css/ _site/"
         execute "rm Capfile _config.yml Gemfile* index.slim"
         execute "rm -rf config _drafts fonts img _includes _layouts _plugins _sass"
       end
