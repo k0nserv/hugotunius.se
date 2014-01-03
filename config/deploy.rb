@@ -33,7 +33,7 @@ namespace :deploy do
     on roles(:app) do
       within release_path do
         with path: "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH" do
-          execute "rm -rf _site/*"
+          execute :rm, "-rf _site/*"
           execute :jekyll, "build"
         end
       end
@@ -44,9 +44,9 @@ namespace :deploy do
   task :clean_jekyll do
     on roles(:app) do
       within release_path do
-        execute "mv css/ _site/"
-        execute "rm Capfile _config.yml Gemfile* index.slim"
-        execute "rm -rf config _drafts fonts img _includes _layouts _plugins _sass"
+        execute :mv, "css/ _site/"
+        execute :rm, "Capfile _config.yml Gemfile* index.slim"
+        execute :rm, "-rf config _drafts fonts img _includes _layouts _plugins _sass"
       end
     end
   end
