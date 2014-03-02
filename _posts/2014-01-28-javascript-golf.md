@@ -14,7 +14,7 @@ In the above snippet the usage of `with` is also included. `with` modifies the s
 
 <script src="https://gist.github.com/k0nserv/8180757.js"></script>
 
-Together `math` and all variations of `eval` create the potential for disasters in security, undefined behaviour and bugs. The with statement even comes with the following warning on [MDN](https://developer.mozilla.org/en-US/):
+Together `with` and all variations of `eval` create the potential for disasters in security, undefined behaviour and bugs. The with statement even comes with the following warning on [MDN](https://developer.mozilla.org/en-US/):
 
 >Use of the with statement is not recommended, as it may be the source of confusing bugs and compatibility issues. See the "Ambiguity Con" paragraph in the "Description" section below for details.
 
