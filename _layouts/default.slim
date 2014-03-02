@@ -22,9 +22,8 @@ html
         link href="/css/icons.css" rel="stylesheet"
         link href="/css/syntax.css" rel="stylesheet"
   body
+    | {% slim header.slim %}
     #container
-      | {% slim header.slim %}
-
       #main
         | {{ content }}
 
