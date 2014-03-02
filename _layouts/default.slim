@@ -3,7 +3,8 @@ html
   head
     meta charset="utf-8"
       meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"
-        title | {{page.title}}
+        title
+          | {{page.title}}
         meta content="width=device-width" name="viewport"
         script type="text/javascript"
         javascript:
@@ -22,10 +23,9 @@ html
         link href="/css/icons.css" rel="stylesheet"
         link href="/css/syntax.css" rel="stylesheet"
   body
+    | {% slim header.slim %}
     #container
-      | {% slim header.slim %}
-
-      #main
+      #main.wrapper.center
         | {{ content }}
 
       | {% slim footer.slim %}

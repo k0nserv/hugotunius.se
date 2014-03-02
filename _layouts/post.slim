@@ -1,10 +1,12 @@
 ---
 layout: default
 ---
-section.alpha
-  .post-info
+article.alpha.post
+  header.post-header
     h1.post-title
       | {{page.title}}
     h3.post-date
       | {{page.date | date_to_string }}
-  | {{content}}
+
+  .post-body
+    | {{content}}

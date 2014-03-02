@@ -1,3 +1,0 @@
-I am a Swedish programmer from Stockholm. I work as a developer at [Fishbrain](http://fishbrain.com). Previously I've studied Computer Science at Gothenburg University, during my time in Gothenburg I also worked at [Chalmers Teknologkonsulter](http://ctk.se) as an IT Consultant and during the fall of 2013 I held the position of Business Area Manager for the IT department
-
-I dabble in everthing from GPUPU to web design. I love learning new techniques, frameworks and languages. You can reach me with the links below or by sending an email to [hugo@tunius.se](mailto:hugo@tunius.se)

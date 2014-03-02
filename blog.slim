@@ -1,0 +1,16 @@
+---
+layout: default
+title: Blog
+---
+
+article.alpha.post
+    h1 Posts
+    ul.posts
+      {% for post in site.posts limit:5 %}
+        li
+          a href="{{ post.url }}"
+            h4.post-preview-title
+              | {{ post.title }}
+          span.post-preview-body
+            | {{ post.excerpt }}
+      {% endfor %}
