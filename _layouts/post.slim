@@ -2,9 +2,11 @@
 layout: default
 ---
 section.alpha
-  .post-info
+  .post-header
     h1.post-title
       | {{page.title}}
-    h3.post-date
+    h5.post-date
       | {{page.date | date_to_string }}
-  | {{content}}
+
+  .post-body
+    | {{content}}

@@ -16,10 +16,10 @@
 section
   +box-sizing(border-box)
   border-bottom: 1px solid $border_color_light
-  margin-bottom: $section_spacing
-  margin-top: $section_spacing
+  margin-bottom: $section_spacing_vertical / 2
+  margin-top: $section_spacing_vertical / 2
   margin: 0 auto
-  padding: $section_spacing
+  padding: $section_spacing_horizontal
   width: 80%
 
 #logo
@@ -29,25 +29,25 @@ section
 #top
   border-bottom: 2px dashed $border_color
   font-family: $sans_serif_font_family
-  margin-bottom: $top_spacing
-  margin-top: $top_spacing
+  margin-bottom: 0
+  margin-top: 0
 
 #top-outer
   +clearfix
   width: 100%
 
-.post-info
-  +clearfix
+.post-header
+  margin-bottom: 15px
 
-.post-title
-  width: 60%
-  float: left
+  .post-title
+    font-size: 2.5rem
+
+.post-body
+  margin-top: 10px
+  margin-bottom: 10px
 
 .post-date
   color: $border_color
-  float: left
-  text-align: right
-  width: 40%
 
 .post-preview-title
   color: $text_color
@@ -108,14 +108,18 @@ ul.posts
     margin-bottom: 15px
     width: 100%
 
+html
+  font-size: 2vw
 
 body
   background: url(/img/bg.png)
+
 
 // --- Typography ---
 h1, h2, h3, h4, h5, h6
   font-family: $sans_serif_font_family
   color: $text_color
+  -webkit-font-smoothing: subpixel-antialiased
 
 code
   font-family: $monospace_font_family
@@ -126,6 +130,7 @@ code
   padding-right: 3px
   +border-radius(2px)
   border: 1px solid lighten($highlight_color, 20%)
+  -webkit-font-smoothing: subpixel-antialiased
 
 p
   font-family: $serif_font_family
@@ -134,6 +139,8 @@ p
   font-size: 1.1rem
   line-height: 1.2rem
   color: $text_color
+  -webkit-font-smoothing: subpixel-antialiased
+
 
 strong
   font-weight: bold
@@ -153,8 +160,8 @@ a
 
 @for $i from 1 through 6
   h#{$i}
-    font-size: 3.3rem - 0.4 * $i
-    line-height: 3.5rem - 0.4 * $i
+    font-size: 4.3rem - 0.6 * $i
+    line-height: 4.5rem - 0.6 * $i
 
 .text-center
   text-align: center
@@ -177,3 +184,9 @@ div.gist-meta
 
 div.file-data
   background: #FFF
+
+@media only screen and (max-width : 320px)
+  html
+    font-size: 5vmin
+  section
+    width: 85%
