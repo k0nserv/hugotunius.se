@@ -13,21 +13,21 @@
 
 
 // --- Layout ---
-section
+article
   +box-sizing(border-box)
   border-bottom: 1px solid $border_color_light
   margin-bottom: $section_spacing_vertical / 2
   margin-top: $section_spacing_vertical / 2
   margin: 0 auto
   padding: $section_spacing_horizontal
-  width: 80%
+
+.wrapper
+  width: $wrapper-size
 
 #top
   font-family: $sans_serif_font_family
-  margin-bottom: 0
-  margin-top: 0
   padding: 0
-  height: 120px
+  height: 60px
   border: none
 
 #top-outer
@@ -36,9 +36,9 @@ section
   background: $header_color
 
 #nav
-  float: right
+  float: left
   height: 100%
-  width: 25%
+  width: 60%
   position: relative
 
   & > ul
@@ -49,27 +49,43 @@ section
     width: 100%
   
     & > li
-      -webkit-font-smoothing: antialiased
-      font-family: $sans_serif_font_family
+
       cursor: pointer
       box-sizing: border-box
       margin-left: 15px
       padding: 5px
       float: left
-      border-bottom: 5px solid transparent
-    
+      border-bottom: 4px solid transparent
+
       & > a
+        -webkit-font-smoothing: antialiased
+        font-family: $sans_serif_font_family
+        font-weight: 200
+        font-size: 24px
         color: #FFF
 
       &:hover
-        border-bottom: 5px solid #FFF
+        border-bottom: 4px solid #FFF
 
+.nav-title
+  height: 100%
+  color: #FFF
+  font-family: $sans_serif_font_family
+  font-weight: 200
+  line-height: 60px
+  font-size: 28px
+  margin: 0
+
+.post
+  margin-top: 25px
 
 .post-header
-  margin-bottom: 15px
+  margin-bottom: 25px
+  border-bottom: 1px solid #b8b8b8
 
   .post-title
-    font-size: 2.5rem
+    font-size: 3.0em
+    margin-bottom: 10px
 
 .post-body
   margin-top: 10px
@@ -77,12 +93,19 @@ section
 
 .post-date
   color: $border_color
+  font-size: 1.5em
 
 .post-preview-title
   color: $text_color
 
 .post-preview-body
   color: $border_color
+
+.avatar 
+  width: 200px
+  height: 200px
+  border-radius: 10px
+  margin-right: 8px
 
 .social
   margin: 15px auto
@@ -137,22 +160,25 @@ ul.posts
     margin-bottom: 15px
     width: 100%
 
-html
-  font-size: 2vw
-
 body
   background: url(/img/bg.png)
 
+p 
+  font-family: $serif_font_family
+  margin: 10px 0
+  font-size: 1.2em
+
 code
   font-family: $monospace_font_family
-  font-size: 0.7rem
-  max-height: 1.2rem
+  font-size: 0.7em
+  max-height: 1.2em
   background: lighten($border_color_light, 40%)
   padding-left: 3px
   padding-right: 3px
   +border-radius(2px)
   border: 1px solid lighten($highlight_color, 20%)
   -webkit-font-smoothing: subpixel-antialiased
+  white-space: nowrap
 
 strong
   font-weight: bold
@@ -169,6 +195,23 @@ a
   &:hover
     color: lighten($highlight_color, 15%)
 
+h1, h2, h3, h4, h5, h6
+  margin-top: 16px
+  margin-bottom: 8px
+  font-family: $sans_serif_font_family
+
+h1
+  font-size: 2.5em
+
+h2
+  font-size: 2.3em
+
+h3
+  font-size: 2.1em
+
+h4
+  font-size: 1.9em
+
 .text-center
   text-align: center
 
@@ -182,8 +225,14 @@ a
 .clearfix
   +clearfix
 
+.center
+  margin: 0 auto
+
 .left
   float: left
+
+.right
+  float: right
 
 .gray
   color: $border_color
