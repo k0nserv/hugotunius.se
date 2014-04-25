@@ -15,11 +15,18 @@
   +box-sizing(border-box)
 
 html
-  font-size: 18px
+  font-size: 20px
 
 body
   background: $background_color
 
+@media screen and (min-width: 320px) and (max-width: 480px)
+  html
+    font-size: 14px
+
+@media screen and (min-width: 481px) and (max-width: 720px)
+  html
+    font-size: 16px
 
 // --- Layout ---
 article
@@ -27,10 +34,10 @@ article
   margin-bottom: $section_spacing_vertical / 2
   margin-top: $section_spacing_vertical / 2
   margin: 0 auto
-  padding: $section_spacing_horizontal
+  padding: 20px
 
 .wrapper
-  width: $wrapper-size
+  max-width: $wrapper-size
 
 .nav
   padding: 10px
@@ -72,8 +79,8 @@ article
   color: $border_color
 
 .avatar
-  width: 200px
-  height: 200px
+  width: 100px
+  height: 100px
   border-radius: 10px
   margin-right: 8px
 
@@ -102,12 +109,12 @@ p
 
 code
   font-family: $monospace_font_family
-  font-size: 0.6em
-  line-height: 1em
+  font-size: 0.75em
   background: darken($background_color, 4%)
   padding-left: 2px
   padding-right: 2px
-  +border-radius(2px)
+  +border-radius(3px)
+  +box-sizing(content-box)
   border: 1px solid darken($background_color, 8%)
   -webkit-font-smoothing: subpixel-antialiased
   white-space: nowrap
@@ -166,6 +173,9 @@ h5, h6
 
 .center
   margin: 0 auto
+
+.block
+  display: block
 
 .left
   float: left
