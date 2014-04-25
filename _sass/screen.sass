@@ -4,77 +4,55 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 @import variables
+@import social-links
 
 @import compass/reset
 @import compass/utilities/general/clearfix
 @import compass/css3/box-sizing
 @import compass/css3/border-radius
-@import compass/css3/transition
 
+*
+  +box-sizing(border-box)
+
+html
+  font-size: 20px
+
+body
+  background: $background_color
+
+@media screen and (min-width: 320px) and (max-width: 480px)
+  html
+    font-size: 14px
+
+@media screen and (min-width: 481px) and (max-width: 720px)
+  html
+    font-size: 16px
 
 // --- Layout ---
 article
-  +box-sizing(border-box)
   border-bottom: 1px solid $border_color_light
   margin-bottom: $section_spacing_vertical / 2
   margin-top: $section_spacing_vertical / 2
   margin: 0 auto
-  padding: $section_spacing_horizontal
+  padding: 20px
 
 .wrapper
-  width: $wrapper-size
+  max-width: $wrapper-size
 
-#top
-  font-family: $sans_serif_font_family
-  padding: 0
-  height: 60px
-  border: none
+.nav
+  padding: 10px
 
-#top-outer
-  +clearfix
-  width: 100%
-  background: $header_color
+  & > li
+    float: left
+    margin-left: 12px
 
-#nav
-  float: left
-  height: 100%
-  width: 60%
-  position: relative
-
-  & > ul
-    position: absolute
-    list-style: none
-    bottom: 0px
-    left: 0px
-    width: 100%
-  
-    & > li
-
-      cursor: pointer
-      box-sizing: border-box
-      margin-left: 15px
-      padding: 5px
-      float: left
-      border-bottom: 4px solid transparent
-
-      & > a
-        -webkit-font-smoothing: antialiased
-        font-family: $sans_serif_font_family
-        font-weight: 200
-        font-size: 24px
-        color: #FFF
-
-      &:hover
-        border-bottom: 4px solid #FFF
-
-.nav-title
-  height: 100%
-  color: #FFF
-  font-family: $sans_serif_font_family
-  font-weight: 200
-  line-height: 60px
-  font-size: 28px
-  margin: 0
+.nav-link
+  font-family: $header_font
+  font-weight: 50
+  text-transform: uppercase
+  font-size: 1.2rem
+  font-weight: 100
+  color: $low_contrast_text_color
 
 .post
   margin-top: 25px
@@ -84,7 +62,6 @@ article
   border-bottom: 1px solid #b8b8b8
 
   .post-title
-    font-size: 3.0em
     margin-bottom: 10px
 
 .post-body
@@ -92,8 +69,8 @@ article
   margin-bottom: 10px
 
 .post-date
-  color: $border_color
-  font-size: 1.5em
+  color: $highlight_color
+  margin-left: 5px
 
 .post-preview-title
   color: $text_color
@@ -101,51 +78,13 @@ article
 .post-preview-body
   color: $border_color
 
-.avatar 
-  width: 200px
-  height: 200px
+.avatar
+  width: 100px
+  height: 100px
   border-radius: 10px
   margin-right: 8px
 
-.social
-  margin: 15px auto
-  width: $social_size * 3 + 10px + 2 * 3px
-
-  a.icon
-    +border-radius(50%)
-    +transition(all, ease-in, 0.2s)
-    border: 1px solid $border_color
-    color: $border_color
-    display: block
-    float: left
-    font-size: $social_size / 2
-    height: $social_size
-    line-height: $social_size
-    margin-left: 5px
-    text-align: center
-    width: $social_size
-
-    &:before
-      line-height: $social_size
-      text-align: center
-
-    &:first-child
-      margin-left: 0
-
-    &.icon-twitter:hover
-      border: 1px solid #00acee
-      color: #00acee
-
-    &.icon-github:hover
-      border: 1px solid #171515
-      color: #171515
-
-    &.icon-linkedin:hover
-      border: 1px solid #0e76a8
-      color: #0e76a8
-
-
-#footer
+footer
   margin-top: 50px
 
   section
@@ -160,23 +99,23 @@ ul.posts
     margin-bottom: 15px
     width: 100%
 
-body
-  background: url(/img/bg.png)
-
-p 
-  font-family: $serif_font_family
+// ----------------
+// Typography
+// ----------------
+p
+  font-family: $text_font
   margin: 10px 0
-  font-size: 1.2em
+  font-size: 1rem
 
 code
   font-family: $monospace_font_family
-  font-size: 0.7em
-  max-height: 1.2em
-  background: lighten($border_color_light, 40%)
-  padding-left: 3px
-  padding-right: 3px
-  +border-radius(2px)
-  border: 1px solid lighten($highlight_color, 20%)
+  font-size: 0.75em
+  background: darken($background_color, 4%)
+  padding-left: 2px
+  padding-right: 2px
+  +border-radius(3px)
+  +box-sizing(content-box)
+  border: 1px solid darken($background_color, 8%)
   -webkit-font-smoothing: subpixel-antialiased
   white-space: nowrap
 
@@ -185,7 +124,10 @@ strong
 
 blockquote
   padding-left: 10px
-  border-left: 5px solid $border_color
+  padding-top: 2px
+  padding-bottom: 2px
+  border-left: 5px solid $highlight_color
+  background: darken($background_color, 3%)
   color: $text_color
 
 a
@@ -196,37 +138,44 @@ a
     color: lighten($highlight_color, 15%)
 
 h1, h2, h3, h4, h5, h6
-  margin-top: 16px
-  margin-bottom: 8px
-  font-family: $sans_serif_font_family
+  font-family: $header_font
+  margin-top: 0.3em
+  margin-bottom: 0.3em
+  line-height: 1.05em
 
-h1
-  font-size: 2.5em
+@for $i from 1 through 6
+  h#{$i}
+    font-size: 3rem - $i * 0.3rem
 
-h2
-  font-size: 2.3em
+h1, h2
+  font-weight: bold
 
-h3
-  font-size: 2.1em
+h3, h4
+  font-weight: normal
 
-h4
-  font-size: 1.9em
+h5, h6
+  font-weight: 100
 
 .text-center
   text-align: center
 
 .sans-serif
-  font-family: $sans_serif_font_family
+  font-family: $header_font
 
 .serif
-  font-family: $serif_font_family
+  font-family: $text_font
 
-// --- Utility ---
+// ------------
+// Utility
+// ------------
 .clearfix
   +clearfix
 
 .center
   margin: 0 auto
+
+.block
+  display: block
 
 .left
   float: left
@@ -237,14 +186,11 @@ h4
 .gray
   color: $border_color
 
+.low-contrast
+  color: $low_contrast_text_color
+
 div.gist-meta
   display: none
 
 div.file-data
   background: #FFF
-
-@media only screen and (max-width : 320px)
-  html
-    font-size: 5vmin
-  section
-    width: 85%
