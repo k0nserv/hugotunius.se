@@ -15,3 +15,5 @@ Products for the general public should optimize for the average user. The issue?
 ### The solution
 
  The solution is simple. Don't build a UX you love, build a UX your users will love. But don't forget the power users in the process. If removing the full URL from the browser improves security and UX then do that, but don't make it mandatory. Let me and all other power users tinker with the configuration of our browser to display the full URL if we so desire, but try to make the tinkering as easy as possible while you are at it :) I think the Google team is doing exactly the right thing which is: configurable settings with sane defaults for the average user.
+
+ Join the discussion on [Reddit](http://www.reddit.com/r/programming/comments/24p80j/you_are_not_the_average_user/).
