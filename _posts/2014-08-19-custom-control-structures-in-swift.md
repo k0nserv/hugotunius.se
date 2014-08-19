@@ -54,3 +54,5 @@ Imagine you are writing a game and want something to happen sometimes. For that 
 As most iOS developer learn the hard way modifying the UI from any thread but the main thread is not a good idea. This task is so common that it deserves a control structure. As does the task of performing a task in the background.
 
 <script src="https://gist.github.com/k0nserv/30ed0869da1e2d060872.js"></script>
+
+Join the dicussion on [Reddit](http://www.reddit.com/r/swift/comments/2e0s41/custom_control_structures_in_swift/)
