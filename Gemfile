@@ -4,6 +4,7 @@ gem 'compass'
 gem 'jekyll'
 gem 'jekyll-slim'
 gem 'kramdown'
+gem 'redcarpet'
 
 # Capsitrano
 gem 'capistrano'
