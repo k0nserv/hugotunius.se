@@ -55,4 +55,15 @@ As most iOS developer learn the hard way modifying the UI from any thread but th
 
 <script src="https://gist.github.com/k0nserv/30ed0869da1e2d060872.js"></script>
 
-Join the dicussion on [Reddit](http://www.reddit.com/r/swift/comments/2e0s41/custom_control_structures_in_swift/)
+### Discussion
+
+After posting this post some interesting discussion was brought up. Reddit user [drewag](http://www.reddit.com/user/drewag) pointed out that the return statement doesn't play very nicely with these custom control structures because it will simply return from the closure rather than returning from the enclosing function. This is in part mitigated by the fact that the return has to be a void return to not cause a compiler error. Still it's good to keep in mind.
+
+[@Fudmottin](https://twitter.com/Fudmottin) pointed out the similarity to [Common Lisp Macros](http://cl-cookbook.sourceforge.net/macros.html). He also went ahead and tried his hand at implementing a `do...until` control structure which I used as a base to build my own implementation.
+
+<script src="https://gist.github.com/k0nserv/38a91a37eb0962f05be2.js"></script>
+
+A few people also weighed in on whether this is a good idea in practice. For now I consider it a good demonstration of Swift's capabilities which, when used correctly make for powerful semantic tools.
+
+
+Join the discussion on [Reddit](http://www.reddit.com/r/swift/comments/2e0s41/custom_control_structures_in_swift/)
