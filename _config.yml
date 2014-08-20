@@ -1,6 +1,6 @@
 name: Hugo Tunius - Blog
 markdown: kramdown
-pygments: true
+highligther: pygments
 #encoding: UTF-16
 timezone: Europe/Stockholm
 exclude: ['config', 'Capfile', 'Gemfile', 'Gemfile.lock', '*.sublime-*', 'lib', 'config', 'vendor']
