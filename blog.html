@@ -7,11 +7,16 @@ title: Blog
   <header class="post-header">
     <h1 class="text-center">Posts</h1>
   </header>
-  <ul class="posts">{% for post in site.posts limit:5 %}
-    li
-      a href="{{ post.url }}"
-        h3.post-preview-title
-          | {{ post.title }}
-      span.post-preview-body
-        | {{ post.excerpt }}{% endfor %}</ul>
+  <ul class="posts">
+    {% for post in site.posts limit:5 %}
+      <li>
+        <a href="{{ post.url }}">
+          <h3 class="post-preview-title">{{ post.title }}</h3>
+        </a>
+        <span class="post-preview-body">
+          {{ post.excerpt }}
+        </span>
+      </li>
+    {% endfor %}
+  </ul>
 </article>
