@@ -8,11 +8,20 @@ Wanting to try my hand at some javascript code golf I implemented a [graph plott
 
 `eval` of course evaluates and runs any code passed to it as a string as does its less evil cousin the [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function#Syntax) constructor. In the graph plotter I used the `Function` constructor to create the mathematical function used to compute the corresponding `y` values for each `x`.
 
-<script src="https://gist.github.com/k0nserv/8176804.js"></script>
+{% highlight javascript line linenos %}
+var f = new Function("x", 
+"with(Math) {" + 
+  "return " + input.value + 
+";}");
+{% endhighlight %}
 
-In the above snippet the usage of `with` is also included. `with` modifies the scope chain used for lookup of unqualified names in the scope of with. Here's an example
+In the above snippet the usage of `with` is also included. `with` modifies the scope chain used for lookup of unqualified names in the scope of with. Here's an example.
 
-<script src="https://gist.github.com/k0nserv/8180757.js"></script>
+{% highlight javascript line linenos %}
+with (Math) {
+  var x = sin(PI / 2); //1
+}
+{% endhighlight %}
 
 Together `with` and all variations of `eval` create the potential for disasters in security, undefined behaviour and bugs. The with statement even comes with the following warning on [MDN](https://developer.mozilla.org/en-US/):
 
