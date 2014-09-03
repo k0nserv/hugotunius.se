@@ -5,7 +5,7 @@ set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rben
 set :rbenv_map_bins, %w{rake gem bundle ruby jekyll}
 set :rbenv_roles, :all # default value
 
-set :default_env, {
+set :default_environment, {
   'PATH' => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
 }
 
@@ -34,7 +34,7 @@ namespace :deploy do
       within release_path do
         with path: "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH" do
           execute :rm, "-rf _site/*"
-          execute :jekyll, "build"
+          execute :bundle, [:exec, :jekyll,  :build]
         end
       end
     end
