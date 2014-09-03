@@ -5,6 +5,8 @@ gem 'jekyll'
 gem 'kramdown'
 gem 'redcarpet'
 
+gem 'therubyracer'
+
 # Capsitrano
 gem 'capistrano'
 gem 'capistrano-rbenv', '~> 2.0'

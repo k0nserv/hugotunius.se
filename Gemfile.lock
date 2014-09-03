@@ -63,6 +63,7 @@ GEM
     jekyll-watch (1.1.0)
       listen (~> 2.7)
     kramdown (1.4.1)
+    libv8 (3.16.14.3)
     liquid (2.6.1)
     listen (2.7.9)
       celluloid (>= 0.15.2)
@@ -84,12 +85,16 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     redcarpet (3.1.2)
+    ref (1.0.5)
     safe_yaml (1.0.3)
     sass (3.4.0)
     sshkit (1.5.1)
       colorize
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    therubyracer (0.12.1)
+      libv8 (~> 3.16.14.0)
+      ref
     timers (1.1.0)
     toml (0.1.1)
       parslet (~> 1.5.0)
@@ -106,3 +111,4 @@ DEPENDENCIES
   jekyll
   kramdown
   redcarpet
+  therubyracer
