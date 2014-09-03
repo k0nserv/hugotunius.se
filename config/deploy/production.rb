@@ -2,7 +2,6 @@ set :stage, :production
 set :branch, :master
 set :user, "deployer"
 
-role :all, "hugotunius.se"
 role :app, "hugotunius.se"
 
 
