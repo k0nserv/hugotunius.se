@@ -34,7 +34,7 @@ namespace :deploy do
       within release_path do
         with path: "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH" do
           execute :rm, "-rf _site/*"
-          execute :bundle, [:exec, :jekyll,  :build]
+          execute :jekyll, [ :build ]
         end
       end
     end
