@@ -7,7 +7,7 @@ Apple's new language `Swift` has some really nice syntactic sugar for common ope
 
 ### Reimplementing the if-statement
 Let's use these trailing closures to reimplement the if-statement
-{% highlight swift line linenos %}
+{% highlight swift line %}
 func _if(condition: BooleanType, action: () -> ()) {
   if condition {
     action()
@@ -26,7 +26,7 @@ The second argument to the function `_if` is a closure with no parameters and no
 #### If without if
 There is a problem with the `_if` function though - it uses the `if` statement which makes it extremely redundant and unimaginative. Could we implement it without using the `if` keyword? Yes we can.
 
-{% highlight swift line linenos %}
+{% highlight swift line %}
 func _if_without_if(condition: BooleanType, action: () -> ()) {
     // We fake the false case by using an empty closure, e.g a NOP
     let actions = [{}, action]
@@ -47,7 +47,7 @@ _if_without_if(1 < 2) {
 ### Reimplementing the while-statement
 
 How about while? Can we implement it in the same way?
-{% highlight swift line linenos %}
+{% highlight swift line %}
 func _while(condition: @autoclosure () -> BooleanType, action: () -> ()) {
   while condition() {
     action()
@@ -66,7 +66,7 @@ Here I am using a Swift feature called auto closure which wraps any expression p
 #### While without while
 Again the `_while` function is cheating and uses the `while` statement to accomplish it's function. Here's my solution without using `while`.
 
-{% highlight swift line linenos %}
+{% highlight swift line %}
 func _while_without_while(condition: @autoclosure () -> BooleanType, 
                           action: () -> ()) {
   var loop: () -> () = { $0 }
@@ -103,7 +103,7 @@ The examples shown above are nothing but hacks for the sake of fun. Let's now lo
 `unless` is a keyword found in ruby and perl. It's essentially a reverse if statement which will branch if the condition is false.
 
 Here it is in swift
-{% highlight swift line linenos %}
+{% highlight swift line %}
 func unless(condition: BooleanType, action: () -> ()) {
   if condition.boolValue == false {
     action()
@@ -117,7 +117,7 @@ unless(opt == nil) {
 {% endhighlight %}
 Ruby programmers might miss the infix version of this keyword which looks like this `action unless condition`. Well thanks to Swifts operators we can implement that too, albeit without the nice name.
 
-{% highlight swift line linenos %}
+{% highlight swift line %}
 // Define the ++= operator
 infix operator ++= {}
 func ++= (action: @autoclosure () -> (), condition: BooleanType){
@@ -138,7 +138,7 @@ println("\(x)")
 
 Imagine you are writing a game and want something to happen sometimes. For that there's the `maybe` operator which executes the specified action 50% of the time.
 
-{% highlight swift line linenos %}
+{% highlight swift line %}
 // Perform some action 50% of the time
 func maybe(action: () -> ()) {
   if arc4random_uniform(2) == 0 {
@@ -154,7 +154,7 @@ maybe {
 
 As most iOS developer learn the hard way modifying the UI from any thread but the main thread is not a good idea. This task is so common that it deserves a control structure. As does the task of performing a task in the background.
 
-{% highlight swift line linenos %}
+{% highlight swift line %}
 func onMainThread(action: () -> ()) {
   dispatch_async(dispatch_get_main_queue(), action)
 }
@@ -178,7 +178,7 @@ After posting this post some interesting discussion was brought up. Reddit user 
 
 [@Fudmottin](https://twitter.com/Fudmottin) pointed out the similarity to [Common Lisp Macros](http://cl-cookbook.sourceforge.net/macros.html). He also went ahead and tried his hand at implementing a `do...until` control structure which I used as a base to build my own implementation.
 
-{% highlight swift line linenos %}
+{% highlight swift line %}
 // The DoUntil struct holds the action that is
 // the loop body
 struct DoUntil {

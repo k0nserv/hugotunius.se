@@ -31,7 +31,7 @@ With these grounds rules established we can now look at a few scenarios when it'
 
 Let's say I am working on implementing a method in a JavaScript project. My initial implementation looks like this
 
-{% highlight javascript line linenos %}
+{% highlight javascript line %}
 // fib.js
 var fbi = function(i) {
     if (i == 0 || i == 1) {
@@ -82,7 +82,7 @@ Lastly someone points out that this function would fit better in `math.js` so I 
 
 This is my final implementation
 
-{% highlight javascript line linenos %}
+{% highlight javascript line %}
 (function() {
     "use strict";
     var fib = function(i) {
