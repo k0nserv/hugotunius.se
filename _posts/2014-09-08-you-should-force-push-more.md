@@ -44,41 +44,40 @@ var fbi = function(i) {
 
 I make a commit and submit a PR. My git log now looks like this
 
-> 7492f01 (HEAD, origin/add-fibonacci-implementation) Implement Fibonacci sequence
->
-> aa1fdb3 (develop, origin/develop) Solve halting problem
+{% highlight text line %}
+* 7492f01 (HEAD, origin/add-fibonacci-implementation) Implement Fibonacci sequence
+* aa1fdb3 (develop, origin/develop) Solve halting problem
+{% endhighlight %}
 
 The PR is reviewed and luckily someone finds my spelling mistake. So I fix it.
 
-> 97f5b3d (HEAD, origin/add-fibonacci-implementation) Rename incorrectly named fbi to fib
-> 
-> 7492f01 Implement Fibonacci sequence
->
-> aa1fdb3 (develop, origin/develop) Solve halting problem
+{% highlight text line %}
+* 97f5b3d (HEAD, origin/add-fibonacci-implementation) Rename incorrectly 
+named fbi to fib 
+* 7492f01 Implement Fibonacci sequence
+* aa1fdb3 (develop, origin/develop) Solve halting problem
+{% endhighlight %}
 
 It was also pointed out that I didn't wrap my code in an anonymous self executing function so I fix that too.
 
-> aaf7382 (HEAD, origin/add-fibonacci-implementation) Wrap Fibonacci implementation in anonymous self executing function
-> 
-> 97f5b3d Rename incorrectly named fbi to fib
-> 
-> 7492f01 Implement Fibonacci sequence
->
-> aa1fdb3 (develop, origin/develop) Solve halting problem
-
+{% highlight text line %}
+* aaf7382 (HEAD, origin/add-fibonacci-implementation) Wrap Fibonacci 
+implementation in anonymous self executing function
+* 97f5b3d Rename incorrectly named fbi to fib
+* 7492f01 Implement Fibonacci sequence
+* aa1fdb3 (develop, origin/develop) Solve halting problem
+{% endhighlight %}
 
 Lastly someone points out that this function would fit better in `math.js` so I move it there.
 
-> d270e1a (HEAD, origin/add-fibonacci-implementation) Move Fibonacci implementation to math.js
-> 
-> aaf7382 Wrap Fibonacci implementation in anonymous self executing function
-> 
-> 97f5b3d Rename incorrectly named fbi to fib
-> 
-> 7492f01 Implement Fibonacci sequence
->
-> aa1fdb3 (develop, origin/develop) Solve halting problem
-
+{% highlight text line %}
+* d270e1a (HEAD, origin/add-fibonacci-implementation) Move Fibonacci
+implementation to math.js
+* aaf7382 Wrap Fibonacci implementation in anonymous self executing function
+* 97f5b3d Rename incorrectly named fbi to fib
+* 7492f01 Implement Fibonacci sequence
+* aa1fdb3 (develop, origin/develop) Solve halting problem
+{% endhighlight %}
 
 This is my final implementation
 
@@ -103,18 +102,22 @@ If we now merge this PR we will merge 4 commits out of which 3 are just fixing i
 
 My final git log is
 
-> 134c072 (HEAD, origin/add-fibonacci-implementation) Implement Fibonacci sequence
->
-> aa1fdb3 (develop, origin/develop) Solve halting problem
+{% highlight text line %}
+* 134c072 (HEAD, origin/add-fibonacci-implementation) Implement Fibonacci sequence
+* aa1fdb3 (develop, origin/develop) Solve halting problem
+{% endhighlight %}
 
 I try to push my changes, but I can't. My push is being rejected by the remote.
 
-> To git@git.url.com:url.git
- ! [rejected]        add-fibonacci-implementation -> add-fibonacci-implementation (non-fast-forward)
+{% highlight text line %}
+To git@git.url.com:url.git
+ ! [rejected]        add-fibonacci-implementation -> add-fibonacci-implementation 
+ (non-fast-forward)
 error: failed to push some refs to 'git@git.url.com:url.git'
 To prevent you from losing history, non-fast-forward updates were rejected
 Merge the remote changes before pushing again.  See the 'Note about
 fast-forwards' section of 'git push --help' for details.
+{% endhighlight %}
 
 Here force push comes to the rescue, the PR is merged and the git log of the repository is kept unpolluted by useless commits.
 
@@ -131,9 +134,11 @@ var implodeUniverse = function () {
 
 I commit my changes and end up with a git log like the following.
 
-> fc26bb2 (HEAD, origin/add-support-for-universe-implode) Implement imploding the universe
->
-> aa1fdb3 (develop, origin/develop) Solve halting problem
+{% highlight text line %}
+* fc26bb2 (HEAD, origin/add-support-for-universe-implode) Implement imploding 
+the universe
+* aa1fdb3 (develop, origin/develop) Solve halting problem
+{% endhighlight %}
 
 Just as I push my changes to the remote I realise that I forgot to check the answer before imploding the universe. I have to modify my code a bit.
 
@@ -180,7 +185,9 @@ git push origin base-branch
 
 The problem with this solution is that you will unfortunately create a merge commit which looks like this
 
-> Merge branch 'base-branch' into branch-name
+{% highlight text line %}
+Merge branch 'base-branch' into branch-name
+{% endhighlight %}
 
 Commits like these will pollute your commit log and make it harder to read. They should be avoided when they are not the result of a PR or syncing develop/master with each other. Instead we can use a combination of rebase and force push to solve the problem.
 
@@ -204,7 +211,7 @@ Force push is an extremely powerful ally when utilised correctly. It helps a tea
 The following is a comparison between using and not using the techniques I've showed in this post.
 
 **Without force push**
-{% highlight bash line %}
+{% highlight text line %}
 *   beb4bb2 (HEAD, master) Merge pull request #3 from repo/fix-issue-in-halting-problem-solution
 |\
 | *   8b7e651 (fix-issue-in-halting-problem-solution) Merge branch 'master' into fix-issue-in-halting-problem-solution
@@ -230,7 +237,7 @@ The following is a comparison between using and not using the techniques I've sh
 {% endhighlight %}
 
 **With force push**
-{% highlight bash line %}
+{% highlight text line %}
 *   a695ebf (HEAD, master) Merge pull request #3 from repo/fix-issue-in-halting-problem-solution
 |\
 | * 9d94892 (fix-issue-in-halting-problem-solution) Fix issue in halting problem
