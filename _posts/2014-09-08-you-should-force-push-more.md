@@ -89,7 +89,7 @@ This is my final implementation
             return i;
         }
 
-        return fbi(i - 1) + fbi(i - 2);
+        return fib(i - 1) + fib(i - 2);
     };    
 })();
 {% endhighlight %}
