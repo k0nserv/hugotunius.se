@@ -5,3 +5,6 @@ highligther: pygments
 timezone: Europe/Stockholm
 exclude: ['config', 'Capfile', 'Gemfile', 'Gemfile.lock', '*.sublime-*', 'lib', 'config', 'vendor']
 relative_permalinks: false
+url: hugotunius.se
+author: Hugo Tunius
+copyright: Hugo Tunius
