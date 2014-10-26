@@ -46,7 +46,7 @@ namespace :deploy do
       within release_path do
         execute :mv, "css/ _site/"
         execute :rm, "Capfile _config.yml Gemfile* index.html"
-        execute :rm, "-rf config _drafts fonts img _includes _layouts _plugins _sass"
+        execute :rm, "-rf config _drafts fonts img _includes _layouts _plugins _sass research"
       end
     end
   end
