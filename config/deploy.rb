@@ -1,6 +1,6 @@
 #rbenv config
 set :rbenv_type, :user # or :system, depends on your rbenv setup
-set :rbenv_ruby, '2.1.2'
+set :rbenv_ruby, File.read(File.expand_path('../../.ruby-version', __FILE__)).chomp
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w{rake gem bundle ruby jekyll}
 set :rbenv_roles, :all # default value
