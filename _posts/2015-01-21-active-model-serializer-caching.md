@@ -132,7 +132,7 @@ end
 
 We leave the `last_modified` set to `@post.updated_at` because as long as the Etag changes the request will be considered to be stale by rails.
 
-**Warning:** If the client only uses `If-Modified-Since` and skips `If-None-Match` this can still cause staleness of the view. To compat this the version of the Serializer could be changed to a unixtimestamp and the maximum of the version and the model's `updated_at` could be for the `last_modified` value.
+**Warning:** If the client only uses `If-Modified-Since` and skips `If-None-Match` this can still cause staleness of the view. To combat this the version of the Serializer could be changed to a unixtimestamp and the maximum of the version and the model's `updated_at` could be for the `last_modified` value.
 
 ## Removing the human error
 
