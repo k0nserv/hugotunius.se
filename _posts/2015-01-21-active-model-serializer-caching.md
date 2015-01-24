@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "ActiveModel::Serializers and caching"
+title:  "ActiveModel Serializers and caching"
 categories: rails api caching
 date: 2015-01-21
 ---
