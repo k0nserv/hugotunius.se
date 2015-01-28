@@ -4,7 +4,7 @@ task :default => :watch
 desc 'Cleanup generated files'
 task :clean do
   sh 'rm -rf _site'
-  sh 'compass clean'
+  compass 'clean'
 end
 
 desc 'Build the site'
@@ -28,6 +28,10 @@ end
 
 def s3(command)
   with_bundler "s3_website #{command}"
+end
+
+def compass(command)
+  with_bundler "compass #{command}"
 end
 
 def with_bundler(command)
