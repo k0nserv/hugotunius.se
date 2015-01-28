@@ -4,6 +4,6 @@ branches:
 script: "./_scripts/deploy.sh"
 env:
   global:
-    secure: "p0Ix2bjpYJnLGmEUW7mZATiWxTAwp9h1XOl3ZXP0KzrQkrRHuHSJhhtvXcIFRAMAf/wsn/NeIcJbZzPWvgvP3fFD6i8qSQqnp8FmjyZEsOAKCGB+RFQn+t0D5D0ws3fKnah9vsrDYkupz7wI/J+3vX7G2ZMd78MZuubbcxE4szM="
-    secure: "mia5KjYq+65kz5hlXazoZ2/ZWt9XPJo/m/6Ej07rV96H8hIS7xrjDvzavBlcJ7cacxDQMJDnvCINAl2OPf0QGvs/ANamou43dAEE77TKOdIWYPBaQtIrzsxg8PFt+J9XBYf23Z3d/Q3+lIRO8ze8mzSoSNc/1susVizzmUlHhG8="
+    secure: "Y8oSq4b3m6bCJOLGQf5PZCS8x078mZA3VNoHyPOMcVCi0m+Qalp+nildzv4eiKIx8zIhz3Ushf+jHAytAn3TU8hK+zdg7KYX6DoisxAehHxw0n6t0SniELixla70ckrV87FqiNFG3TCrERoOWsk2s6had0oV07IXxPFuBQQe3w0="
+    secure: "NHIh4KBJ3TK2o8K5iP5f6cfnHDu9MyHWKnEAHC3WecDbTutnWnjZSN46I3gCro9uRuMz8oLOqTU3EJxvFG/tLUlw/fk9C/88ZboKvib8SpIVX5CmEut6s9/U/sllT+Msx80bWTeRX3Q8U3bYtLeS7x+v56gGuu0YS3HC+Qkar6k="
 cache: bundler
