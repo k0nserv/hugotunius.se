@@ -3,7 +3,7 @@ markdown: kramdown
 highligther: pygments
 #encoding: UTF-16
 timezone: Europe/Stockholm
-exclude: ['Gemfile', 'Gemfile.lock', '*.sublime-*', 'lib','vendor', 'Rakefile']
+exclude: ['Gemfile', 'Gemfile.lock', '*.sublime-*', 'lib','vendor', 'Rakefile', 's3_website.yml']
 relative_permalinks: false
 url: hugotunius.se
 author: Hugo Tunius
