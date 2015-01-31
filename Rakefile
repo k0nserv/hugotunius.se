@@ -9,17 +9,17 @@ end
 
 desc 'Build the site'
 task build: [:clean] do
-  jekyll "build"
+  jekyll :build
 end
 
 desc 'Deploy the site to s3'
 task deploy: [:build] do
-  s3 "push"
+  s3 :push
 end
 
 desc 'Serve the site locally and watch for changes'
 task watch: [:clean] do
-  jekyll "serve --watch --drafts"
+  jekyll 'serve --watch --drafts'
 end
 
 def jekyll(command)
