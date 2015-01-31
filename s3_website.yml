@@ -5,4 +5,7 @@ gzip:
   - .html
   - .css
   - .png
+  - .css
+  - .jpeg
+  - .jpg
 s3_reduced_redundancy: true
