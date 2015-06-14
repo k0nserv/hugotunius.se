@@ -22,6 +22,11 @@ module Jekyll
       Dir.chdir File.expand_path('../_sass', File.dirname(__FILE__)) do
         Compass::Exec::SubCommandUI.new(%w(compile -c config.rb)).run!
       end
+      Dir.chdir File.expand_path('../css', File.dirname(__FILE__)) do
+        Dir.glob('*.css').each do |file|
+          site.static_files << Jekyll::StaticFile.new(site, site.source, 'css', file)
+        end
+      end
     end
 
   end
