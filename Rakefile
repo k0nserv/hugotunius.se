@@ -14,7 +14,7 @@ end
 
 desc 'Deploy the site to s3'
 task deploy: [:build] do
-  s3 :push
+  s3 :push, '--force'
 end
 
 desc 'Serve the site locally and watch for changes'
@@ -26,8 +26,8 @@ def jekyll(command)
   with_bundler "jekyll #{command}"
 end
 
-def s3(command)
-  with_bundler "s3_website #{command}"
+def s3(command, options = '')
+  with_bundler "s3_website #{command} #{options}"
 end
 
 def compass(command)
