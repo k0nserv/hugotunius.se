@@ -14,7 +14,7 @@ end
 
 desc 'Deploy the site to s3'
 task deploy: [:build] do
-  s3 :push, '--force'
+  s3 :push
 end
 
 desc 'Serve the site locally and watch for changes'
