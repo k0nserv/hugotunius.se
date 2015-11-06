@@ -20,7 +20,7 @@ class PostSerializer < ActiveModel::Serializer
   cached
 
   # Delegate the cache key to the object
-  delegate :cache_key, to: object
+  delegate :cache_key, to: :object
 
   attributes :title, :body
 
