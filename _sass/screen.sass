@@ -23,6 +23,9 @@ body
 p
   font-family: $text_font_computer
 
+em
+  font-style: italic
+
 @media screen and (min-width: 320px) and (max-width: 480px)
   html
     font-size: 14px
@@ -83,6 +86,9 @@ article
     margin: 0 auto
     display: block
     max-width: 80%
+
+  & li
+    list-style: disc inside
 .post-date
   color: $highlight_color
   margin-left: 5px
