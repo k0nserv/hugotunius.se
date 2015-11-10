@@ -8,3 +8,5 @@ relative_permalinks: false
 url: hugotunius.se
 author: Hugo Tunius
 copyright: Hugo Tunius
+gems:
+    - jekyll-redirect-from
