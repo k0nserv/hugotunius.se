@@ -1,23 +1,22 @@
-<!DOCTYPE HTML><html>
+<!DOCTYPE html>
+<html amp>
   <head>
     <meta charset="utf-8">
-      <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-        <title>{{page.title}}</title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <script type="text/javascript"></script>
-        <script type="text/javascript">var _gaq = _gaq || [];
-          _gaq.push(['_setAccount', 'UA-37236456-1']);
-          _gaq.push(['_trackPageview']);
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <title>{{page.title}}</title>
+    <script type="text/javascript">var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-37236456-1']);
+      _gaq.push(['_trackPageview']);
 
-          (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-          })();</script>
-        <style>{% capture style %}{% include style.sass %}{% endcapture %}
-        {{ style | sassify }}</style>
-      </meta>
-    </meta>
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();</script>
+    <style>body {opacity: 0}</style><noscript><style>body {opacity:1}</style></noscript>
+      <script async src="https://cdn.ampproject.org/v0.js"></script>
+      <style amp-custom>{% capture style %}{% include style.sass %}{% endcapture %}
+      {{ style | sassify }}</style>
   </head>
   <body>{% include header.html %}<div class="wrapper center" id="main">{{ content }}</div>{% include footer.html %}</body>
 </html>

@@ -4,3 +4,4 @@ images_dir  = "../img"
 javascripts_dir = "../js"
 fonts_dir   = "../fonts"
 relative_assets = true
+Encoding.default_external = "UTF-8"
