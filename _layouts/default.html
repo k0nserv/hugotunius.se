@@ -14,10 +14,8 @@
             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
           })();</script>
-        <!--Custom CSS-->
-        <link href="/css/screen.css" rel="stylesheet" />
-        <link href="/css/icons.css" rel="stylesheet" />
-        <link href="/css/syntax.css" rel="stylesheet" />
+        <style>{% capture style %}{% include style.sass %}{% endcapture %}
+        {{ style | sassify }}</style>
       </meta>
     </meta>
   </head>

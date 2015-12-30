@@ -10,3 +10,5 @@ author: Hugo Tunius
 copyright: Hugo Tunius
 gems:
     - jekyll-redirect-from
+sass:
+  style: compressed

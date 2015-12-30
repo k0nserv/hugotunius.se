@@ -1,15 +1,7 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-
 @import variables
 @import social-links
-
-@import compass/reset
-@import compass/utilities/general/clearfix
-@import compass/css3/box-sizing
-@import compass/css3/border-radius
+@import reset
+@import utils
 
 *
   +box-sizing(border-box)
@@ -102,7 +94,7 @@ article
 .avatar
   width: 100px
   height: 100px
-  border-radius: 10px
+  +border-radius(10px)
   margin-right: 8px
 
 footer
@@ -197,7 +189,8 @@ div:not(.highlight) code
 // Utility
 // ------------
 .clearfix
-  +clearfix
+  overflow: hidden
+  *zoom: 1
 
 .center
   margin: 0 auto

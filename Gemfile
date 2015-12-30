@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'compass', '~> 1.0.3  '
 gem 'jekyll', '~> 2.5.3'
 gem 'jekyll-redirect-from', '~> 0.9.0'
 gem 'kramdown', '~> 1.8.0 '
