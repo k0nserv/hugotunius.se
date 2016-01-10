@@ -1,8 +1,7 @@
 name: Hugo Tunius - Blog
 markdown: kramdown
 highligther: pygments
-#encoding: UTF-16
-timezone: Europe/Stockholm
+timezone: Europe/London
 exclude: ['Gemfile', 'Gemfile.lock', '*.sublime-*', 'lib','vendor', 'Rakefile', 's3_website.yml']
 relative_permalinks: false
 url: hugotunius.se
