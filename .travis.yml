@@ -1,7 +1,7 @@
 language: ruby
 branches:
   only: master
-script: "./_scripts/deploy.sh"
+script: bundle exec rake deploy
 env:
   global:
     - secure: "Y8oSq4b3m6bCJOLGQf5PZCS8x078mZA3VNoHyPOMcVCi0m+Qalp+nildzv4eiKIx8zIhz3Ushf+jHAytAn3TU8hK+zdg7KYX6DoisxAehHxw0n6t0SniELixla70ckrV87FqiNFG3TCrERoOWsk2s6had0oV07IXxPFuBQQe3w0="
