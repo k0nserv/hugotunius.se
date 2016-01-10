@@ -81,6 +81,9 @@ article
 
   & li
     list-style: disc inside
+    line-height: 1.4em
+    margin-bottom: 0.3em
+
 .post-date
   color: $highlight_color
   margin-left: 5px
@@ -90,12 +93,6 @@ article
 
 .post-preview-body
   color: $border_color
-
-.avatar
-  width: 100px
-  height: 100px
-  +border-radius(10px)
-  margin-right: 8px
 
 footer
   margin-top: 50px
@@ -183,7 +180,11 @@ h5, h6
 
 div:not(.highlight) code
   font-family: $monospace_font_family
-  font-size: 0.95em
+  font-size: 0.85em
+  background-color: darken($background_color, 5%)
+  padding-top: 0.2em
+  padding-bottom: 0.2em
+  +border-radius(2px)
 
 // ------------
 // Utility
