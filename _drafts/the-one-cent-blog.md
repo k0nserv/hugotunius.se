@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "The 1 cent blog"
+title:  "The one cent blog"
 categories: aws cloudflare web 
 ---
 
