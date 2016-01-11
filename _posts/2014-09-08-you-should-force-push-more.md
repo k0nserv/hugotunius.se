@@ -167,7 +167,7 @@ Now I can open my pull request and maintain a clean git log without surplus comm
 
 In some cases your branch might diverge from the branch it was forked off of. When this happens GitHub shows the following UI:
 
-![](/img/github_merge_fail.png)
+![]({{ 'img/github_merge_fail.png' | asset_url }})
 
 These are the steps that GitHub suggests to resolve this issue
 

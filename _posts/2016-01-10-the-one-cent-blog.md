@@ -26,7 +26,7 @@ This blog is hosted on [Github][github_hugotunius_se] for free because it's open
 * Navigate to http://localhost:4000 to see your site.
 * At this point you can also make any modifications to the CSS and layout if you wish.
 
-![](/img/one-cent-blog/jekyll-running.png)
+![]({{ 'img/one-cent-blog/jekyll-running.png' | asset_url }})
 
 The next step is getting your site up on S3
 
@@ -69,7 +69,7 @@ Travis CI is used to deploy the site to S3 every time a new commit is pushed to 
 + Go to [Account](https://travis-ci.org/profile/) and click `Sync account`.
 + Find the repository for your website and switch it on.
 
-![](/img/one-cent-blog/travis-ci-repo-list.png)
+![]({{ 'img/one-cent-blog/travis-ci-repo-list.png' | asset_url }})
 
 + Install the [Travis CLI Client](https://github.com/travis-ci/travis.rb) and login.
 + Run `$ travis encrypt S3_ACCESS_ID=<value_from_downloaded_s3_credentials> --add env.global`.
@@ -93,7 +93,7 @@ Cloudflare is a company that provides a set of service based around caching, DDO
 Simply signup to Cloudflare and follow their great on boarding tutorial and configure your DNS settings to use CNAME Flattening for your root record pointing it to your s3 bucket.
 
 
-![](/img/one-cent-blog/cloudflare-dns.png)
+![]({{ 'img/one-cent-blog/cloudflare-dns.png' | asset_url }})
 
 
 Under `Crypto` turn on SSL if it's not already on and enable HTTP Strict Transport Security.
