@@ -10,5 +10,6 @@ copyright: Hugo Tunius
 gems:
     - jekyll-redirect-from
     - jekyll-feed
+    - jekyll-sitemap
 sass:
   style: compressed
