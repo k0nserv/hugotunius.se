@@ -20,5 +20,5 @@
       <style amp-custom>{% capture style %}{% include style.sass %}{% endcapture %}
       {{ style | sassify }}</style>
   </head>
-  <body>{% include header.html %}<div class="wrapper center" id="main">{{ content }}</div>{% include footer.html %}</body>
+  <body>{% include header.html %}<main class="wrapper center" id="main">{{ content }}</main>{% include footer.html %}</body>
 </html>
