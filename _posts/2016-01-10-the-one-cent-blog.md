@@ -60,6 +60,24 @@ The next step is getting your site up on S3
     ]
 }
 {% endhighlight %}
++ Under the bucket properties in the permissions section click `Edit bucket policy` and add the following
+
+{% highlight text line %}
+{
+    "Version": "2008-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadForGetBucketObjects",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::<buck_name>/*"
+        }
+    ]
+}
+{% endhighlight %}
 
 ## Travis-CI
 
