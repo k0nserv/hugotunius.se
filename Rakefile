@@ -17,8 +17,8 @@ task deploy: [:build] do
 end
 
 desc 'Serve the site locally and watch for changes'
-task watch: [:clean] do
-  jekyll 'serve --watch --drafts'
+task serve: [:clean] do
+  jekyll 'serve --drafts --incremental'
 end
 
 def jekyll(command)
