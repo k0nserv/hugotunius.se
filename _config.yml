@@ -4,7 +4,7 @@ highligther: pygments
 timezone: Europe/London
 exclude: ['Gemfile', 'Gemfile.lock', '*.sublime-*', 'lib','vendor', 'Rakefile', 's3_website.yml']
 relative_permalinks: false
-url: hugotunius.se
+url: https://hugotunius.se
 author: Hugo Tunius
 copyright: Hugo Tunius
 permalink: /:year/:month/:day/:title.html
