@@ -2,7 +2,9 @@
 layout: post
 title:  "The one cent blog"
 categories: aws cloudflare web 
-redirect_from: /aws/cloudflare/web/2016/01/10/the-one-cent-blog.md-the-one-cent-blog.html
+redirect_from: 
+  - /aws/cloudflare/web/2016/01/10/the-one-cent-blog.md-the-one-cent-blog.html
+  - /aws/cloudflare/web/2016/01/10/the-one-cent-blog.html
 ---
 
 This post details how I run this website for about $0.01/month with great scaling and HTTPS using [S3][aws_s3], [Jekyll][jekyll], [Cloudflare][cloudflare] and [Travis-CI][travis_ci]. It should be noted that the cost varies depending on how much traffic your site sees, $0.01/month is just what I typically see on this website.

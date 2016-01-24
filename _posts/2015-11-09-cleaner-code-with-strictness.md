@@ -2,7 +2,9 @@
 layout: post
 title:  "Cleaner code with strictness"
 categories: clean-code code CI 
-redirect_from: /clean-code/code/ci/2015/11/09/the-one-weird-trick-to-write-clean-code.html
+redirect_from: 
+  - /clean-code/code/ci/2015/11/09/the-one-weird-trick-to-write-clean-code.html
+  - /clean-code/code/ci/2015/11/09/cleaner-code-with-strictness.html
 ---
 
 Writing clean majestic code is something I think we should all strive for in our work and it is important to me. The age-old _Code is read more than it is written_ is a good reason to be writing clean code. This post is about how I have found strictness to be a great tool in the effort to write clean code.

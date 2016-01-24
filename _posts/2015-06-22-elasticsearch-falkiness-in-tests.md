@@ -2,6 +2,10 @@
 layout: post
 title:  "Elasticsearch flakiness in tests"
 categories: rails elasticsearch
+date: 2015-06-22
+redirect_from: 
+  - /rails/api/caching/2015/01/21/active-model-serializer-caching.html
+  - /rails/elasticsearch/2015/06/22/elasticsearch-falkiness-in-tests.html
 ---
 
 [Elasticsearch](https://www.elastic.co/products/elasticsearch) is an awesome tool for building fast and powerful search experiences. However integration testing with Elasticsearch can be painful. Elasticsearch uses a HTTP REST API to modify, setup, and search indices. The nature of this API is eventually consistent, creating an index will not be done when the HTTP call returns. This eventual consistency can become painful in test since creating, indexing, searching and then removing the index needs to happen in rapid succession.

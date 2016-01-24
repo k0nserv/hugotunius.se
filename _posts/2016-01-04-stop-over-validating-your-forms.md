@@ -3,6 +3,7 @@ layout: post
 title:  "Stop over validating your forms"
 categories: ux security culture web
 date: 2016-01-04
+redirect_from: /ux/security/culture/web/2016/01/04/stop-over-validating-your-forms.html
 ---
 
 Validation errors suck! They cause your users frustration, they hurt conversion rates, and when they are incorrect they are confusing. My email address `h@tunius.se` gets rejected as being invalid quite frequently and it's always just as frustrating. Validation errors should be actual objective errors in the submitted data, not arbitrary subjective over validation. 

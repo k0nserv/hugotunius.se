@@ -2,6 +2,7 @@
 layout: post
 title:  "Custom Control Structures in Swift"
 categories: swift ios xcode
+redirect_from: /swift/ios/xcode/2014/08/19/custom-control-structures-in-swift.html
 ---
 Apple's new language `Swift` has some really nice syntactic sugar for common operations. One of the new features is closures which are similar to blocks in Objective-C, but they have a few tricks that blocks don't have. When the last argument to a function is a closure it's possible to put it outside the parenthesis of the call to the function. This makes it possible to write control structures which look(almost) identical to the normal control structures.
 

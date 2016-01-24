@@ -2,6 +2,7 @@
 layout: post
 title:  "You should force push more"
 categories: git vsc
+redirect_from: /git/vsc/2014/09/08/you-should-force-push-more.html
 ---
 Git's force push feature is the source of a lot of controversy and errors. It's widely considered to be dangerous and left for use only in extreme situations. I use it every single day.
 

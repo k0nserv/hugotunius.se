@@ -1,7 +1,10 @@
 ---
 layout: post
 title:  "You are not the average user"
-categories: ux, design
+categories: ux design
+redirect_from: 
+  - /ux,/design/2014/05/04/you-are-not-the-average-user.html
+  - /ux/design/2014/05/04/you-are-not-the-average-user.html
 ---
 
 In the latest version of [Chrome Canary](https://www.google.com/intl/en/chrome/browser/canary.html) Google has removed the full URL from the omnibar and instead shows only the domain and HTTPS info. The same feature was introduced in Mobile Safari with iOS 7. This is a good thing. As Jake Archibald outlines in this blog [post](http://jakearchibald.com/2014/improving-the-url-bar/) the new omnibar protects the user from phishing attempts while improving the user experience and hiding the non-vital information in the URL.
