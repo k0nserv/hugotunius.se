@@ -42,7 +42,7 @@ Notice that the `updated_at` value is part of the cache key. A simple `Post.find
 
 There is however a big issue here. When the model changes we are fine thanks to `updated_at`, but what about when the Serializer changes?
 
-This is how AMS calculates the cache_key in 0.8.0 
+This is how AMS calculates the cache_key in 0.8.0
 
 {% highlight ruby line %}
 # I have altered it slightly to reduce line length
@@ -65,7 +65,7 @@ class BaseSerializer < ActiveModel::Serializer
   class_attribute :version
   # The version starts at 1
   self.version = 1
-  
+
   # Notice that this is a class method and is not overriding
   # the instance method from ActiveModel::Serializer
   def self.cache_key
@@ -112,7 +112,7 @@ If we now wish to change the serializer by adding a new attribute or changing so
 I've implemented roughly the same thing in our API, but I was also looking into ETagging and HTTP based caching overall. This suffers from the same issue as the view caching.
 
 {% highlight ruby line %}
-# If the view changes, but the models stay the same 
+# If the view changes, but the models stay the same
 # The ETag will remain the same
 if stale? etag: @post, last_modified: @post.updated_at
   render json: @post
