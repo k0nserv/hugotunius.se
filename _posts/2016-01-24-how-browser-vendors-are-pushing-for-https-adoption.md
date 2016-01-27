@@ -40,6 +40,10 @@ The chromium project is [planning to remove "Powerful Features" on insecure orig
 
 Some of these features give developers access to sensitive data such as location, video and audio. As such only allowing them on secure origin is a good move forward and will greatly benefit users. At the time of writing these features are deprecated, but not removed on insecure origins in Chrome. Firefox has stated that they are looking into doing the same.
 
+According to [Motherboard](https://motherboard.vice.com/read/google-will-soon-shame-all-websites-that-are-unencrypted-chrome-https) Chrome will also soon start explicitly marking HTTP as insecure. Users can already opt in for this behaviour, which will show a padlock with a red "x" on HTTP pages, by going to `chrome://flags/#mark-non-secure-as` and changing the value from `default`. Here's a screenshot of what this looks like.
+
+[![]({{ 'img/https-browser/http-insecure-chrome.png' | asset_url }})](/img/https-browser/http-insecure-chrome.png)
+
 ## The user
 
 It's important to remember that the actions that the browser vendors are taking are not specifically to encourage developers to adopt HTTPS. At the end of the day they are concerned with the user's security as every developer should be as well. Unfortunately security does not always get the focus and attention it demands and in modern business it's sadly not always viewed as important. Fortunately these changes from the browser vendors will shift the focus and increase developers and business awareness.
