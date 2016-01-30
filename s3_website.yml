@@ -3,7 +3,6 @@ s3_secret: <%= ENV['S3_ACCESS_SECRET'] %>
 s3_bucket: hugotunius.se
 gzip:
   - .html
-  - .css
   - .png
   - .css
   - .jpeg
