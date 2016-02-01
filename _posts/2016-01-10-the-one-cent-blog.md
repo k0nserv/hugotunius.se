@@ -116,7 +116,7 @@ Simply signup to Cloudflare and follow their great on boarding tutorial and conf
 ![]({{ 'img/one-cent-blog/cloudflare-dns.png' | asset_url }})
 
 
-Under `Crypto` turn on SSL if it's not already on and enable HTTP Strict Transport Security.
+Under `Crypto` set SSL to `Flexible` and enable HTTP Strict Transport Security.
 
 ## Additions
 
