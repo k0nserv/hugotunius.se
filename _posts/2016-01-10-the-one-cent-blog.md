@@ -118,6 +118,9 @@ Simply signup to Cloudflare and follow their great on boarding tutorial and conf
 
 Under `Crypto` set SSL to `Flexible` and enable HTTP Strict Transport Security.
 
+To force traffic to be HTTP setup a page rule for `http://<domain>/*` in Cloudflare under `Page Rules`
+![]({{ 'img/one-cent-blog/force-https.png' | asset_url }})
+
 ## Additions
 
 This sections contains some features that can be added to the site.
