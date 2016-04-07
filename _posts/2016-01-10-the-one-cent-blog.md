@@ -19,7 +19,7 @@ Any website needs a domain. If you don't have one you'll have to register one, t
 
 ## Github
 
-This blog is hosted on [Github][github_hugotunius_se] for free because it's open source. I've created a template blog based on this one which can be forked and modified to create your own. It's available [here](https://github.com/k0nserv/one-cent-blog). The template features some basic CSS and [AMP](https://www.ampproject.org) support. I am by no means a CSS genius, but the provided template is responsive, lightweight and clean. After forking the template there are some steps to set up Jekyll.
+This blog is hosted on [Github][github_hugotunius_se] for free because it's open source. I've created a template blog based on this one which can be forked and modified to create your own. It's available [here](https://github.com/k0nserv/one-cent-blog/tree/S3). The template features some basic CSS and [AMP](https://www.ampproject.org) support. I am by no means a CSS genius, but the provided template is responsive, lightweight and clean. After forking the template there are some steps to set up Jekyll.
 
 * Run `bundle install`.
 * Copy the `_config.yml.sample` file to `_config.yml` and open it in your favourite text editor.
