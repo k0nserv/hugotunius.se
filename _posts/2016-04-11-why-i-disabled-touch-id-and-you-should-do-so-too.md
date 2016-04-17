@@ -2,6 +2,12 @@
 layout: post
 title: Why I disabled Touch ID and why you should do so too
 categories: security iOS passwords
+description: >
+  Imagine that everywhere you touched a post-it with your
+  passwords would appear. Imagine that your government and the governments in
+  many of the countries you've travelled to had all your passwords. Imagine that
+  governments weren't that good at protecting your
+  passwords.
 ---
 
 Imagine that everywhere you touched a post-it with your
