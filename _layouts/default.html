@@ -22,11 +22,11 @@
       {% endfor %}
     {% endif %}
     {% if page.image %}
-      <meta property="og:image" content="{{ page.image }}"/>
-      <meta name="twitter:image:src" content="{{ page.image }}"/>
+      <meta property="og:image" content="{{ page.image | prepend: site.url }}"/>
+      <meta name="twitter:image:src" content="{{ page.image | prepend: site.url }}"/>
     {% else %}
-      <meta property="og:image" content="/favicon-192.png"/>
-      <meta name="twitter:image:src" content="/favicon-192.png"/>
+      <meta property="og:image" content="{{ '/favicon-192.png' | prepend: site.url}}"/>
+      <meta name="twitter:image:src" content="{{ '/favicon-192.png' | prepend: site.url }}"/>
     {% endif %}
 
     <link rel="apple-touch-icon-precomposed" href="{{ 'favicon-152.png' | asset_url }}">
