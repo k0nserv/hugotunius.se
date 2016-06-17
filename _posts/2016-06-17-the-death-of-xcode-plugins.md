@@ -37,3 +37,9 @@ The good news are that Apple is recognizing the need to extend Xcode and working
 but their execution is lacking and shakes my confidence in this change going forward. On a personal note I am
 slightly happy that I no longer work with Xcode in my day job.
 
+Apple suggests plugin developers open radars for missing behavior in Source Editor Extensions. I've opened
+the following that would be needed to implement Luft using Source Editor Extensions.
+
++ [Allow Source Editor Extensions to run on source change](https://openradar.appspot.com/radar?id=4933149876289536)
++ [Support Source Editor Extensions Preferences](https://openradar.appspot.com/radar?id=5001777682317312)
++ [Allow updating the Xcode gutter via Source Editor Extensions](https://openradar.appspot.com/radar?id=4985435868626944)
