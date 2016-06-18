@@ -2,7 +2,9 @@
 title: The Death of Xcode Plugins
 layout: post
 categories: dev-environment apple
-date: 2016-05-17
+date: 2016-06-17
+redirect_from:
+  - /2016/05/17/the-death-of-xcode-plugins.html
 description: >
   Xcode's Source Editor Extensions were
   announced at WWDC. Initially exicting the
