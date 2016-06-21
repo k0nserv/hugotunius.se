@@ -47,5 +47,9 @@
     <style>{% capture style %}{% include style.sass %}{% endcapture %}
       {{ style | sassify }}</style>
   </head>
-  <body>{% include header.html %}<main class="wrapper center" id="main">{{ content }}</main>{% include footer.html %}</body>
+  <body>
+    {% include header.html %}
+    <main class="wrapper center" id="main">{{ content }}</main>
+    {% include footer.html %}
+  </body>
 </html>
