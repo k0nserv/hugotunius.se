@@ -1,0 +1,69 @@
+==================================================================
+https://keybase.io/k0nserv
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://hugotunius.se
+  * I am k0nserv (https://keybase.io/k0nserv) on keybase.
+  * I have a public key with fingerprint DD89 7638 862A FD67 9074  7661 CCEC 6D4D 9313 0BDD
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101e5e7f7c103a8077f1247e56faa6ee0da133b3a08a340718d8188fdc76d3e9bff0a",
+            "fingerprint": "dd897638862afd6790747661ccec6d4d93130bdd",
+            "host": "keybase.io",
+            "key_id": "ccec6d4d93130bdd",
+            "kid": "0101e5e7f7c103a8077f1247e56faa6ee0da133b3a08a340718d8188fdc76d3e9bff0a",
+            "uid": "0485a3bbf58884c80b8350bd22901119",
+            "username": "k0nserv"
+        },
+        "service": {
+            "hostname": "hugotunius.se",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1467279498,
+    "expire_in": 157680000,
+    "prev": "719627aacec48e4366127eeaae0cd6417916a6f65f78cf5154a749033bfaee01",
+    "seqno": 4,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.53
+Comment: https://keybase.io/crypto
+
+yMIpAnicrVJbSBVBGD5maYqZBFGJEK1loSI7Zy8ze0zMIAiiy8GsQO00uzN7Wi+7
+p7N7NDOhHioyIjKsLCPoQncktOhexywzox40jDSpkKigK5UhEc1avfXYvPzMzPd9
+//d//B0TYj2JMQPTkis7Ghbmx3RH90U8K53X9bWcapEazlfLldPRQisItZ1AuUE4
+H8cDHlCJQh1qgBcw4iHUgVeEVJJ1jGVKeYKBIKgC5hEWRB4CRBBASCcalIlAFVXX
+ecxlc7phBmk4FDZMh8kSghQoCwjJXqwTGSo8FKEsA02jmkxEoghA4FVCGHGtZbsM
+Zk7FNs0xLPbGLoFRe//A/2ffkd9yIpKwoKq6hBASNcSrSJBYQ69X4QEAigu0adjE
+ldT1ypvsUsXVZXNuNTTq5uoO8gewNhK0nIhpROwcmzJuKGw5lmZVuF+OE7J9LtWp
+CbnYaqoG/qgEVMMkLEfGqKJh27BMzgcYUnMMVxaIMvRCRVRQNkfXh4wwDRguQoIy
+4tlx+9AqJgmBInshxiw8EVFRYMF7IaUYU14jsgigAmQs67KkQ6TpEpBEDEWFZ3Hp
+mCUHOHeudabF+URmEweZpG0ETexEwpSra79VMtYTk+iJGzfG3S9PYkLK3637kjXe
+s+vdzFPFwdTSgk+XjxRJFT3tKRfaFtGd8x5vuxaKbWvanzf34fxvi68MRk8cS86I
+P1RmLni6NPFBY8Zw9fLCrM6o2nAuYej8oP/6qnNdezZaazbjrc/oq7IXVzMv5dbd
+VMFI4+epF0/vbvZXDa2OyyxuaLTuBlfdaP6YueFM7h3/m0mTC35UP/KOTEyP1g8M
+7+3o6x9e2ZvX+XPGorO+3d8Ll3xV87vbUsM7ls7pSettSkoKLYy/Xdnvnz5ytGjw
++pSXW7q2tyx7ntCv5zR1Pzl8shdvejtbeV+uT0nfVXA1rX1FpLP0QklLDkk/XvTu
+fl/rg/wPpcmtJVLaPWyemRWfcUA82PYLpuJE/g==
+=uVJ+
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/k0nserv
+
+==================================================================
+
