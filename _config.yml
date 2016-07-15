@@ -2,7 +2,7 @@ name: Hugo Tunius - Blog
 description: >
   Personal blog of Hugo Tunius.
   Developer, open source enthusiast,
-  aspiring designer, and jack of all trades.
+  aspiring designer, and Hugo of all trades.
 markdown: kramdown
 highligther: pygments
 timezone: Europe/London
