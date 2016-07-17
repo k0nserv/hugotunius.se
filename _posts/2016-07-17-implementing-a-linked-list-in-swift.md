@@ -337,7 +337,7 @@ O(1) subscript behaviour and since our LinkedList is O(n) it might be confusing 
 
 Most data structures in Swift are structs, but use a method called copy-on-write(COW) to reduce the amount of copying required by
 only copying the data structure before writes. Let's implement this for our LinkedList. The general idea is to create a struct that wraps
-our LinkedList and delegates task to the underlying class. When mutating methods are invoked we'll explicitly make a copy of the underlying
+our LinkedList and delegates tasks to the underlying class. When mutating methods are invoked we'll explicitly make a copy of the underlying
 class and perform the actions on that copy. We also need to add a method to copy all the underlying data in our LinkedList.
 
 {% highlight swift %}
@@ -354,7 +354,7 @@ extension LinkedList {
 }
 
 // Typically you'd call this class `LinkedList`
-// and the wrapped struct `_LinkedList` or `LinkedListStorage`.
+// and the wrapped class `_LinkedList` or `LinkedListStorage`.
 // The internal implementation would be marked private and
 // this is the interface you'd expose.
 public struct LinkedListCOW<T: Equatable> {
