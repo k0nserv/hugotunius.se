@@ -225,7 +225,11 @@ extension LinkedList {
         let nextNode = node.next
         let previousNode = node.previous
 
-        if node === start {
+        if node === start && node === end {
+            start = nil
+            end = nil
+        }
+        else if node === start {
             start = node.next
         } else if node === end {
             end = node.previous
@@ -236,7 +240,7 @@ extension LinkedList {
 
         count -= 1
         assert(
-            (end != nil && start != nil && count != 1) || (end == nil && start == nil && count == 0),
+            (end != nil && start != nil && count >= 1) || (end == nil && start == nil && count == 0),
             "Internal invariant not upheld at the end of remove"
         )
     }
