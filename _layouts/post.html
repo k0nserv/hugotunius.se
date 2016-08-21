@@ -10,18 +10,25 @@ layout: default
   </header>
   <div class="post-body">{{content}}</div>
   {% assign related_pages = page | related_pages %}
-  {% if related_pages.size > 0 %}
     <footer class="post-footer">
-      <h1>Related posts</h1>
-      {% assign related_pages = page | related_pages %}
-      <ul>
-        {% for related_page in related_pages limit: 3 %}
-          <li>
-            <h5>
-              <a href="{{ related_page.url }}">{{ related_page.title }}</a></li>
-            </h5>
-        {% endfor %}
-      </ul>
+      <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}&via=k0nserv&related=k0nserv"
+        rel="nofollow"
+        target="_blank"
+        title="Share on Twitter">
+          <h1>Tweet this post</h1>
+      </a>
+
+      {% if related_pages.size > 0 %}
+        <h1>Related posts</h1>
+        {% assign related_pages = page | related_pages %}
+        <ul>
+          {% for related_page in related_pages limit: 3 %}
+            <li>
+              <h5>
+                <a href="{{ related_page.url }}">{{ related_page.title }}</a></li>
+              </h5>
+          {% endfor %}
+        </ul>
+      {% endif %}
     </footer>
-  {% endif %}
 </article>

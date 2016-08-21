@@ -10,8 +10,8 @@ title: Blog - Hugo Tunius
   <ul class="posts">
     {% for post in site.posts %}
       <li>
-        <a href="{{ post.url }}">
-          <h3 class="post-preview-title">{{ post.title }}</h3>
+        <a class="post-preview-title" href="{{ post.url }}">
+          <h2>{{ post.title }}</h2>
         </a>
         <div class="post-preview-body">
           {{ post.excerpt }}
