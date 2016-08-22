@@ -5,12 +5,12 @@ categories: clean-code ci dev-environment
 date: 2016-08-21
 description: >
   Some of my thoughts on the Danger gem and
-  the work I've been doing on GitLab support 
+  the work I've been doing on GitLab support
   for it recently.
- 
+
 ---
 
-Recently I've been working on [GitLab support](https://github.com/danger/danger/pull/229) for the [Danger](http://danger.systems/) gem. Danger is a gem that extends the concept of CI. She(yes the gem is referred to as she) tries to formalize your pull request etiquette by introducing automated checks for tasks commonly done by humans in code reviews/PRs. This leaves humans to think about more important and difficult things. As I've [written about before](https://hugotunius.se/2015/11/09/cleaner-code-with-strictness.html) having CI systems that are as strict as possible can be strong driver for code quality and long term project health. Removing burdens from humans makes Danger a double win. Naturally I'm a big fan of Danger.
+Recently I've been working on [GitLab support](https://github.com/danger/danger/pull/299) for the [Danger](http://danger.systems/) gem. Danger is a gem that extends the concept of CI. She(yes the gem is referred to as she) tries to formalize your pull request etiquette by introducing automated checks for tasks commonly done by humans in code reviews/PRs. This leaves humans to think about more important and difficult things. As I've [written about before](https://hugotunius.se/2015/11/09/cleaner-code-with-strictness.html) having CI systems that are as strict as possible can be strong driver for code quality and long term project health. Removing burdens from humans makes Danger a double win. Naturally I'm a big fan of Danger.
 
 Danger is written in Ruby and provides a lovely DSL for specifying tasks and checks. She will leave comments on your PR/MR with any errors, warnings or messages. The task and checks are stored in a `Dangerfile` in the root of your repository, this is just a ruby file. Here's a simple example of a small `Dangerfile` that enforces CHANGELOG entries for contributions.
 
