@@ -1,0 +1,63 @@
+Parameters:
+  BucketName:
+    Description: The name of the bucket for example hugotunius for the domain hugotunius.se
+    Type: String
+    MinLength: 3
+    MaxLength: 63
+
+Resources:
+  WebBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: PublicRead
+      BucketName: !Ref BucketName
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
+
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref WebBucket
+      PolicyDocument:
+        Statement:
+          - Action: s3:GetObject
+            Effect: Allow
+            Sid: PublicReadForGetBucketObjects
+            Principal:
+              AWS: '*'
+            Resource: !Join ['/', [ !Join [':::', [ 'arn:aws:s3', !Ref WebBucket ] ], '*' ] ]
+
+  BucketUploader:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: !Join ['-', [ !Ref BucketName, 'Uploader'] ]
+      Policies:
+        - PolicyName: BucketUpdatePolicy
+          PolicyDocument:
+            Version: 2008-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:*
+                Resource:
+                  - !Join [':::', [ 'arn:aws:s3', !Ref WebBucket ] ]
+                  - !Join ['/', [ !Join [':::', [ 'arn:aws:s3', !Ref WebBucket ] ], '*' ] ]
+
+  UploaderAccessKey:
+    Type: AWS::IAM::AccessKey
+    Properties:
+      UserName: !Ref BucketUploader
+
+Outputs:
+  BucketAccessKey:
+    Value: !Ref UploaderAccessKey
+    Description: Save this key it will be used later
+
+  BucketSecretKey:
+    Value: !GetAtt UploaderAccessKey.SecretAccessKey
+    Description: Save this key it will be used later
+
+  WebsiteURL:
+    Value: !GetAtt WebBucket.WebsiteURL
+    Description: S3 URL for the website
