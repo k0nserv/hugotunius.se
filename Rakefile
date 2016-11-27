@@ -1,4 +1,4 @@
-task :default => :watch
+task :default => :serve
 
 
 desc 'Cleanup generated files'
@@ -18,7 +18,7 @@ end
 
 desc 'Serve the site locally and watch for changes'
 task serve: [:clean] do
-  jekyll 'serve --drafts --incremental'
+  jekyll 'serve --drafts --incremental --watch'
 end
 
 def jekyll(command)
