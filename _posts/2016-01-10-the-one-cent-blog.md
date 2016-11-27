@@ -13,7 +13,7 @@ description: >
 
 This post details how I run this website for about $0.01/month with great scaling and HTTPS using [S3][aws_s3], [Jekyll][jekyll], [Cloudflare][cloudflare] and [Travis-CI][travis_ci]. It should be noted that the cost varies depending on how much traffic your site sees, $0.01/month is just what I typically see on this website.
 
-This post outlines how this site is setup and how you can created your own. Variables that will be different for each site are written as `<variable_name>`, everything should be replace including `<` and `>` for example `<author_name>` is replaced by `Hugo Tunius` for my site.
+This post outlines how this site is setup and how you can created your own. Variables that will be different for each site are written as `<variable_name>`, everything should be replaced including `<` and `>` for example `<author_name>` is replaced by `Hugo Tunius` for my site.
 
 If you have any questions feel free to ask me about it on [Twitter](https://twitter.com/k0nserv).
 
@@ -23,7 +23,7 @@ Any website needs a domain. If you don't have one you'll have to register one, t
 
 ## Github
 
-This blog is hosted on [Github][github_hugotunius_se] for free because it's open source. I've created a template blog based on this one which can be forked and modified to create your own. It's available [here](https://github.com/k0nserv/one-cent-blog/tree/S3). The template features some basic CSS and [AMP](https://www.ampproject.org) support. I am by no means a CSS genius, but the provided template is responsive, lightweight and clean. After forking the template there are some steps to set up Jekyll.
+This blog is hosted on [Github][github_hugotunius_se] for free because it's open source. I've created a template blog based on this one which can be forked and modified to create your own. It's available [here](https://github.com/k0nserv/one-cent-blog). The template features some basic CSS and [AMP](https://www.ampproject.org) support. I am by no means a CSS genius, but the provided template is responsive, lightweight and clean. After forking the template there are some steps to set up Jekyll.
 
 * Run `bundle install`.
 * Copy the `_config.yml.sample` file to `_config.yml` and open it in your favourite text editor.
@@ -36,7 +36,7 @@ This blog is hosted on [Github][github_hugotunius_se] for free because it's open
 
 The next step is getting your site up on S3
 
-## S3
+## AWS
 
 [S3][aws_s3] is a file storage solution by [AWS(Amazon Web Services)](https://aws.amazon.com/). It's the only part of this setup that actually incurs any cost. This is were the one cent per month comes from.
 
@@ -45,45 +45,17 @@ The next step is getting your site up on S3
 + Make a AWS root account at [https://aws.amazon.com](https://aws.amazon.com/) or sign in if you already have one.
 + Turn on [2FA](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html) for your root account.
 + Setup a [billing alert](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html) at $5.
-+ Go to `Services -> S3` and create a bucket named after your domain, in my case it's called `hugotunius.se`.
-+ Under Properties click static website hosting and tick Enable website hosting.
-+ Create a new IAM user(`Identify & Access Management -> Users -> Create New User`) named after your domain, in my case it's called `hugotunius.se`. Download and save the credentials for this user.
-+ Attach a policy to the new user based on this template.
 
-{% highlight text line %}
-{
-    "Statement": [
-        {
-            "Action": [
-                "s3:*"
-            ],
-            "Effect": "Allow",
-            "Resource": [
-                "arn:aws:s3:::<bucket_name>",
-                "arn:aws:s3:::<bucket_name>/*"
-            ]
-        }
-    ]
-}
-{% endhighlight %}
-+ Under the bucket properties in the permissions section click `Edit bucket policy` and add the following
+### CloudFormation
 
-{% highlight text line %}
-{
-    "Version": "2008-10-17",
-    "Statement": [
-        {
-            "Sid": "PublicReadForGetBucketObjects",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "*"
-            },
-            "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::<buck_name>/*"
-        }
-    ]
-}
-{% endhighlight %}
+In the template repo there's a readymade [CloudFormation script](https://aws.amazon.com/cloudformation/) that will setup all the resources you need. These are an S3 bucket configured for website hoting, and a deployment user that can upload to the bucket.
+
++ Using your AWS root account got to the [CloudFormation Console](https://console.aws.amazon.com/cloudformation/home) in your AWS region of choice.
++ Click `Create Stack`
++ Upload the `cloudformation.yml` file from the template blog and click next.
++ Fill in the name of the stack and the name you'd like to use for your S3 bucket. I use `hugotunius` for both the stack and the bucket.
++ Follow the rest of the steps and run the script.
++ After the script is finished look at the Outputs tab for `BucketSecretKey` and `BucketAccessKey`. We'll need those values later.
 
 ## Travis-CI
 
@@ -96,16 +68,16 @@ Travis CI is used to deploy the site to S3 every time a new commit is pushed to 
 ![]({{ 'img/one-cent-blog/travis-ci-repo-list.png' | asset_url }})
 
 + Install the [Travis CLI Client](https://github.com/travis-ci/travis.rb) and login.
-+ Run `$ travis encrypt S3_ACCESS_ID=<value_from_downloaded_s3_credentials> --add env.global`.
-+ Run `$ travis encrypt S3_ACCESS_SECRET=<value_from_downloaded_s3_credentials> --add env.global`.
++ Run `$ travis encrypt S3_ACCESS_ID=< BucketAccessKey from stack output > --add env.global`.
++ Run `$ travis encrypt S3_ACCESS_SECRET=< BucketSecretKey from stack output > --add env.global`.
 + Update `s3_website.yml` with the real bucket name instead of `<BUCKET_NAME>`.
 + At this point committing and pushing will deploy the site to your s3 bucket.
-+ It will be accessible at `http://<bucket_name>.s3-website-<aws-region>.amazonaws.com/`. Mine is at `hugotunius.se.s3-website-us-east-1.amazonaws.com`.
++ It will be accessible at `http://<bucket_name>.s3-website-<aws-region>.amazonaws.com/`. Mine is at `hugotunius.s3-website-us-east-1.amazonaws.com`.
 
 It's possible to deploy directly from the command line using:
 
 {% highlight bash line %}
-$ S3_ACCESS_ID=<value_from_downloaded_s3_credentials> S3_ACCESS_SECRET=<value_from_downloaded_s3_credentials> bundle exec rake deploy
+$ S3_ACCESS_ID=< BucketAccessKey from stack output > S3_ACCESS_SECRET=< BucketSecretKey from stack output > bundle exec rake deploy
 {% endhighlight %}
 
 Remember to put a space infront of the command to prevent the secret values ending up in your history.
