@@ -4,6 +4,6 @@ branches:
 script: bundle exec rake deploy
 env:
   global:
-  - secure: gKcC5AJ2zmkEk1g3+0SsreZuWE+yjh8AY8VA+CQ0oYl/D84ENvT1fFCyKf8AOdX8JJJnB90Jd2+XvlDxdLfKl001OSGjITBiG0x38uc7/Ne+Jv5ezmW/jE0B6Ow3qns4r20EiPQBhBkMOnMqLSM65yhprKmdtR/9Z4gW2Ipz3Uw=
-  - secure: O3BrU/przUzxoK8aUIKl6z+8ujEKWu4iKvev6J/AnH2si0uGQrTf65cnYMVPt27tcsdz9Wi8ao0BGzHbjjG3/RfNOXzL1wlmZdBc1eCYdNuwbrE+/vaRD2mu0SQloh/W+JFt/O69sK+FesJSj13HcIXXoranq9o/9HfmG4RlADU=
+  - secure: j8orfC4jzV8uLrkwgI6L0ih4Tqr/96Qpn6jie9LcyQIdkAbgdOAt+BRXIyhKqXmpowKyu0UmFINpXy0sql4AcIti0Xr562pAGJtvsauwh1Mcer/dpsWh88WCnxOTMhlqB/flzorgAqFmvHQZIYJXHy11NLvkCqfU37wRuaWs3wQ=
+  - secure: d3F8/KN1jfG2od+iyabLkJwVx+++gUOtTOh9+nG+E3H2w3zCyybU/U7xbiZF6XPpPpi8YNNbmHejH6WNsDcslTPEiL6kIk6ha2fgh+ETy9OSca6UbtBV1ihpB88GOxXoAbUnQSzx3QXyFTmSTKKqKqTSoGvO9cLtKunJY8L9lh0=
 cache: bundler
