@@ -53,7 +53,7 @@ In the template repo there's a readymade [CloudFormation script](https://aws.ama
 + Using your AWS root account got to the [CloudFormation Console](https://console.aws.amazon.com/cloudformation/home) in your AWS region of choice.
 + Click `Create Stack`
 + Upload the `cloudformation.yml` file from the template blog and click next.
-+ Fill in the name of the stack and the name you'd like to use for your S3 bucket. I use `hugotunius` for both the stack and the bucket.
++ Fill in the name of the stack. The bucket name has to be the same as the domain for the routing via Cloudflare to work, in my case `hugotunius.se`.
 + Follow the rest of the steps and run the script.
 + After the script is finished look at the Outputs tab for `BucketSecretKey` and `BucketAccessKey`. We'll need those values later.
 
