@@ -48,7 +48,7 @@ The next step is getting your site up on S3
 
 ### CloudFormation
 
-In the template repo there's a readymade [CloudFormation script](https://aws.amazon.com/cloudformation/) that will setup all the resources you need. These are an S3 bucket configured for website hoting, and a deployment user that can upload to the bucket.
+In the template repo there's a readymade [CloudFormation script](https://aws.amazon.com/cloudformation/) that will setup all the resources you need. These are an S3 bucket configured for website hosting, and a deployment user that can upload to the bucket.
 
 + Using your AWS root account got to the [CloudFormation Console](https://console.aws.amazon.com/cloudformation/home) in your AWS region of choice.
 + Click `Create Stack`
