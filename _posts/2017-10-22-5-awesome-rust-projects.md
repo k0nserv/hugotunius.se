@@ -5,7 +5,6 @@ categories: rust
 date: 2017-10-22
 description: >
   Rust has been around for 7 years now and a lot of cool software is being creeated with the langauge. This is an overview of 5 awesome project written in Rust.
-
 ---
 
 A pet project by Mozilla employee [Graydon Hoare](https://twitter.com/graydon_pub) that grew to be one of Mozilla's most important endeavours, The [rust](https://www.rust-lang.org/en-US/) language was first announced in 2010. It was voted "most loved programming language" in the Stack Overflow developer survey in both 2016 and 2017.
@@ -13,6 +12,9 @@ A pet project by Mozilla employee [Graydon Hoare](https://twitter.com/graydon_pu
 There's a lot of interesting work being done with Rust and here are five of the  most interesting projects.
 
 ## Servo
+
+[Servo](https://servo.org/) is Mozilla's headline project. A brand new browser engine written in Rust. Servo is exciting because it promise to bring a new better take on parallelism to the browser engine paradigm. Rust's excellent support and safety for parallel execution enables Servo to utilize the many cores of modern computers better than ever before. The best thing is we don't have to wait for Servo to be completed before these benefits are realized. With the [Quantum project](https://wiki.mozilla.org/Quantum) Mozilla aims to bring parts of Servo to Firefox before Servo is completed. The first step in this plan is [Stylo](https://wiki.mozilla.org/Quantum/Stylo), the CSS subsystem from Servo, landing in Firefox. It's enabled by default in Firefox 57 which is the current beta version. Those interested in this work should read [Inside a super fast CSS engine: Quantum CSS (aka Stylo)](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/) by [Lin Clark](https://twitter.com/linclark). I believe that Firefox is about to enjoy a renaissance as the best browser thanks to the improvements from the Servo project.
+
 
 ## Redox
 
