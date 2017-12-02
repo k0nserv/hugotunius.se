@@ -204,10 +204,10 @@ LBB0_1:
 
 Notice anything that's out of place? As it turns out the Rust compiler did not inline the implementation of the SIMD version, but did inline the naive implementation. The overhead from the function call is enough to completely destroy the performance of the SIMD version. Nothing that `#[inline(always)]` can not take care of right?
 
-```
+{% highlight plain line %}
 LLVM ERROR: Cannot select: intrinsic %llvm.x86.sse41.dpps
 error: Could not compile `vector_benchmarks`.
-```
+{% endhighlight %}
 
 As it turns out the Rust compiler does not handle conditional compilation and inlining very well 😞. However what if we just inline the SIMD nstructions in the loop? Surely this will solve it and unlock the promised performance boost of the SIMD instructions? Replacing the call to `dot_sse(a, b)` with `unsafe { x += vendor::_mm_dp_ps(a, b, 0x71).extract(0) }` did speed things up considerably.
 
