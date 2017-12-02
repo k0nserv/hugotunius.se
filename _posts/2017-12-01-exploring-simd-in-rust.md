@@ -4,7 +4,7 @@ title: "Exploring SIMD in Rust"
 categories: rust
 date: 2017-12-01
 description: >
-  My experiecne exploring the use of SIMD instructions in Rust to speed up Vector dot products for Raytracing.
+  My experience exploring the use of SIMD instructions in Rust to speed up Vector dot products for Raytracing.
 ---
 
 If you follow me on [Twitter](https://twitter.com/K0nserv) it is unlikely you have missed that I have been building a [Raytracer](http://github.com/k0nserv/rusttracer) in [Rust](https://www.rust-lang.org/en-US/). Unsatisfied with the performance I have been profiling it and considering ways to speed up rendering. Among the techniques I have been interested in are SIMD instructions.
