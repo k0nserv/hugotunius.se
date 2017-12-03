@@ -56,7 +56,7 @@ unsafe fn dot_sse41(a: f64x4, b: f64x4) -> f64 {
 impl Vector3 {
     pub fn dot_sse(&self, other: &Self) -> f64 {
     #[cfg(all(any(target_arch = "x86_64", target_arch = "x86"),
-              target_feature = +sse4.1"))]
+              target_feature = "+sse4.1"))]
         {
             unsafe { dot_sse41(self.simd_vec, other.simd_vec) }
         }
