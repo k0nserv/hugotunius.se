@@ -103,7 +103,7 @@ pub fn dot_f32_sse(a: &Vector3<f32>, b: &Vector3<f32>) -> f32 {
 
 `cargo rustc --lib --release -- --emit asm` produced the following asm.
 
-{% highlight asm line %}
+{% highlight nasm line %}
 __ZN17vector_benchmarks7dot_sse17h19e9d56d320ebbadE:
 	.cfi_startproc
 	pushq	%rbp
@@ -133,7 +133,7 @@ pub fn dot_naive(a: &Vector3<f32>, b: &Vector3<f32>) -> f32 {
 produces more assembly
 
 
-{% highlight asm line %}
+{% highlight nasm line %}
 __ZN17vector_benchmarks9dot_naive17h71bdc9abb734cc99E:
 	.cfi_startproc
 	pushq	%rbp
@@ -184,7 +184,7 @@ fn main() {
 
 By commenting out the different implementations I could test both with `time`. I found that under these conditions the SIMD version was still about **5 times slower** than the naive implementation. I decided to look at the assembly for this code when both implementations were included. Here is the code for the for loop body:
 
-{% highlight asm line %}
+{% highlight nasm line %}
 LBB0_1:
 	movss	%xmm0, -12(%rbp)
 	incq	%rbx
