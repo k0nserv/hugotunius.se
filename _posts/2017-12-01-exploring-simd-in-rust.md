@@ -46,7 +46,7 @@ pub struct Vector3 {
 
 #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
 #[target_feature = "+sse4.1"]
-unsafe fn dot_sse2(a: f64x4, b: f64x4) -> f64 {
+unsafe fn dot_sse41(a: f64x4, b: f64x4) -> f64 {
     let product = a * b;
 
     product.extract(0) + product.extract(1) + product.extract(2)
@@ -56,12 +56,12 @@ unsafe fn dot_sse2(a: f64x4, b: f64x4) -> f64 {
 impl Vector3 {
     pub fn dot_sse(&self, other: &Self) -> f64 {
     #[cfg(all(any(target_arch = "x86_64", target_arch = "x86"),
-              target_feature = "sse2"))]
+              target_feature = +sse4.1"))]
         {
-            unsafe { dot_sse2(self.simd_vec, other.simd_vec) }
+            unsafe { dot_sse41(self.simd_vec, other.simd_vec) }
         }
     #[cfg(not(all(any(target_arch = "x86_64", target_arch = "x86"),
-              target_feature = "sse2")))]
+              target_feature = "+sse4.1")))]
         {
             self.x * other.x + self.y * other.y + self.z * other.z
         }
