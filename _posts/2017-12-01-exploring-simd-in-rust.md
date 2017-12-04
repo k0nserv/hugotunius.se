@@ -7,6 +7,8 @@ description: >
   My experience exploring the use of SIMD instructions in Rust to speed up Vector dot products for Raytracing.
 ---
 
+**Update:** [Cameron Hart](https://twitter.com/bitshifternz) did some further [research](https://twitter.com/bitshifternz/status/937803758657929217) on my methodologies in this post and what he found was quite interesting. In my benchmarks I forgot to account for the role of, the now removed, black box in the rust `test` crate. The purpose of the black box is to trick the optimizer into not optiziming the benchmarks. This is exactly what happened unfortunately. Based on this I went back and re-did the SIMD implementation in my raytracer fully. This resulted in a 60% increase in performance much more in line with what I expected initially. Much like my [f64 vs f32](https://hugotunius.se/2017/12/04/rust-f64-vs-f32.html) experiment showed the lesson is that micro benchmarks are dangerous and it is easy to be fooled by them. The original post is presented without modification below. I suggest reading Cameron's research to understand my mistakes.
+
 If you follow me on [Twitter](https://twitter.com/K0nserv) it is unlikely you have missed that I have been building a [Raytracer](http://github.com/k0nserv/rusttracer) in [Rust](https://www.rust-lang.org/en-US/). Unsatisfied with the performance I have been profiling it and considering ways to speed up rendering. Among the techniques I have been interested in are SIMD instructions.
 
 [SIMD](https://en.wikipedia.org/wiki/SIMD), Single Instruction, multiple data, are special CPU instructions in modern CPUs. They enable the processor to compute several values with a single cycle. On Intel platforms these instructions are called SSE for Streaming SMID Extensions.
