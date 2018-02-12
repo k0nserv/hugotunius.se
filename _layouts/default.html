@@ -31,6 +31,16 @@
       <meta name="twitter:image:src" content="{{ '/favicon-192-white-bg.png' | prepend: site.url }}"/>
     {% endif %}
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-37236456-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-37236456-1');
+    </script>
+
     <link rel="apple-touch-icon-precomposed" href="{{ 'favicon-152.png' | asset_url }}">
     <link rel="icon" sizes="192x192" href="{{ 'favicon-192.png' | asset_url }}">
     <title>{{ page.title }}</title>
