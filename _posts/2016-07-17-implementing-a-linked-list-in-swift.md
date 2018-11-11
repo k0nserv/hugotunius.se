@@ -1,19 +1,24 @@
 ---
-title: Implementing a Linked List in Swift 3
+title: Implementing a Linked List in Swift
 layout: post
 categories: swift data-structures
 date: 2016-07-17
 description: >
   In this post I show how to implement
-  a Linked List in Swift 3
+  a Linked List in Swift.
 ---
 
-In this post I'll show how to implement a Linked List in Swift 3. For this post there's also a Playground version that works with Xcode 8 Beta 2 and above. If you prefer to read it you can find it [here](/files/LinkedList.playground.zip).
+In this post I'll show how to implement a Linked List in Swift. For this post there's also a Playground version that works with Xcode 10 and above. If you prefer to read it you can find it [here](/files/LinkedList.playground.zip).
 
 Linked lists are type of list with certain characteristics relating to the performance of insertion, deletion, and traversal.
 They are valuable when maintaining lists where reference items don't need to be looked up by index and the performance of insertion and
 deletion is important. Linked list works by having each node in the list maintain a reference to the next node. Here we'll implement
 what's called a doubly linked list where each node contains a list to the previous as well.
+
+## History
+
++ 2016-07-17: Initial version in Swift 3
++ 2018-11-11: Updated for Swift 4, fixed a few bugs in the implementation. Added tests
 
 ## Nodes
 To start of we need to implement a node container that will hold our values and the reference to the next and previous values.
@@ -21,7 +26,9 @@ We'll make it generic over the type T. Because Linked List are based on referenc
 than a struct. We adopt `CustomStringConvertible` for nicer output.
 
 {% highlight swift %}
-public class Node<T: Equatable> {
+import Foundation
+
+public class Node<T> {
     typealias NodeType = Node<T>
 
     /// The value contained in this node
@@ -52,26 +59,11 @@ the start and end nodes are optional because a list can be empty, however one in
 and end node. We are making the list a class rather than a struct for reasons that'll become apparent when we talk about copy-on-write in the end.
 
 {% highlight swift %}
-public final class LinkedList<T: Equatable> {
+public final class LinkedList<T> {
     public typealias NodeType = Node<T>
 
-    private var start: NodeType? {
-        didSet {
-            // Special case for a 1 element list
-            if end == nil {
-                end = start
-            }
-        }
-    }
-
-    private var end: NodeType? {
-        didSet {
-            // Special case for a 1 element list
-            if start == nil {
-                start = end
-            }
-        }
-    }
+    private var start: NodeType?
+    private var end: NodeType?
 
     /// The number of elements in the list at any given time
     public private(set) var count: Int = 0
@@ -95,7 +87,7 @@ public final class LinkedList<T: Equatable> {
     ///
     /// - parameter: A sequence
     /// - returns: A LinkedList containing the elements of the provided sequence
-    public init<S: Sequence where S.Iterator.Element == T>(_ elements: S) {
+    public init<S: Sequence>(_ elements: S) where S.Iterator.Element == T {
         for element in elements {
             append(value: element)
         }
@@ -108,7 +100,7 @@ This is the basic structure of our linked list. Of course we cannot do anything 
 ## Operations
 
 Let's implement some operations so that we can actually use our linked list productively. We'll start by implementing
-the basics `append`, `remove`, `nodeAt`, and `valueAt`. You might think that `nodeAt` and `valueAt` does the same thing, but as we'll
+the basics `append`, `remove`, `node(at:)`, and `value(at:)`. You might think that `node(at:)` and `value(at:)` does the same thing, but as we'll
 see returning the node allows us to then use the node when calling `remove`.
 
 ### Append
@@ -116,7 +108,7 @@ see returning the node allows us to then use the node when calling `remove`.
 {% highlight swift %}
 extension LinkedList {
 
-    /// Add an element to the front of the list.
+    /// Add an element to the end of the list.
     ///
     /// - complexity: O(1)
     /// - parameter value: The value to add
@@ -127,7 +119,16 @@ extension LinkedList {
         end?.previous = previousEnd
         previousEnd?.next = end
 
+        if count == 0 {
+            start = end
+        }
+
         count += 1
+
+        assert(
+            (end != nil && start != nil && count >= 1) || (end == nil && start == nil && count == 0),
+            "Internal invariant not upheld at the end of remove"
+        )
     }
 }
 {% endhighlight %}
@@ -154,12 +155,12 @@ extension LinkedList {
     /// - throws: Rethrows any values thrown by the block
     ///
     /// - returns: The node returned by the block if the block ever returns a node otherwise `nil`
-    private func iterate(block: (node: NodeType, index: Int) throws -> NodeType?) rethrows -> NodeType? {
+    private func iterate(block: (NodeType, Int) throws -> NodeType?) rethrows -> NodeType? {
         var node = start
         var index = 0
 
         while node != nil {
-            let result = try block(node: node!, index: index)
+            let result = try block(node!, index)
             if result != nil {
                 return result
             }
@@ -172,7 +173,7 @@ extension LinkedList {
 }
 {% endhighlight %}
 
-Now that we have our `iterate` function we can start using it by implementing `nodeAt` and `valueAt`
+Now that we have our `iterate` function we can start using it by implementing `node(at:)` and `value(at:)`
 
 {% highlight swift %}
 extension LinkedList {
@@ -183,7 +184,7 @@ extension LinkedList {
     /// - parameter index: The index in the list
     ///
     /// - returns: The node at the provided index.
-    public func nodeAt(index: Int) -> NodeType {
+    public func node(at index: Int) -> NodeType {
         precondition(index >= 0 && index < count, "Index \(index) out of bounds")
 
         let result = iterate {
@@ -203,8 +204,8 @@ extension LinkedList {
     /// - parameter index: The index in the list
     ///
     /// - returns: The value at the provided index.
-    public func valueAt(index: Int) -> T {
-        let node = nodeAt(index: index)
+    public func value(at index: Int) -> T {
+        let node = self.node(at: index)
         return node.value
     }
 }
@@ -212,7 +213,7 @@ extension LinkedList {
 
 ### Removing
 
-Let's now add the ability to remove values and nodes from the linked list. Here we'll see why `nodeAt` is important to support fast removals.
+Let's now add the ability to remove values and nodes from the linked list. Here we'll see why `node(at:)` is important to support fast removals.
 
 {% highlight swift %}
 extension LinkedList {
@@ -228,15 +229,14 @@ extension LinkedList {
         if node === start && node === end {
             start = nil
             end = nil
-        }
-        else if node === start {
+        } else if node === start {
             start = node.next
         } else if node === end {
             end = node.previous
-        } else {
-            previousNode?.next = nextNode
-            nextNode?.previous = previousNode
         }
+
+        previousNode?.next = nextNode
+        nextNode?.previous = previousNode
 
         count -= 1
         assert(
@@ -249,7 +249,7 @@ extension LinkedList {
     ///
     /// - complexity: O(n)
     /// - parameter atIndex: The index of the value to remove
-    public func remove(atIndex index: Int) {
+    public func remove(at index: Int) {
         precondition(index >= 0 && index < count, "Index \(index) out of bounds")
 
         // Find the node
@@ -266,9 +266,9 @@ extension LinkedList {
 }
 {% endhighlight %}
 
-As you can see here `remove(atIndex:)` is O(n) because it has to first find the node at the given index before removing it
+As you can see here `remove(at:)` is O(n) because it has to first find the node at the given index before removing it
 while `remove(node:)` is only O(1) because the node is already given. An implementation of `remove(value:)` would also be
-O(n) because it would have to find the correct node in a similar way as `remove(atIndex:)`
+O(n) because it would have to find the correct node in a similar way as `remove(at:)`
 
 ## Making the list swiftier
 
@@ -286,13 +286,13 @@ All we have to do to get all this is implement the method `makeIterator` that re
 should be an iterator of `T` or of `Node<T>`. I'm opting for `Node<T>` here.
 
 {% highlight swift %}
-public struct LinkedListIterator<T: Equatable>: IteratorProtocol {
+public struct LinkedListIterator<T>: IteratorProtocol {
     public typealias Element = Node<T>
 
     /// The current node in the iteration
     private var currentNode: Element?
 
-    private init(startNode: Element?) {
+    fileprivate init(startNode: Element?) {
         currentNode = startNode
     }
 
@@ -334,8 +334,130 @@ let values: [Int] = list.map {
 }
 {% endhighlight %}
 
+It would be useful if `LinkedList` itself was equatable so we could compare instances of `LinkedList<T>`  to other instances of `LinkedList<T>`. Let us implement the `Equatable` protocol for `LinkedList`. A `LinkedList` can only be `Equatable` if the values it contains are so we add this additional constraint.
+
+{% highlight swift %}
+extension LinkedList: Equatable where T: Equatable {
+    public static func ==(lhs: LinkedList<T>, rhs: LinkedList<T>) -> Bool {
+        return lhs.count == rhs.count && zip(lhs, rhs).allSatisfy { (left, right) in
+            left.value == right.value
+        }
+    }
+}
+{% endhighlight %}
+
 It's also possible to implement `Collection` for further benefits such as subscript support. However `Collection`s generally feature
 O(1) subscript behaviour and since our LinkedList is O(n) it might be confusing to do so. I'm opting to skip it
+
+Now let's write some test to ensure that we haven't made any errors in the implementaiton.
+
+{% highlight swift %}
+import XCTTest
+
+class LinkedListTests: XCTestCase {
+    var list: LinkedList<Int>!
+
+    override func setUp() {
+        list = LinkedList((1..<6))
+    }
+
+    func testEquatable() {
+        let l1 = LinkedList((1..<6))
+        let l2 = LinkedList((1..<6))
+
+        XCTAssertEqual(l1, l2)
+    }
+
+    func testAppend() {
+        list.append(value: 6)
+
+        XCTAssertEqual(list, LinkedList(1..<7))
+        XCTAssertEqual(list.count, 6)
+    }
+
+    func testNode() {
+        list.append(value: 10)
+
+        let lastNode = list.node(at: 5)
+        let middleNode = list.node(at: 3)
+
+        XCTAssertEqual(lastNode.value, 10)
+        XCTAssertEqual(middleNode.value, 4)
+    }
+
+    func testValue() {
+        let value = list.value(at: 2)
+
+        XCTAssertEqual(value, 3)
+    }
+
+    func testRemoveStart() {
+        list.remove(at: 0)
+
+        XCTAssertEqual(list, LinkedList(2..<6))
+        XCTAssertEqual(list.count, 4)
+    }
+
+    func testRemoveEnd() {
+        list.remove(at: list.count - 1)
+
+        XCTAssertEqual(list, LinkedList(1..<5))
+        XCTAssertEqual(list.count, 4)
+    }
+
+    func testRemoveMiddle() {
+        list.remove(at: 2)
+
+        XCTAssertEqual(list, LinkedList([1, 2, 4, 5]))
+        XCTAssertEqual(list.count, 4)
+    }
+
+    func testRemoveNode() {
+        let node = list.node(at: 3)
+
+        list.remove(node: node)
+
+        XCTAssertEqual(list, LinkedList([1, 2, 3, 5]))
+        XCTAssertEqual(list.count, 4)
+    }
+
+    func testRemoveEndFromTwoElementList() {
+        let twoElementList = LinkedList([1, 2])
+        twoElementList.remove(at: 1)
+
+        XCTAssertEqual(twoElementList, LinkedList([1]))
+    }
+
+    func testRemoveStartFromTwoElementList() {
+        let twoElementList = LinkedList([1, 2])
+        twoElementList.remove(at: 0)
+
+        XCTAssertEqual(twoElementList, LinkedList([2]))
+    }
+
+    func testRemoveFromSingleElementLsit() {
+        let singleElementList = LinkedList([1])
+        singleElementList.remove(at: 0)
+
+        XCTAssertEqual(singleElementList, LinkedList())
+    }
+
+    func testRemoveAndThenAdd() {
+        for _ in (1..<6) {
+            list.remove(at: 0)
+        }
+
+        for i in (1..<10) {
+            list.append(value: i)
+        }
+
+        XCTAssertEqual(list, LinkedList((1..<10)))
+    }
+
+}
+
+LinkedListTests.defaultTestSuite.run()
+{% endhighlight %}
 
 ### Copy on Write
 
@@ -361,7 +483,7 @@ extension LinkedList {
 // and the wrapped class `_LinkedList` or `LinkedListStorage`.
 // The internal implementation would be marked private and
 // this is the interface you'd expose.
-public struct LinkedListCOW<T: Equatable> {
+public struct LinkedListCOW<T> {
     public typealias NodeType = Node<T>
 
     private var storage: LinkedList<T>
@@ -369,7 +491,7 @@ public struct LinkedListCOW<T: Equatable> {
         mutating get {
             // Only copy if there are multiple references
             // to storage
-            if !isUniquelyReferencedNonObjC(&storage) {
+            if !isKnownUniquelyReferenced(&storage) {
                 storage = storage.copy()
             }
 
@@ -381,7 +503,7 @@ public struct LinkedListCOW<T: Equatable> {
         storage = LinkedList()
     }
 
-    public init<S: Sequence where S.Iterator.Element == T>(_ elements: S) {
+    public init<S: Sequence>(_ elements: S) where S.Iterator.Element == T {
         storage = LinkedList(elements)
     }
 
@@ -401,12 +523,12 @@ public struct LinkedListCOW<T: Equatable> {
         mutableStorage.append(value: value)
     }
 
-    public func nodeAt(index: Int) -> NodeType {
-        return storage.nodeAt(index: index)
+    public func node(at index: Int) -> NodeType {
+        return storage.node(at: index)
     }
 
-    public func valueAt(index: Int) -> T {
-        let node = nodeAt(index: index)
+    public func value(at index: Int) -> T {
+        let node = self.node(at: index)
         return node.value
     }
 
@@ -416,7 +538,7 @@ public struct LinkedListCOW<T: Equatable> {
     }
 
     public mutating func remove(atIndex index: Int) {
-        mutableStorage.remove(atIndex: index)
+        mutableStorage.remove(at: index)
     }
 }
 {% endhighlight %}
@@ -431,7 +553,8 @@ a reference to it. To illustrate this let's implement `CustomStringConvertible` 
 extension LinkedListCOW: CustomStringConvertible {
     public var description: String {
         get {
-            let address = unsafeAddress(of: storage)
+            let address = Unmanaged.passUnretained(storage).toOpaque().debugDescription
+
             return "LinkedListCOW(storage: \(address))"
         }
     }
@@ -444,8 +567,8 @@ var list2 = list1
 print("List 1: \(list1), count: \(list1.count)")
 print("List 2: \(list2), count: \(list2.count)")
 
-let first1 = list1.nodeAt(index: 0)
-let first2 = list2.nodeAt(index: 0)
+let first1 = list1.node(at: 0)
+let first2 = list2.node(at: 0)
 
 print("List 1 first node: \(list1)")
 print("List 2 first node: \(list2)")
