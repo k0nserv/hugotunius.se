@@ -86,6 +86,10 @@ Given that you have done everything correctly you should now be able to run `ssh
 
 The YubiKey contains both a SSH key pair and a PGP master key that can be used for sining. You can turn on signing for git commmits by finding your key id with `gpg --list-secret-keys --keyid-format LONG` and looking for the id after `rsa2048/XXXXXXXXX` then run `git config --global user.signingkey <key-id>`. Now you can sign commits with `git commit -S` or if you want all commits to be signed set `git config --global commit.gpgSign true`. To ensure GitHub recognises your commits as signed you need to add the output of `gpg --armor --export <key-id>` to your [GitHub Settings](https://github.com/settings/keys).
 
+## Uploading the key to key servers
+
+The public key cannot be extracted from the Yubikey so you need to ensure you can still access it later. You can export it as above and keep that armored version around or better yet upload the key to a key server with `gpg --send-keys <key-id>`. This way you can just download the public key from the network of key servers on a new computer and insert your Yubikey with the matching private key.
+
 ## Final notes
 
 The details of this setup are available in my dotfiles repository in these three commits:
