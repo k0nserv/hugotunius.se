@@ -24,6 +24,6 @@ Google is one of the richest and most powerful companies in the world and as suc
 ## To summarise
 
 1. Hack Google Analytics. _Left as an exercise to the reader._
-1. Inject PII and credit card siphoning code in their delivery scripts. _Maybe steal the some code from Magecart, just remember to change the collection server._
+1. Inject PII and credit card siphoning code in their delivery scripts. _Maybe steal some code from Magecart, just remember to change the collection server._
 1. ???
 1. Profit
