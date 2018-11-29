@@ -238,6 +238,9 @@ extension LinkedList {
         previousNode?.next = nextNode
         nextNode?.previous = previousNode
 
+        node.next = nil
+        node.previous = nil
+
         count -= 1
         assert(
             (end != nil && start != nil && count >= 1) || (end == nil && start == nil && count == 0),
