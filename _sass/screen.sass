@@ -10,10 +10,11 @@ html
   font-size: 130%
 
 body
-  background: $background_color
+  background: $background-color
+  color: $text-color
 
 p
-  font-family: $text_font_computer
+  font-family: $text-font-computer
 
 em
   font-style: italic
@@ -23,25 +24,25 @@ em
     font-size: 100%
 
   body
-    font-family: $text_font_mobile
+    font-family: $text-font-mobile
 
   p
-    font-family: $text_font_mobile
+    font-family: $text-font-mobile
 
 @media screen and (min-width: 481px) and (max-width: 720px)
   html
     font-size: 120%
 
   p
-    font-family: $text_font_mobile
+    font-family: $text-font-mobile
 
   body
-    font-family: $text_font_mobile
+    font-family: $text-font-mobile
 
 // --- Layout ---
 article
-  margin-bottom: $section_spacing_vertical / 2
-  margin-top: $section_spacing_vertical / 2
+  margin-bottom: $section-spacing-vertical / 2
+  margin-top: $section-spacing-vertical / 2
   margin: 0 auto
   padding: 20px
 
@@ -60,19 +61,19 @@ article
 
 
 .nav-link
-  font-family: $header_font
+  font-family: $header-font
   font-weight: 50
   text-transform: uppercase
   font-size: 1.2rem
   font-weight: 100
-  color: $low_contrast_text_color
+  color: $low-contrast-text-color
 
 .post
   margin-top: 25px
 
 .post-header
   margin-bottom: 25px
-  border-bottom: 1px solid $separator_color
+  border-bottom: 1px solid $separator-color
 
   .post-title
     margin-bottom: 10px
@@ -85,7 +86,7 @@ article
   margin-top: 10px
   margin-bottom: 10px
   padding-bottom: 25px
-  border-bottom: 1px solid $border_color_light
+  border-bottom: 1px solid $border-color-light
 
   & img, & video
     margin: 0 auto
@@ -107,13 +108,13 @@ article
   margin-left: 5px
 
 .post-preview-title
-  color: $text_color
+  color: $text-color
 
   &:hover
-    color: $text_color
+    color: $text-color
 
 .post-preview-body
-  color: $low_contrast_text_color
+  color: $low-contrast-text-color
 
 footer
   margin-top: 50px
@@ -146,7 +147,7 @@ blockquote
   padding-top: 5px
   padding-bottom: 5px
   border-left: 5px solid $highlight_color
-  color: $text_color
+  color: $text-color
 
   p
     margin: 1em 0
@@ -161,7 +162,7 @@ a
     text-decoration: underline
 
 h1, h2, h3, h4, h5, h6
-  font-family: $header_font
+  font-family: $header-font
   margin-top: 1em
   margin-bottom: 0.375em
   line-height: 1.05em
@@ -180,16 +181,16 @@ h5, h6
   text-align: center
 
 .sans-serif
-  font-family: $header_font
+  font-family: $header-font
 
 .highlight
-  background: $code_background_color
-  font-family: $monospace_font_family
+  background: $code-background-color
+  font-family: $monospace-font-family
   padding: 15px
   font-size: 0.95em
   line-height: 1.1em
   +border-radius(2px)
-  border: 1px solid darken($background_color, 10%)
+  border: 1px solid darken($background-color, 10%)
   margin: 10px 0px
 
   pre > code
@@ -200,14 +201,14 @@ h5, h6
     word-wrap: normal
 
   .lineno
-    color: darken($background_color, 10%)
-    border-right: 1px solid darken($background_color, 20%)
+    color: darken($background-color, 10%)
+    border-right: 1px solid darken($background-color, 20%)
     padding-right: 5px
 
 div:not(.highlight) code
-  font-family: $monospace_font_family
+  font-family: $monospace-font-family
   font-size: 0.85em
-  background-color: darken($background_color, 5%)
+  background-color: darken($background-color, 5%)
   padding-top: 0.2em
   padding-bottom: 0.2em
   +border-radius(2px)
@@ -231,7 +232,7 @@ div:not(.highlight) code
   float: right
 
 .gray
-  color: $border_color
+  color: $border-color
 
 .low-contrast
-  color: $low_contrast_text_color
+  color: $low-contrast-text-color
