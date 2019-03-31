@@ -7,4 +7,4 @@ gzip:
   - .css
   - .jpeg
   - .jpg
-s3_reduced_redundancy: true
+s3_reduced_redundancy: false
