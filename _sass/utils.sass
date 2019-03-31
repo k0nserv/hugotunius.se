@@ -1,3 +1,5 @@
+@import variables
+
 =box-sizing($box-model)
   -webkit-box-sizing: $box-model
   -moz-box-sizing: $box-model
@@ -15,3 +17,15 @@
   -moz-transition: $properties $duration $curve
   -ms-transition: $properties $duration $curve
   transition: $properties $duration $curve
+
+=var-property($property, $name, $fallbackValue)
+  #{$property}: $fallbackValue
+  #{$property}: var($name, $fallbackValue)
+
+=code-background
+  border-width: 1px
+  border-style: solid
+
+  +var-property(background, --code-background-color, $default-code-border-color)
+  +var-property(border-color, --code-border-color, $default-code-border-color)
+  +border-radius(2px)

@@ -1,91 +1,83 @@
 @import variables
-@import social-links
-@import reset
 @import utils
 
-*
-  +box-sizing(border-box)
-
-html
-  font-size: 130%
-
-body
-  background: $background_color
-
 p
-  font-family: $text_font_computer
+  font-family: $text-font-computer
 
 em
   font-style: italic
+
+@media screen and (max-width: #{$wrapper-size})
+  article, nav
+    padding: 0 $spacing-lg
 
 @media screen and (min-width: 320px) and (max-width: 480px)
   html
     font-size: 100%
 
   body
-    font-family: $text_font_mobile
+    font-family: $text-font-mobile
 
   p
-    font-family: $text_font_mobile
+    font-family: $text-font-mobile
 
 @media screen and (min-width: 481px) and (max-width: 720px)
   html
     font-size: 120%
 
   p
-    font-family: $text_font_mobile
+    font-family: $text-font-mobile
 
   body
-    font-family: $text_font_mobile
+    font-family: $text-font-mobile
 
 // --- Layout ---
 article
-  margin-bottom: $section_spacing_vertical / 2
-  margin-top: $section_spacing_vertical / 2
+  margin-bottom: $section-spacing-vertical / 2
+  margin-top: $section-spacing-vertical / 2
   margin: 0 auto
-  padding: 20px
 
 .wrapper
   max-width: $wrapper-size
 
 .nav
-  padding: 10px
+  display: flex
+  flex-flow: row
+  padding: $spacing-md 0 0 0
 
   & > li
-    &.right
-      float: right
+    flex: auto
 
-    float: left
-    margin-left: 12px
+    &.trailing
+      flex: none
+      margin-left: 12px
 
 
 .nav-link
-  font-family: $header_font
+  font-family: $header-font
   font-weight: 50
   text-transform: uppercase
   font-size: 1.2rem
   font-weight: 100
-  color: $low_contrast_text_color
+  letter-spacing: 0.05em
+  +var-property(color, --text-low-contrast-color, $default-text-low-contrast-color)
 
 .post
-  margin-top: 25px
+  margin-top: $spacing-xxl
 
 .post-header
-  margin-bottom: 25px
-  border-bottom: 1px solid $separator_color
-
-  .post-title
-    margin-bottom: 10px
+  margin-bottom: $spacing-base
+  border-bottom: 1px solid $separator-color
 
 .post-footer
-  margin-top: 70px
+  margin-top: $spacing-xl * 2
 
 
 .post-body
   margin-top: 10px
   margin-bottom: 10px
   padding-bottom: 25px
-  border-bottom: 1px solid $border_color_light
+  border-bottom: 1px solid $border-color-light
 
   & img, & video
     margin: 0 auto
@@ -103,17 +95,17 @@ article
     list-style: decimal inside
 
 .post-date
-  color: $highlight_color
-  margin-left: 5px
+  +var-property(color, --highlight-color, $default-highlight-color)
+  margin-left: $spacing-xs
 
 .post-preview-title
-  color: $text_color
+  +var-property(color, --text-color, $default-text-color)
 
   &:hover
-    color: $text_color
+    +var-property(color, --text-color, $default-text-color)
 
 .post-preview-body
-  color: $low_contrast_text_color
+  +var-property(color, --text-low-contrast-color, $default-text-low-contrast-color)
 
 footer
   margin-top: 50px
@@ -142,26 +134,34 @@ strong
   font-weight: bold
 
 blockquote
-  padding-left: 10px
-  padding-top: 5px
-  padding-bottom: 5px
-  border-left: 5px solid $highlight_color
-  color: $text_color
+  padding-left: $spacing-md
+  padding-top: $spacing-xs
+  padding-bottom: $spacing-xs
+  border-left: 5px solid transparent
+
+  +var-property(color, --text-color, $default-text-color)
+  +var-property(border-left-color, --highlight-color, $default-highlight-color)
 
   p
     margin: 1em 0
     line-height: 1.2em
 
 a
-  color: $highlight_color
   text-decoration: none
 
+  +var-property(color, --link-color, $default-link-color)
+
   &:hover
-    color: darken($highlight_color, 15%)
     text-decoration: underline
 
+    +var-property(color, --link-hover-color, $default-link-color)
+
+  &:active
+    position: relative
+    top: 1px
+
 h1, h2, h3, h4, h5, h6
-  font-family: $header_font
+  font-family: $header-font
   margin-top: 1em
   margin-bottom: 0.375em
   line-height: 1.05em
@@ -180,17 +180,16 @@ h5, h6
   text-align: center
 
 .sans-serif
-  font-family: $header_font
+  font-family: $header-font
 
 .highlight
-  background: $code_background_color
-  font-family: $monospace_font_family
-  padding: 15px
+  font-family: $monospace-font-family
   font-size: 0.95em
   line-height: 1.1em
-  +border-radius(2px)
-  border: 1px solid darken($background_color, 10%)
-  margin: 10px 0px
+  margin: $spacing-md 0px
+  padding: $spacing-base
+
+  +code-background
 
   pre > code
     display: block
@@ -200,17 +199,14 @@ h5, h6
     word-wrap: normal
 
   .lineno
-    color: darken($background_color, 10%)
-    border-right: 1px solid darken($background_color, 20%)
     padding-right: 5px
 
-div:not(.highlight) code
-  font-family: $monospace_font_family
+p code
+  font-family: $monospace-font-family
   font-size: 0.85em
-  background-color: darken($background_color, 5%)
-  padding-top: 0.2em
-  padding-bottom: 0.2em
-  +border-radius(2px)
+  padding: 0.2em 0.1em
+
+  +code-background
 
 // ------------
 // Utility
@@ -231,7 +227,7 @@ div:not(.highlight) code
   float: right
 
 .gray
-  color: $border_color
+  color: $border-color
 
 .low-contrast
-  color: $low_contrast_text_color
+  +var-property(color, --text-low-contrast-color, $default-text-low-contrast-color)

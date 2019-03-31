@@ -1,24 +1,54 @@
-$background_color: #FEFEFE
-$highlight_color: #9226EA
-$code_background_color: #F2F2F2
-$text_color: rgb(10, 10, 10)
-$low_contrast_text_color: #727272
+$border-color: rgb(120, 120, 120)
+$border-color-light: lighten($border-color, 25%)
+$separator-color: #545454
 
-$border_color: rgb(120, 120, 120)
-$border_color_light: lighten($border_color, 25%)
-$header_color: rgb(21, 125, 216)
-$separator_color: #545454
+$header-font: "GillSans-Light", "Gill Sans", "Gill Sans MT", Calibri, sans-serif
+$text-font-mobile: "Helvetica Neue", Helvetica, Arial, sans-serif
+$text-font-computer: Georgia,Times,"Times New Roman",serif
+$monospace-font-family: Consolas, "Lucida Console", monospace
 
-$header_font: "GillSans-Light", "Gill Sans", "Gill Sans MT", Calibri, sans-serif
-$text_font_mobile: "Helvetica Neue", Helvetica, Arial, sans-serif
-$text_font_computer: Georgia,Times,"Times New Roman",serif
-$monospace_font_family: Consolas, "Lucida Console", monospace
+$section-spacing-vertical: 10vh
 
-$section_spacing_vertical: 10vh
-$section_spacing_horizontal: 1vw
-$top_spacing: 2.5vh
-
-$social_size: 45px
+$social-size: 45px
 
 $wrapper-size: 960px
 
+
+$spacing-xs: 0.25rem
+$spacing-sm: 0.5rem
+$spacing-md: 0.75rem
+$spacing-base: 1rem
+$spacing-lg: 1.5rem
+$spacing-xl: 2rem
+$spacing-xxl: 3rem
+
+// Light
+$light-background-color: #FEFEFE
+$light-text-color: #0A020F
+$light-text-low-contrast-color: #545157
+$light-highlight-color: #9226EA
+$light-link-color: $light-highlight-color
+$light-link-hover-color: darken($light-link-color, 15%)
+$light-code-background-color: rgba(0, 0, 0, 0.1)
+$light-code-border-color: rgba(0, 0, 0, 0.15)
+
+
+// Dark
+$dark-background-color: #0A020F
+$dark-text-color: #FFFFFF
+$dark-text-low-contrast-color: #999999
+$dark-highlight-color: #11A8CA
+$dark-link-color: $dark-highlight-color
+$dark-link-hover-color: lighten($dark-link-color, 10%)
+$dark-code-background-color: rgba(255, 255, 255, 0.1)
+$dark-code-border-color: rgba(255, 255, 255, 0.15)
+
+// Defualt
+$default-background-color: $light-background-color
+$default-text-color: $light-text-color
+$default-text-low-contrast-color: $light-text-color
+$default-highlight-color: $light-highlight-color
+$default-link-color: $light-link-color
+$default-link-hover-color: $light-link-hover-color
+$default-code-background-color: $light-code-background-color
+$default-code-border-color: $light-code-border-color
