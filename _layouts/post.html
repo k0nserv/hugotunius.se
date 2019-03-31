@@ -11,13 +11,6 @@ layout: default
   <div class="post-body">{{content}}</div>
   {% assign related_pages = page | related_pages %}
     <footer class="post-footer">
-      <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}&via=k0nserv&related=k0nserv"
-        rel="nofollow"
-        target="_blank"
-        title="Share on Twitter">
-          <h1>Tweet this post</h1>
-      </a>
-
       {% if related_pages.size > 0 %}
         <h1>Related posts</h1>
         {% assign related_pages = page | related_pages %}
