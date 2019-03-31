@@ -13,9 +13,13 @@ author: Hugo Tunius
 copyright: Hugo Tunius
 permalink: /:year/:month/:day/:title.html
 plugins:
+    - jekyll-gzip
     - jekyll-redirect-from
     - jekyll-feed
     - jekyll-sitemap
 sass:
   style: compressed
   sass_dir: _sass
+gzip:
+  replace_files: true
+
