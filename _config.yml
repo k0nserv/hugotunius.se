@@ -16,6 +16,9 @@ plugins:
     - jekyll-redirect-from
     - jekyll-feed
     - jekyll-sitemap
+    - jekyll-gzip
 sass:
   style: compressed
   sass_dir: _sass
+gzip:
+  replace_files: true
