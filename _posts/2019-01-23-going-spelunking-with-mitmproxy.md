@@ -24,13 +24,13 @@ Since knowledge is power I decided I should write up the method used here so you
 
 There are many ways to install mitmproxy and they are all documented on the [mitmproxy documentation site](https://docs.mitmproxy.org/stable/overview-installation/). On macOS the easiest way is using the excellent tool [Homebrew](https://brew.sh/).
 
-{% highlight bash line %}
+{% highlight plain %}
 brew install mitmproxy
 {% endhighlight %}
 
 After installing `mitmproxy` it is easy to start by just invoking it
 
-{% highlight bash line %}
+{% highlight plain %}
 mitmproxy
 {% endhighlight %}
 
