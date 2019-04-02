@@ -6,10 +6,7 @@ group :jekyll_plugins do
   gem 'jekyll-redirect-from', '~> 0.15.0'
   gem 'jekyll-feed', '~> 0.12.1'
   gem 'jekyll-sitemap', '~> 1.3.1'
-
-  # TODO: Replace with upstream when
-  # https://github.com/philnash/jekyll-gzip/pull/6 is meged
-  gem 'jekyll-gzip', github: 'k0nserv/jekyll-gzip', branch: 'master'
+  gem 'jekyll-gzip', '~> 2.1.1'
 end
 
 gem 'kramdown', '~> 1.16.0'
