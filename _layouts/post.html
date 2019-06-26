@@ -5,21 +5,21 @@ layout: default
 <article class="alpha post">
   <header class="post-header">
     <h1 class="post-title text-center">{{page.title}}</h1>
-    <h5 class="text-center low-contrast">Posted on <time class="post-date" datetime="{{ page.date | date: '%Y-%m-%d' }}">{{page.date | date_to_string }}</time>
-    </h5>
+    <h2 class="post-subtitle text-center low-contrast">Posted on <time class="post-date" datetime="{{ page.date | date: '%Y-%m-%d' }}">{{page.date | date_to_string }}</time></h2>
   </header>
   <div class="post-body">{{content}}</div>
   {% assign related_pages = page | related_pages %}
     <footer class="post-footer">
       {% if related_pages.size > 0 %}
-        <h1>Related posts</h1>
+        <h2>Related posts</h2>
         {% assign related_pages = page | related_pages %}
         <ul>
           {% for related_page in related_pages limit: 3 %}
             <li>
-              <h5>
-                <a href="{{ related_page.url }}">{{ related_page.title }}</a></li>
-              </h5>
+              <h3 class="related-post">
+                <a href="{{ related_page.url }}">{{ related_page.title }}</a>
+              </h3>
+            </li>
           {% endfor %}
         </ul>
       {% endif %}
