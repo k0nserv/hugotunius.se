@@ -7,9 +7,12 @@ p
 em
   font-style: italic
 
+article, nav
+  padding: 0 $spacing-lg
+
 @media screen and (max-width: #{$wrapper-size})
   article, nav
-    padding: 0 $spacing-lg
+    padding: 0 $spacing-xl
 
 @media screen and (min-width: 320px) and (max-width: 480px)
   html
@@ -20,6 +23,10 @@ em
 
   p
     font-family: $text-font-mobile
+
+  article, nav
+    padding: 0 $spacing-lg
+
 
 @media screen and (min-width: 481px) and (max-width: 720px)
   html
