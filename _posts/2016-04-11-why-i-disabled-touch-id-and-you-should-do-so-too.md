@@ -41,6 +41,13 @@ This is why you should disable Touch ID and any similar technology.
 
 [Tweet by @K0nserv(me)](https://twitter.com/K0nserv/status/697826270340636672)
 
+> **Note:** Since writing this I have reevaluated my opinion on this matter.
+> While what I've expressed here is still true, for the average person's
+> threat model using Touch ID or Face ID is an improvement in their security.
+> In the interest of transparency the rest of the original blog post is
+> presented in its original form.
+
+
 ## Convenience
 
 Often security and convenience sit at opposite ends of the scale. Rarely is something both very
