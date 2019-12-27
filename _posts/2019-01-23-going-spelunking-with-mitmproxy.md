@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Going Spelunking with mitmproxy"
+title:  "Going Spelunking with Mitmproxy"
 categories: security mitmproxy reverse-engineering
 date: 2019-01-23
 description: >

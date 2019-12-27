@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Why I disabled Touch ID and why you should do so too
+title: Why I Disabled Touch ID and Why You Should Too
 categories: security iOS passwords
 description: >
   Imagine that everywhere you touched a post-it with your

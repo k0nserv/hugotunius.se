@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "On being a front-end engineer"
+title:  "On Being a Front-End Engineer"
 categories: web javascript html css opinion
 date: 2019-06-26
 description: >

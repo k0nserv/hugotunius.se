@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "You are not the average user"
+title:  "You Are Not the Average User"
 categories: ux design
-redirect_from: 
+redirect_from:
   - /ux,/design/2014/05/04/you-are-not-the-average-user.html
   - /ux/design/2014/05/04/you-are-not-the-average-user.html
 ---

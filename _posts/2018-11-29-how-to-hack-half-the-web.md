@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to hack half of all websites"
+title: "How to Hack Half of All Websites"
 categories: javascript security magecart
 date: 2018-11-29
 description: >

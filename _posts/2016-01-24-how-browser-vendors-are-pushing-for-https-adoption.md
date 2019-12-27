@@ -1,7 +1,7 @@
 ---
 layout: post
 categories: web security ux
-title: How browser vendors are pushing for HTTPS adoption
+title: How Browser Vendors Are Pushing for HTTPS Adoption
 ---
 
 It's 2016 and many sites have still not deployed HTTPS fully even though it's now [free][lets_encrypt] and largely available. Prominent websites that deal with sensitive user data are doing so in completely broken [ways](http://www.troyhunt.com/2013/05/your-login-form-posts-to-https-but-you.html). Luckily the browser vendors and the web community is working to make users aware of such practice and even lockdown access to certain APIs on insecure origins.

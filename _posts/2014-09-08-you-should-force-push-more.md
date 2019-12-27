@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "You should force push more"
+title:  "You Should Force Push More"
 categories: git vsc
 redirect_from: /git/vsc/2014/09/08/you-should-force-push-more.html
 ---
@@ -53,8 +53,8 @@ I make a commit and submit a PR. My git log now looks like this
 The PR is reviewed and luckily someone finds my spelling mistake. So I fix it.
 
 {% highlight text line %}
-* 97f5b3d (HEAD, origin/add-fibonacci-implementation) Rename incorrectly 
-named fbi to fib 
+* 97f5b3d (HEAD, origin/add-fibonacci-implementation) Rename incorrectly
+named fbi to fib
 * 7492f01 Implement Fibonacci sequence
 * aa1fdb3 (develop, origin/develop) Solve halting problem
 {% endhighlight %}
@@ -62,7 +62,7 @@ named fbi to fib
 It was also pointed out that I didn't wrap my code in an anonymous self executing function so I fix that too.
 
 {% highlight text line %}
-* aaf7382 (HEAD, origin/add-fibonacci-implementation) Wrap Fibonacci 
+* aaf7382 (HEAD, origin/add-fibonacci-implementation) Wrap Fibonacci
 implementation in anonymous self executing function
 * 97f5b3d Rename incorrectly named fbi to fib
 * 7492f01 Implement Fibonacci sequence
@@ -91,7 +91,7 @@ This is my final implementation
         }
 
         return fib(i - 1) + fib(i - 2);
-    };    
+    };
 })();
 {% endhighlight %}
 
@@ -112,7 +112,7 @@ I try to push my changes, but I can't. My push is being rejected by the remote.
 
 {% highlight text line %}
 To git@git.url.com:url.git
- ! [rejected]        add-fibonacci-implementation -> add-fibonacci-implementation 
+ ! [rejected]        add-fibonacci-implementation -> add-fibonacci-implementation
  (non-fast-forward)
 error: failed to push some refs to 'git@git.url.com:url.git'
 To prevent you from losing history, non-fast-forward updates were rejected
@@ -136,7 +136,7 @@ var implodeUniverse = function () {
 I commit my changes and end up with a git log like the following.
 
 {% highlight text line %}
-* fc26bb2 (HEAD, origin/add-support-for-universe-implode) Implement imploding 
+* fc26bb2 (HEAD, origin/add-support-for-universe-implode) Implement imploding
 the universe
 * aa1fdb3 (develop, origin/develop) Solve halting problem
 {% endhighlight %}
@@ -158,7 +158,7 @@ At this point I could make another commit and then push it. A commit message lik
 
 {% highlight bash line %}
 > git add -A
-> git commit --amend 
+> git commit --amend
 > git push origin add-support-for-universe-implode -f
 {% endhighlight %}
 
@@ -182,7 +182,7 @@ git merge base-branch
 git checkout base-branch
 git merge --no-ff branch-name
 git push origin base-branch
-{% endhighlight %} 
+{% endhighlight %}
 
 The problem with this solution is that you will unfortunately create a merge commit which looks like this
 
@@ -196,8 +196,8 @@ Commits like these will pollute your commit log and make it harder to read. They
 git fetch --all
 git checkout -b branch-name origin/branch-name
 git rebase base-branch
-# We resolve any conflicts as we would in a merge 
-# git rebase --abort can be used to revert to before 
+# We resolve any conflicts as we would in a merge
+# git rebase --abort can be used to revert to before
 # the rebase started if we make a mistake
 
 # When we are done we simply do a force push
@@ -258,4 +258,4 @@ The following is a comparison between using and not using the techniques I've sh
 
 
 
- 
+

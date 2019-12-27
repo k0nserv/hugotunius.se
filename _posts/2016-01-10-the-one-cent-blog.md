@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "The one cent blog"
+title:  "The One Cent Blog"
 categories: aws cloudflare web ruby jekyll
 redirect_from:
   - /aws/cloudflare/web/2016/01/10/the-one-cent-blog.md-the-one-cent-blog.html

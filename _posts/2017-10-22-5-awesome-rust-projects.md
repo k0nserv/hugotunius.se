@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "5 awesome Rust projects"
+title: "5 Awesome Rust projects"
 categories: rust
 date: 2017-10-22
 description: >

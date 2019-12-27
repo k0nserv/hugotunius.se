@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "Elasticsearch flakiness in tests"
+title:  "Elasticsearch Flakiness in Tests"
 categories: rails elasticsearch
 date: 2015-06-22
-redirect_from: 
+redirect_from:
   - /rails/api/caching/2015/01/21/active-model-serializer-caching.html
   - /rails/elasticsearch/2015/06/22/elasticsearch-falkiness-in-tests.html
 ---
@@ -28,7 +28,7 @@ sleep 1 # Might work, Might not work. Depending on Java GC and other factors
 
 This [post](https://www.devmynd.com/blog/2014-2-dealing-with-failing-elasticserach-tests) by [DevMynd](https://www.devmynd.com) suggests wrapping search calls in retry logic which will work, but with the unfortunate side effect of having to modify the application code itself.
 
-The solution I've found to work is using the `refresh_index!` method after creating indices in tests. This will trigger the refresh action on the index as described [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-refresh.html). 
+The solution I've found to work is using the `refresh_index!` method after creating indices in tests. This will trigger the refresh action on the index as described [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-refresh.html).
 
 **From the docs:**
 
@@ -55,4 +55,4 @@ end
 
 In rare cases it seems like not even this will solve the problem, although so far it has for us. As suggested in this [issue](https://github.com/elastic/elasticsearch-ruby/issues/181#issuecomment-112781924) on GitHub watching the cluster health and waiting until it becomes green is another option.
 
-This has been a great annoyance when encountered and I hope this post will help you avoid the same annoyance. 
+This has been a great annoyance when encountered and I hope this post will help you avoid the same annoyance.

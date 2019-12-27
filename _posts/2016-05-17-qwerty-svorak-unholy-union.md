@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "An unholy union between QWERTY and Svorak"
+title: "An Unholy Union Between QWERTY and Svorak"
 categories: dev-environment
 date: 2016-05-17
 description: >

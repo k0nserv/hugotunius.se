@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Swift primitive value extension"
+title: "Swift Primitive Value Extension"
 categories: swift ray-tracing
 date: 2016-01-30
 ---
