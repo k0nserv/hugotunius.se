@@ -1,14 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'jekyll', '~> 3.8.5'
+gem 'jekyll', '~> 4.0.0'
 
 group :jekyll_plugins do
   gem 'jekyll-redirect-from', '~> 0.15.0'
-  gem 'jekyll-feed', '~> 0.12.1'
-  gem 'jekyll-sitemap', '~> 1.3.1'
-  gem 'jekyll-gzip', '~> 2.1.1'
+  gem 'jekyll-feed', '~> 0.13.0'
+  gem 'jekyll-sitemap', '~> 1.4.0'
+  gem 'jekyll-gzip', '~> 2.3.0'
 end
 
-gem 'kramdown', '~> 1.16.0'
-gem 'therubyracer', '~> 0.12.2'
+gem 'kramdown', '~> 2.1.0'
 gem 'rake'
