@@ -115,7 +115,7 @@ fn world_to_sprite_map(world: &World) -> SpriteMap {
    // sprite for each location.
 }
 {% endhighlight %}
-_[Full Source](https://github.com/k0nserv/advent-of-rust-2019/blob/2d45a3a4011b4169901053aeae9313330fa7755b/examples/day15.rs#L39-L96)_
+_[Full Source](https://github.com/k0nserv/advent-of-rust-2019/blob/005155fd22903b0fe7dbef86efa5b3919ca4a946/examples/day15.rs#L39-L96)_
 
 Secondly a way to diff two sprite maps to determine which "drawing commands" to issue. It returns a list of locations and the new sprite to draw at that location.
 
@@ -187,7 +187,7 @@ Here for each location that needs to redraw we emit the sequence `ESC[{y};{x}` f
 
 This approach works very well, it's possible to draw with only `1ms` long pauses between drawing. [This video](https://www.youtube.com/watch?v=q3ysisqmpwA) is a full demonstration of the puzzle that first explores the maze, then draws the shortest path from the origin to the oxygen system and lastly floods the maze with oxygen.
 
-The full source is available on my [GitHub](https://github.com/k0nserv/advent-of-rust-2019/blob/2d45a3a4011b4169901053aeae9313330fa7755b/examples/day15.rs)
+The full source is available on my [GitHub](https://github.com/k0nserv/advent-of-rust-2019/blob/005155fd22903b0fe7dbef86efa5b3919ca4a946/examples/day15.rs)
 
 ## Conclusion
 
