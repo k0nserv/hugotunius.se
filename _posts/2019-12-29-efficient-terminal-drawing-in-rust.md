@@ -133,7 +133,7 @@ fn diff_sprites(
 
                 if old
                     .map(|&old_sprite| {
-                        old_sprite == new[y][x]
+                        old_sprite != new[y][x]
                     })
                     .unwrap_or(true)
                 {
