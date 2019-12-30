@@ -131,6 +131,14 @@ fn diff_sprites(
                     .get(y)
                     .and_then(|inner| inner.get(x));
 
+
+                // Without this redundant drawing it seems
+                // like the terminal emulator doesn't draw
+                // anything because the diff is too small.
+                if x < 5 && y < 5 {
+                    return Some(((x, y), new[y][x]));
+                }
+
                 if old
                     .map(|&old_sprite| {
                         old_sprite != new[y][x]
@@ -146,6 +154,8 @@ fn diff_sprites(
         .collect()
 }
 {% endhighlight %}
+
+The diff size is almost always of size 2: repainting the last droid location as empty and the new droid location as the droid. Ironically this seems to be too fast because it causes both iTerm and Terminal on macOS to not update at each render. Redundantly re-rendering ~25 sprites on each render solves this.
 
 Lastly a way to draw.
 
