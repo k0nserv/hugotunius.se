@@ -24,7 +24,7 @@ _Page rules for edge caching_
 
 Here are the relevant rules I've used:
 
-* **Browser Cache TTL:** 12 Hours
+* **Browser Cache TTL:** 30 minutes, the lowest setting
 * **Cache Level:** Cache Everything
 * **Edge Cache TTL:** 6 days
 
