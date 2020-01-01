@@ -20,23 +20,27 @@ task serve: [:clean] do
 end
 
 task :purge_cloudflare_html_files do
+  html_files = Dir.glob('**/*.html', base: '_site')
+  urls =  html_files.map { |file|  "https://hugotunius.se/#{file}" }
+  urls.push "https://hugotunius.se"
   uri = URI(cloudflare_purge_cache_url(required_env_variable('CF_ZONE_ID')))
-  payload =  {
-      files:[
-        "https://hugotunius.se/*.html",
-        "https://hugotunius.se",
-      ]
-  }
-  (api_key, api_email) = required_env_variables(['CF_API_KEY', 'CF_API_EMAIL'])
-  headers = {
-    'Authorization': "Bearer #{api_key}",
-    'X-Auth-Email': api_email,
-    'Content-Type': 'application/json',
-  }
 
-  response = Net::HTTP.post uri, payload.to_json, headers
+  # Cloudflare's API only handles 30 entries at the time
+  urls.each_slice(30) do |slice|
+    payload =  {
+        files: slice
+    }
+    (api_key, api_email) = required_env_variables(['CF_API_KEY', 'CF_API_EMAIL'])
+    headers = {
+      'Authorization': "Bearer #{api_key}",
+      'X-Auth-Email': api_email,
+      'Content-Type': 'application/json',
+    }
 
-  raise "Failed to purge cloudflare cache" if Net::HTTPResponse::CODE_TO_OBJ[response.code] != Net::HTTPOK
+    response = Net::HTTP.post uri, payload.to_json, headers
+
+    raise "Failed to purge cloudflare cache" if Net::HTTPResponse::CODE_TO_OBJ[response.code] != Net::HTTPOK
+  end
 end
 
 def jekyll(command)
