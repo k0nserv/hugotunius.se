@@ -1,18 +1,22 @@
 language: ruby
-script: JEKYLL_ENV=production bundle exec rake build
-branches:
-  only: master
+jobs:
+  include:
+    - if: branch = master
+    - stage: build
+      script: JEKYLL_ENV=production bundle exec rake build
+    - stage: deploy
+      script: skip
+      deploy:
+        provider: s3
+        access_key_id: $S3_ACCESS_ID
+        secret_access_key: $S3_ACCESS_SECRET
+        bucket: hugotunius.se
+        skip_cleanup: true
+        local_dir: _site
+        detect_encoding: true
+        default_text_charset: 'utf-8'
 env:
   global:
   - secure: j8orfC4jzV8uLrkwgI6L0ih4Tqr/96Qpn6jie9LcyQIdkAbgdOAt+BRXIyhKqXmpowKyu0UmFINpXy0sql4AcIti0Xr562pAGJtvsauwh1Mcer/dpsWh88WCnxOTMhlqB/flzorgAqFmvHQZIYJXHy11NLvkCqfU37wRuaWs3wQ=
   - secure: d3F8/KN1jfG2od+iyabLkJwVx+++gUOtTOh9+nG+E3H2w3zCyybU/U7xbiZF6XPpPpi8YNNbmHejH6WNsDcslTPEiL6kIk6ha2fgh+ETy9OSca6UbtBV1ihpB88GOxXoAbUnQSzx3QXyFTmSTKKqKqTSoGvO9cLtKunJY8L9lh0=
 cache: bundler
-deploy:
-  provider: s3
-  access_key_id: $S3_ACCESS_ID
-  secret_access_key: $S3_ACCESS_SECRET
-  bucket: hugotunius.se
-  skip_cleanup: true
-  local_dir: _site
-  detect_encoding: true
-  default_text_charset: 'utf-8'
