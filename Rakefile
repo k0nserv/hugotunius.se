@@ -19,7 +19,7 @@ task serve: [:clean] do
   jekyll 'serve --drafts --incremental --watch'
 end
 
-task pure_cloudflare_html_files do
+task :purge_cloudflare_html_files do
   uri = URI(cloudflare_purge_cache_url(required_env_variable('CF_ZONE_ID')))
   payload =  {
       files:[

@@ -20,4 +20,4 @@ deploy:
   detect_encoding: true
   default_text_charset: utf-8
 after_deploy:
-- bundle exec rake pure_cloudflare_html_files
+- bundle exec rake purge_cloudflare_html_files
