@@ -1,9 +1,10 @@
 language: ruby
+stages:
+  - build
+  - deploy
 jobs:
   include:
     - if: branch = master
-    - stage: test
-      script: skip
     - stage: build
       script: JEKYLL_ENV=production bundle exec rake build
     - stage: deploy
