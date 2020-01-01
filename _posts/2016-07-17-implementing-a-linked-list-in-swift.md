@@ -8,7 +8,7 @@ description: >
   a Linked List in Swift.
 ---
 
-In this post I'll show how to implement a Linked List in Swift. For this post there's also a Playground version that works with Xcode 10 and above. If you prefer to read it you can find it [here](/files/LinkedList.playground.zip).
+In this post I'll show how to implement a Linked List in Swift. For this post there's also a [Playground version](/files/LinkedList.playground.zip) that works with Xcode 10 and above.
 
 Linked lists are type of list with certain characteristics relating to the performance of insertion, deletion, and traversal.
 They are valuable when maintaining lists where reference items don't need to be looked up by index and the performance of insertion and
