@@ -215,6 +215,36 @@ p code
 
   +code-background
 
+table
+  width: 100%
+  font-family: $monospace-font-family
+  padding: $spacing-sm
+  border-radius:
+  overflow-wrap: anywhere
+
+  +code-background
+
+thead, tbody
+  width: 100%
+
+// tbody td:first-child, thead th:first-child
+//   padding: $spacing-sm $spacing-sm $spacing-sm 0
+
+tbody td, thead th
+  padding: $spacing-sm
+  font-size: 0.8rem
+
+thead th
+  text-align: left
+  font-weight: 600
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+
+  +var-property(border-bottom-color, --code-border-color, $default-code-border-color)
+
+tbody tr:nth-child(2n)
+  +var-property(background-color, --code-border-color, $default-code-border-color)
+
 // ------------
 // Utility
 // ------------
