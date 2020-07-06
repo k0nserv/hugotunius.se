@@ -63,6 +63,8 @@ For the apps that snooped on the clipboard on launch and when entering the foreg
 
 The last case was AliExpress which has custom code that seems very similar to that of the above described SDKs. It reads the clipboard on launch from the method `+ [AEAECodeDetectCommand execute]` which looks to be looking for some sort of configuration in the clipboard.
 
+Apple themselves read the pasteboard when the user focuses search fields and some other text fields via code in UIKit, their main framework for building iOS and iPadOS apps. They seem to have given themselves an exemption from the notifications in iOS 14 as these reads don't trigger them.
+
 The Wall Street Journal's app which I highlighted at the start of the post uses both Firebase Dynamic Links and Google's Ad SDK.
 
 
