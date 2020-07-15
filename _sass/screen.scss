@@ -1,0 +1,334 @@
+@import 'variables';
+@import 'utils';
+
+p {
+  font-family: $text-font-computer;
+}
+
+em {
+  font-style: italic;
+}
+
+article, nav {
+  padding: 0 $spacing-lg;
+}
+
+@media screen and (max-width: #{$wrapper-size}) {
+  article, nav {
+    padding: 0 $spacing-xl;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  html {
+    font-size: 100%;
+  }
+
+  body {
+    font-family: $text-font-mobile;
+  }
+
+  p {
+    font-family: $text-font-mobile;
+  }
+
+  article, nav {
+    padding: 0 $spacing-lg;
+  }
+}
+
+
+@media screen and (min-width: 481px) and (max-width: 720px) {
+  html {
+    font-size: 120%;
+  }
+
+  p {
+    font-family: $text-font-mobile;
+  }
+
+  body {
+    font-family: $text-font-mobile;
+  }
+}
+
+/* --- Layout --- */
+article {
+  margin-bottom: $section-spacing-vertical / 2;
+  margin-top: $section-spacing-vertical / 2;
+  margin: 0 auto;
+}
+
+.wrapper {
+  max-width: $wrapper-size;
+}
+
+.nav {
+  display: flex;
+  flex-flow: row;
+  padding: $spacing-md 0 0 0;
+
+  & > li {
+    flex: auto;
+
+    &.trailing {
+      flex: none;
+      margin-left: 12px;
+    }
+  }
+}
+
+.nav-link {
+  font-family: $header-font;
+  font-weight: 50;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 100;
+  letter-spacing: 0.05em;
+
+  @include var-property(color, --text-low-contrast-color, $default-text-low-contrast-color);
+}
+
+.post {
+  margin-top: $spacing-xxl;
+}
+
+.post-header {
+  margin-bottom: $spacing-base;
+  border-bottom: 1px solid $separator-color;
+}
+
+.post-footer {
+  margin-top: $spacing-xl * 2;
+}
+
+.related-post, .post-subtitle {
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+
+
+.post-body {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid $border-color-light;
+
+  & img, & video {
+    margin: 0 auto;
+    display: block;
+    max-width: 80%;
+  }
+
+  & li {
+    line-height: 1.4em;
+    margin-bottom: 0.3em;
+  }
+
+  & ul li {
+    list-style: disc inside;
+  }
+
+  & ol li {
+    list-style: decimal inside;
+  }
+}
+
+
+.post-preview-title {
+  @include var-property(color, --text-color, $default-text-color);
+
+  &:hover {
+    @include var-property(color, --text-color, $default-text-color);
+  }
+}
+
+.post-preview-body {
+  @include var-property(color, --text-low-contrast-color, $default-text-low-contrast-color);
+}
+
+footer {
+  margin-top: 50px;
+
+  section {
+    border: none;
+  }
+}
+
+ul.posts {
+  margin-top: 15px;
+  width: 100%;
+
+  li {
+    margin-bottom: 15px;
+    width: 100%;
+
+    @include box-sizing(border-box);
+  }
+}
+
+/* ---------------- */
+/* Typography       */
+/* ---------------- */
+p {
+  margin: 1.5em 0;
+  font-size: 1rem;
+  line-height: 1.6em;
+}
+
+strong {
+  font-weight: bold;
+}
+
+blockquote {
+  padding-left: $spacing-md;
+  padding-top: $spacing-xs;
+  padding-bottom: $spacing-xs;
+  border-left: 5px solid transparent;
+
+  @include var-property(color, --text-color, $default-text-color);
+  @include var-property(border-left-color, --highlight-color, $default-highlight-color);
+
+  p {
+    margin: 1em 0;
+    line-height: 1.3em;
+  }
+}
+
+a {
+  text-decoration: none;
+
+  @include var-property(color, --link-color, $default-link-color);
+
+  &:hover {
+    text-decoration: underline;
+
+    @include var-property(color, --link-hover-color, $default-link-color);
+  }
+
+  &:active {
+    position: relative;
+    top: 1px;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $header-font;
+  margin-top: 1em;
+  margin-bottom: 0.375em;
+  line-height: 1.05em;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-size: 3rem - $i * 0.3rem;
+  }
+}
+
+h3, h4 {
+  font-weight: normal;
+}
+
+h5, h6 {
+  font-weight: 100;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.sans-serif {
+  font-family: $header-font;
+}
+
+.highlight {
+  font-family: $monospace-font-family;
+  font-size: 0.85em;
+  line-height: 1.1em;
+  margin: $spacing-md 0;
+  padding: $spacing-base;
+
+  @include code-background;
+
+  pre > code {
+    display: block;
+    white-space: pre;
+    overflow-x: auto;
+    overflow-y: hidden;
+    word-wrap: normal;
+  }
+
+  .lineno {
+    padding-right: 5px;
+  }
+}
+
+p code {
+  font-family: $monospace-font-family;
+  font-size: 0.85em;
+  padding: 0.2em 0.1em;
+
+  @include code-background;
+}
+
+table {
+  width: 100%;
+  font-family: $monospace-font-family;
+  padding: $spacing-sm;
+  overflow-wrap: anywhere;
+
+  @include code-background;
+}
+
+thead, tbody {
+  width: 100%;
+}
+
+tbody td, thead th {
+  padding: $spacing-sm;
+  font-size: 0.8rem;
+}
+
+thead th {
+  text-align: left;
+  font-weight: 600;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+
+  @include var-property(border-bottom-color, --code-border-color, $default-code-border-color);
+}
+
+tbody tr:nth-child(2n) {
+  @include var-property(background-color, --code-border-color, $default-code-border-color);
+}
+
+// ------------
+// Utility
+// ------------
+.clearfix {
+  overflow: hidden;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.block {
+  display: block;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.gray {
+  color: $border-color;
+}
+
+.low-contrast {
+  @include var-property(color, --text-low-contrast-color, $default-text-low-contrast-color);
+}

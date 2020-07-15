@@ -1,0 +1,36 @@
+@import 'variables';
+
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model;
+  -moz-box-sizing: $box-model;
+  -ms-box-sizing: $box-model;
+  box-sizing: $box-model;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin transition($properties, $curve, $duration) {
+  -webkit-transition: $properties $duration $curve;
+  -moz-transition: $properties $duration $curve;
+  -ms-transition: $properties $duration $curve;
+  transition: $properties $duration $curve;
+}
+
+@mixin var-property($property, $name, $fallbackValue) {
+  #{$property}: $fallbackValue;
+  #{$property}: var($name, $fallbackValue);
+}
+
+@mixin code-background {
+  border-width: 1px;
+  border-style: solid;
+
+  @include var-property(background, --code-background-color, $default-code-border-color);
+  @include var-property(border-color, --code-border-color, $default-code-border-color);
+  @include border-radius(2px);
+}
