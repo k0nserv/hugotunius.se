@@ -11,6 +11,7 @@
   --link-hover-color: #{$light-link-hover-color};
   --code-background-color: #{$light-code-background-color};
   --code-border-color: #{$light-code-border-color};
+  --heading-anchor-filter: #{$light-heading-anchor-filter};
 }
 
 
@@ -24,6 +25,7 @@
     --link-hover-color: #{$dark-link-hover-color};
     --code-background-color: #{$dark-code-background-color};
     --code-border-color: #{$dark-code-border-color};
+    --heading-anchor-filter: #{$dark-heading-anchor-filter};
 
     --syntax-c: #999999;
     --syntax-err-background: #e3d2d2;

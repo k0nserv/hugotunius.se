@@ -31,6 +31,7 @@ $light-link-color: $light-highlight-color;
 $light-link-hover-color: darken($light-link-color, 15%);
 $light-code-background-color: rgba(0, 0, 0, 0.1);
 $light-code-border-color: rgba(0, 0, 0, 0.15);
+$light-heading-anchor-filter: invert(0%);
 
 
 // Dark
@@ -42,6 +43,7 @@ $dark-link-color: $dark-highlight-color;
 $dark-link-hover-color: lighten($dark-link-color, 10%);
 $dark-code-background-color: rgba(255, 255, 255, 0.1);
 $dark-code-border-color: rgba(255, 255, 255, 0.15);
+$dark-heading-anchor-filter: invert(100%);
 
 // Defualt
 $default-background-color: $light-background-color;
@@ -52,3 +54,4 @@ $default-link-color: $light-link-color;
 $default-link-hover-color: $light-link-hover-color;
 $default-code-background-color: $light-code-background-color;
 $default-code-border-color: $light-code-border-color;
+$default-heading-anchor-filter: $light-heading-anchor-filter;
