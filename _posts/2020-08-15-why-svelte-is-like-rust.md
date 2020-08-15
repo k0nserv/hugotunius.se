@@ -1,0 +1,42 @@
+---
+layout: post
+title: "Why Svelte is Like Rust"
+categories: web rust svelte
+date: 2020-08-15
+description: >
+  The programming language Rust and the web framework Svelte share an important similarity that makes them great.
+---
+
+If you've ever met me or read this blog, you know that I have a soft spot for the [Rust programming language](https://www.rust-lang.org/). I'm also excited about and interested in [Svelte](https://svelte.dev/), a declarative and reactive web framework. In this blog post I will explain how these two completely different technologies are actually quite similar and why these similarities are what make them great.
+
+Let's start by talking about Rust. I could write several blog post about all of Rust's excellent features, in fact I am planning to, but for now let's focus on its most important feature: [lifetimes](https://doc.rust-lang.org/rust-by-example/scope/lifetime.html). Lifetimes are Rust's most unique and innovative feature and they are the solution to several problems that are nearly as old as programming itself. These problems all relate to managing memory and safe access to that memory. To understand why lifetimes are so important we need to understand how memory has been managed historically.
+
+The earliest programming languages left memory management up to the programmer, but it didn't take long for systems to be created that took this responsibility out of the programmer's hands. Lisp was the language that introduced the concept of an [Automatic Garbage Collector](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)), GC for short, and since its inception different forms of GC has been staple features of most popular programming languages. GC is an important innovation but it's not free. All GCs come with a nontrivial runtime cost. This has made them, and the languages that use them, undesirable for many tasks, such as operating systems, games, and other realtime systems. For these task the indeterministic nature and high runtime cost are unacceptable; for example we cannot afford to stop the world for several milliseconds when the task at hand requires sub-millisecond precision. For these use cases C, C++, and other languages with manual memory management still reign supreme. It turns out, despite what some programmers say, that humans are terrible at manually managing memory. The consequence of errors in manual memory management range from crashes and data corruption, to information leaks and remote code execution. Microsoft has found that about [70% of their security bugs](https://www.zdnet.com/article/microsoft-70-percent-of-all-security-bugs-are-memory-safety-issues/) are due to errors in manual memory management.
+
+[![Venn Diagram with two circles, the first labelled "Memory Safe" and the second labelled "Deterministic". The overlap between them is labelled "Rust"]({{ 'img/why-svelte-is-like-rust/memory-safe-venn-diagram.png' | asset_url }})](img/why-svelte-is-like-rust/memory-safe-venn-diagram.png)
+
+So back to lifetimes. They enable the compiler to determine **at compile time** when memory can be **safely** freed and reused. After compilation Rust code ends up kind of like C code written by a perfect programmer who makes no mistakes and knows exactly where to insert calls to `free`. The compiler can also use lifetimes to ensure that the code is correct and avoids common concurrency bugs in the presence of multiple threads. In conclusion, Rust solves the complex problem of memory management, while retaining the deterministic runtime performance required for many tasks that we typically associate with C and C++.
+
+> In conclusion, Rust solves the complex problem of memory management, while retaining the deterministic runtime performance required for many tasks that we typically associate with C and C++.
+
+Let's switch gears and talk about the web a bit. When I started working as web developer Javascript heavy applications where just starting to gain popularity. Back then, one would write applications in "vanilla Javascript"([ES5](https://en.wikipedia.org/wiki/ECMAScript#5th_Edition)) usually with [jQuery](https://jquery.com/). As complexity moved from the server side to the client, a class of bugs started occurring with the underlying cause of application state ending up out of sync with the [DOM](https://en.wikipedia.org/wiki/Document_Object_Model). This hadn't been a problem in server side rendered applications, because every state change involved rendering a completely new page from the current state. With client side applications one would write code to alter the DOM based on every state change, add a class here, remove an element over there etc. This approach was fraught with issues and almost always caused the afore mentioned bugs.
+
+Several client side libraries started popping up to try and tackle the issue of keeping state and UI in sync. [Knockout](https://knockoutjs.com/), [Backbone](https://backbonejs.org/), and [Ember](https://emberjs.com/) where some of these libraries. [Angular](https://angularjs.org/) from Google was also released around the same time. In common these libraries had the idea of two-way data bindings which would automatically keep the DOM in sync with changes to the underlying state and vice-versa. Still, these libraries didn't solve the problem completely.
+
+It would be great if we could, like on the server side, simply re-render our whole application in response to every single state change, but this would be extremely computationally expensive and would result in unacceptable performance. This notion of re-rendering in response to every state change is the idea that underpins [React](https://reactjs.org/), which was released in 2013. React got around the performance issues inherent in re-rendering the whole application with [Virtual DOM](https://reactjs.org/docs/faq-internals.html). Virtual DOM is an in memory representation of the DOM itself which React uses to determine a small set of changes that can be applied to the real DOM in response to every state change. The Virtual DOM was the crucial invention that made React a huge step forward for the web ecosystem. As an application developer one could "re-render" the whole application in response to every single state change and React would take care of making the desired changes to the underlying DOM.
+
+{% highlight plain %}
+// With React UI could
+// be treated as a pure function of state
+state => UI
+{% endhighlight %}
+
+React is of course not entirely free, to determine the small set of changes to make to the DOM it has to [reconcile](https://reactjs.org/docs/reconciliation.html) two Virtual DOMs on the client side. If we squint a bit, automatic garbage collection and the Virtual DOM are kind of similar, they are both runtime solutions to problems programmers just weren't up to solving correctly and consistently. So what's the _lifetimes_ of web frameworks? You've probably guessed it, it's Svelte!
+
+Svelte takes a similar approach to React and other frameworks that use a Virtual DOM, it's both reactive and declarative. However, just like Rust does automatic memory management at compile time, Svelte determines the possible changes to DOM based on the possible state changes at compile time. With Svelte we get the benefits of React et al. without the downside of client side reconciliation that taxes performance.
+
+[![Venn Diagram with two circles, the first labelled "Free from state bugs" and the second labelled "Optimal performance". The overlap between them is labelled "Svelte"]({{ 'img/why-svelte-is-like-rust/client-side-state-venn-diagram.png' | asset_url }})](img/why-svelte-is-like-rust/client-side-state-venn-diagram.png)
+
+## Hard Problems at Compile Time
+
+So why is Svelte like Rust? Svelte is like Rust because it solves a problem that programmers are clearly not capable of solving themselves **at compile time**. It's not all sunshine and rainbows however. As I mentioned at the top I haven't yet used Svelte, but with Rust long compiles times are a significant problem. When we solve complex problems at compile time the complexity of compilers naturally increases and we pay the price of longer compile times for our runtime gains. Luckily there's lots of [work](https://blog.mozilla.org/nnethercote/2019/10/11/how-to-speed-up-the-rust-compiler-some-more-in-2019/) happening to improve the compile times of the Rust compiler.
