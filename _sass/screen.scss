@@ -6,6 +6,10 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  font-family: $text-font-computer;
+}
+
 p {
   font-family: $text-font-computer;
 }
