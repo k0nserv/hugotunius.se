@@ -14,7 +14,9 @@ title: Blog - Hugo Tunius
           <h2>{{ post.title }}</h2>
         </a>
         <div class="post-preview-body">
-          {{ post.excerpt }}
+          <p>
+            {{ post.excerpt  | strip_html }}
+          </p>
         </div>
       </li>
     {% endfor %}
