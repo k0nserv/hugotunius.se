@@ -319,7 +319,7 @@ Of the 40 remaining charts in the data set which are the worst? Let's again star
 
 Here *Shopping(Free)* is the clear winner, perhaps because of amount of analytics used to improve and understand things like checkout conversion and cart abandonment.
 
-Another interesting observation here is that worst 23 charts, sorted be median, are all free. The first paid chart is *Travel(Paid)* at position 24.
+Another interesting observation here is that worst 23 charts, sorted by median, are all free. The first paid chart is *Travel(Paid)* at position 24.
 
 
 When considering the percentage of apps in each chart that don't collect any data there's commonality with the above. *Health & Fitness(Free)*, *Shopping(Free)*, and *Travel(Free)* all show up again.
@@ -485,3 +485,4 @@ The data at this stage is sparse, because only about 1/3 of the apps in the data
 
 If you have other questions about the data that you'd like me to cover please DM me on [Twitter](https://twitter.com/K0nserv) and I'll try to add them to this post, or if there are a lot of questions I'll do a follow up post.
 
+Now, if you'll excuse me, I'm off to uninstall Instagram.
