@@ -225,6 +225,22 @@ blockquote {
   }
 }
 
+sup, sub {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+
 a {
   text-decoration: none;
 
@@ -298,7 +314,7 @@ h5, h6 {
   }
 }
 
-p code {
+p code, li code {
   font-family: $monospace-font-family;
   font-size: 0.85em;
   padding: 0.2em 0.1em;
@@ -321,7 +337,7 @@ thead, tbody {
 
 tbody td, thead th {
   padding: $spacing-sm;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 thead th {
