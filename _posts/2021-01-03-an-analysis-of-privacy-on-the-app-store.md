@@ -477,7 +477,7 @@ In this data set there are 434 apps that collect such oxymoron data types. The w
 
 ## Conclusion
 
-We've learned that a fairly large amount of apps collect none or very little data that is linked to the user for non-app functionality purposes. However there are extreme outliers, not the least of which is Facebook.
+We've learned that a fairly large number of apps collect none or very little data that is linked to the user for non-app functionality purposes. However there are extreme outliers, not the least of which is Facebook.
 
 Free apps collect significantly more data than paid ones and anyone who cares about their privacy should opt to pay for the apps they use.
 
