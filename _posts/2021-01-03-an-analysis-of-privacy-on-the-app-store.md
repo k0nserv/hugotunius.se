@@ -220,11 +220,13 @@ Let's do some analysis of this data
 
 ## Analysis
 
-The data set I've collected contains 9082 combinations of apps and a position in a given category chart. In total there are 9040 unique apps in this data set.
+**Last Updated:** 7<sup>th</sup> of January 2020. Added data for Games, which was previously missing and extended analysis of all apps to larger data set.
+
+The data set I've collected contains 9477 combinations of apps and a position in a given category chart. In total there are 9435 unique apps in this data set.
 
 Most charts contain 200 or nearly 200 apps, however **Graphics & Design(Paid)**, **Developer Tools(Paid)**, and **Magazines & Newspapers(Paid)** all have fewer than 90 apps so I'm dropping them from further analysis.
 
-Because the privacy details have only been required for new apps and updates since mid December, not all apps contain information about privacy details. After removing those apps 3164 apps remain in the data set. Breaking this down by chart, several charts have less than 25 apps so I am dropping them from further analysis too. This leaves 3027 apps in the data set.
+Because the privacy details have only been required for new apps and updates since mid December, not all apps contain information about privacy details. After removing those apps 3370 apps remain in the data set. Breaking this down by chart, several charts have less than 25 apps so I am dropping them from further analysis too. This leaves 3233 apps in the data set.
 
 In total the following charts have been dropped:
 
@@ -241,7 +243,7 @@ For the analysis there are a few different data points that are interesting:
 
 + Apps that collect data this is linked to the user and how many such data types they collect.<sup>*</sup>
 + Apps that collect no data.
-+ Third Party tracking, i.e. tracking users across apps and websites owned by other companies and the how many(max 32) such data types they collect.
++ Third Party tracking, i.e. tracking users across apps and websites owned by other companies and how many(max 32) such data types they collect.
 
 \* Data that is linked to the user for the purpose of supporting app functionality, that is the `APP_FUNCTIONALITY` purpose, is legitimate and will be exclude from the following analysis. This leaves 160 data types spread across 5 purposes.
 
@@ -286,20 +288,20 @@ As previously established we'll look at a few different data points to determine
 
 [![Box Plot comparing free vs paid apps. The median number of data points collect is 2 for paid apps and 8 for free apps]({{ 'img/app-privacy/free-vs-paid-box-plot.svg' | asset_url }})](/img/app-privacy/free-vs-paid-box-plot.svg)
 
-Yes they certainly do. The median number of such data types for free apps is 8 and for paid apps it's 2. The mean is impacted by outliers in the free category and is ~12.1 for free apps and ~3.7 for paid apps.
+Yes they certainly do. The median number of such data types for free apps is 3 and for paid apps it's 0. The mean is impacted by outliers in the free category and is ~8.1 for free apps and ~0.5 for paid apps.
 
 If we look at the number of apps that don't collect data, as a percentage. It's also clear that paid apps are much less likely to collect data.
 
 | **Type** | **Percentage** | **# Apps** | **# Apps that don't collect** |
 |----------|------------------------------------------------|--------------------|----------------------------------|
-| Free     | ~9.7%                                          | 2459               | 239                              |
-| Paid     | ~55.8%                                         | 568                | 317                              |
+| Free     | ~9.1%                                          | 2628               | 240                              |
+| Paid     | ~53.9%                                         | 605                | 326                              |
 
 Lastly do free apps collect more data types that are used to track the users across other apps and websites i.e. data categories with the identifier `DATA_USED_TO_TRACK_YOU`?
 
 [![Box Plot comparing free vs paid apps. The median number of data types collect is 1 for paid apps and 3 for free apps]({{ 'img/app-privacy/free-vs-paid-tracking-box-plot.svg' | asset_url }})](/img/app-privacy/free-vs-paid-tracking-box-plot.svg)
 
-Yes they do, the median number of data types used to track users across other apps and websites is 1 for free apps and 0 for paid apps. The mean is ~2.0 for free apps, but only ~0.2 for paid apps.
+Yes they do, the median number of data types used to track users across other apps and websites is 1 for free apps and 0 for paid apps. The mean is ~2.3 for free apps, but only ~0.2 for paid apps.
 
 For all three metrics considered, it turns out that my Twitter followers were correct. Free apps do collect more data than paid ones.
 
@@ -311,28 +313,28 @@ Of the 40 remaining charts in the data set which are the worst? Let's again star
 
 | **Chart**              | **Mean**  | **Median** |
 |------------------------|-----------|------------|
+| Games(Free)            | 13.668639 | 8.0        |
 | Shopping(Free)         | 11.938931 | 8.0        |
 | Travel(Free)           | 10.486486 | 6.0        |
 | Sports(Free)           | 9.410000  | 5.5        |
 | Business(Free)         | 11.558559 | 5.0        |
-| Health & Fitness(Free) | 10.013245 | 5.0        |
 
-Here *Shopping(Free)* is the clear winner, perhaps because of amount of analytics used to improve and understand things like checkout conversion and cart abandonment.
+Here *Games(Free)* is the clear winner, perhaps because the number of free games that are financed entirely by third party ads combined with the high cost of making games. *Shopping(Free)* is a close second presumably due to analytics data collected to optimise purchases and checkout experiences.
 
-Another interesting observation here is that worst 23 charts, sorted by median, are all free. The first paid chart is *Travel(Paid)* at position 24.
+Another interesting observation here is that worst 24 charts, sorted by median, are all free. The first paid chart is *Games(Paid)* at position 25.
 
 
 When considering the percentage of apps in each chart that don't collect any data there's commonality with the above. *Health & Fitness(Free)*, *Shopping(Free)*, and *Travel(Free)* all show up again.
 
 | **Chart**              | **Percentage** | **#Apps** | **#Apps that don’t collect** |
 |------------------------|----------------|-----------|------------------------------|
+| Games (Free)           |          ~0.6% |       169 |                            1 |
 | Health & Fitness(Free) |            ~2% |       151 |                            3 |
 |       News(Free)       |          ~2.8% |       108 |                            3 |
 |     Shopping(Free)     |          ~3.1% |       131 |                            4 |
 |      Travel(Free)      |           ~3.6 |       111 |                            4 |
-|   Photo & Video(Free)  |          ~3.7% |       136 |                            5 |
 
-The same divide between paid and free apps occur again here. The first paid app shows up only at position 23(*Weather(Paid)* at ~27.8%).
+The same divide between paid and free apps occur again here. The first paid app shows up only at position 24(it's Games again, *Games(Paid)* at ~24.3%).
 
 When considering tracking across other apps and websites this is the result:
 
@@ -340,42 +342,50 @@ When considering tracking across other apps and websites this is the result:
 
 | **Chart**              | **Mean** | **Median** |
 |------------------------|----------|------------|
+| Games(Free)            | 6.088757 | 6          |
 | News(Free)             | 2.731481 | 3          |
 | Shopping(Free)         | 3.488550 | 2          |
 | Sports(Free)           | 3.020000 | 2          |
 | Entertainment(Free)    | 2.390000 | 2          |
 | Health & Fitness(Free) | 2.125828 | 2          |
 
-The trend with paid vs free apps repeats again, the first paid chart is *News(Paid)* at position 25. In fact by this measure all free charts track more than paid ones, although a fair number of free charts have a median of 0 too.
+Again *Games(Free)* is the worst, as I speculate above the reason is surely the amount of third party advertising used in games for monetisation.
+
+The trend with paid vs free apps repeats again, the first paid chart is, you guessed it, *Games(Paid)* at position 24.
 
 ### Worst Apps
 
-Let's now focus on individual apps, which are the absolute worst apps? While I was fetching the data, I tweeted some [preliminary results](https://twitter.com/K0nserv/status/1344051828602916877) based on a shallow analysis of response size. By this metric, all of Facebook's apps were extremely data hungry. Let's see if that conclusion holds up to more rigorous analysis.
+Let's now focus on individual apps, which are the absolute worst apps? While I was fetching the data, I tweeted some [preliminary results](https://twitter.com/K0nserv/status/1344051828602916877) based on a shallow analysis of response size. By this metric, all of Facebook's apps were extremely data hungry. Let's see if that conclusion holds up to more rigorous analysis. This data is based on a larger data set of 5274 apps collected from both UK and US stores rather than the smaller data set used for the analysis so far.
 
-Let's start by again considering data collected and linked to the user for non-app functionality purposes. Here are the top 20 apps by this measure.
+Let's start by again considering data collected and linked to the user for non-app functionality purposes. Here are the top 25 apps by this measure.
 
 | **App**                        | **#Data Types Collected** |
-|--------------------------------|--------------------------|
-| Instagram                      | 128                    |
-| Creator Studio from Facebook   | 128                    |
-| Portal from Facebook           | 128                    |
-| Boomerang from Instagram       | 128                    |
-| Threads from Instagram         | 128                    |
-| Layout from Instagram          | 128                    |
-| Facebook                       | 128                    |
-| Facebook Gaming                | 128                    |
-| Facebook Business Suite        | 128                    |
-| Oculus                         | 128                    |
-| Facebook Adverts Manager       | 128                    |
-| Messenger                      | 128                    |
-| LinkedIn: Job Search & News    | 91                     |
-| Klarna \| Shop now. Pay later. | 56                     |
-| Football Index - Bet & Trade   | 56                     |
-| The Telegraph News             | 55                     |
-| Ovia Pregnancy Tracker         | 54                     |
-| Ovia Parenting & Baby Tracker  | 54                     |
-| Ovia Fertility & Cycle Tracker | 54                     |
-| Nectar: Shop & Collect Points  | 53                     |
+|--------------------------------|---------------------------|
+| Facebook Gaming                | 128.0                     |
+| Instagram                      | 128.0                     |
+| Facebook Business Suite        | 128.0                     |
+| Facebook                       | 128.0                     |
+| Messenger                      | 128.0                     |
+| Oculus                         | 128.0                     |
+| Portal from Facebook           | 128.0                     |
+| Boomerang from Instagram       | 128.0                     |
+| Facebook Adverts Manager       | 128.0                     |
+| Threads from Instagram         | 128.0                     |
+| Layout from Instagram          | 128.0                     |
+| Creator Studio from Facebook   | 128.0                     |
+| LinkedIn: Job Search & News    | 91.0                      |
+| Scrabble® GO - New Word Game   | 60.0                      |
+| Football Index - Bet & Trade   | 56.0                      |
+| Klarna \| Shop now. Pay later. | 56.0                      |
+| Draw a Line: Tricky Brain Test | 55.0                      |
+| The Telegraph News             | 55.0                      |
+| Ovia Parenting & Baby Tracker  | 54.0                      |
+| Ovia Pregnancy Tracker         | 54.0                      |
+| Ovia Fertility & Cycle Tracker | 54.0                      |
+| Nectar: Shop & Collect Points  | 53.0                      |
+| Full Guide for Cyberpunk 2077  | 53.0                      |
+| NFL                            | 52.0                      |
+| Ring - Always Home             | 51.0                      |
 
 Can you spot the pattern? The top 12 apps are all from the same company, Facebook. All of Facebook's apps collect an ungodly amount of data, the nearest other app is LinkedIn which collects 37 fewer data types. Keep in mind that the maximum number of data types an app can collect and link to the user outside of app functionality is 160(32 data types, across 5 purposes), Facebook manages to get almost all the way there at 128. All of Facebook's apps declare the same set of data types collected. It's easier to look at the data Facebook **does not collect** than the data they do collect.
 
@@ -435,31 +445,35 @@ This is how the data breaks down for Facebook's apps:
 What about apps that track you across apps and websites used by other companies?
 
 
-| **App**                          | **#Data Types Tracked** |
-|----------------------------------|-------------------------|
-| M&S - Fashion, Food & Homeware   | 19.0                    |
-| The Telegraph News               | 17.0                    |
-| Yelp: Local Food & Services      | 17.0                    |
-| Football Index - Bet & Trade     | 17.0                    |
-| Depop - Buy and sell fashion     | 15.0                    |
-| EliteSingles: Dating for 30+     | 15.0                    |
-| Monese: A Banking Alternative    | 14.0                    |
-| 墨迹天气-MojiWeather             | 14.0                    |
-| Investing.com Stocks & Finance   | 14.0                    |
-| BetBull: Sport \| Tips \| Casino | 14.0                    |
-| IMVU: 3D Avatar Creator & Chat   | 13.0                    |
-| Nectar: Shop & Collect Points    | 13.0                    |
-| Yandex Go — taxi and delivery    | 13.0                    |
-| Gaia GPS Hiking, Biking Maps     | 13.0                    |
-| MamaBeing Fit                    | 13.0                    |
-| The Sole Womens                  | 13.0                    |
-| Yandex.Navigator – Parking       | 13.0                    |
-| Candide – Plants & Gardening     | 13.0                    |
-| TOPPS® KICK® Card Trader         | 13.0                    |
-| AP News                          | 12.0                    |
+| **App**                        | **#Data Types Tracked** |
+|--------------------------------|-------------------------|
+| Priceline - Hotel, Car, Flight | 23                      |
+| Paxful Bitcoin Wallet          | 23                      |
+| Chime - Mobile Banking         | 21                      |
+| Nordstrom Rack                 | 21                      |
+| Draw Coliseum                  | 20                      |
+| Nordstrom                      | 20                      |
+| M&S - Fashion, Food & Homeware | 19                      |
+| Bubble Pop! Puzzle Game Legend | 18                      |
+| Block! Triangle puzzle:Tangram | 18                      |
+| The Bellingham Herald News     | 17                      |
+| Fresno Bee News                | 17                      |
+| Football Index - Bet & Trade   | 17                      |
+| The State News                 | 17                      |
+| Miami Herald News              | 17                      |
+| Bradenton Herald News          | 17                      |
+| The Charlotte Observer News    | 17                      |
+| The Raleigh News & Observer    | 17                      |
+| Lexington Herald-Leader News   | 17                      |
+| The Telegraph News             | 17                      |
+| Kansas City Star News          | 17                      |
+| Fort Worth Star-Telegram News  | 17                      |
+| Yelp: Local Food & Services    | 17                      |
+| MLB Ballpark                   | 16                      |
+| onX Backcountry GPS Trail Maps | 16                      |
+| onX Hunt: GPS Tracking Tools   |                         |
 
-Here Facebook's apps aren't showing up, after all they are the people who facilitate the tracking across apps and websites. Unsurprisingly, all of the above apps are free. The first paid app in this list is Badoo Premium at position 147.
-
+Here Facebook's apps aren't showing up, after all they are the people who facilitate the tracking across apps and websites. Unsurprisingly, all of the above apps are free.
 
 
 ### Oxymorons
@@ -470,7 +484,7 @@ For example your phone number, email address, name, or physical address are alwa
 
 Let's look at apps that collect one of the above data types for the category *Data Not Linked to You*.
 
-In this data set there are 434 apps that collect such oxymoron data types. The worst two offenders, by count, are *myCricket App* and *FootballNet QPR* although neither collect precise location which is reassuring. *The Weather Network*, *OpenSnow*, *Yanosik*, *imo video calls and chat*, and *MyRadar Weather Radar* are examples of apps that collect precise locations for third party advertising purposes. In fact *imo video calls and chat*, and *MyRadar Weather Radar* collect precise location for every single one of the six different purposes.
+In this data set there are 740 apps that collect such oxymoron data types. The worst three offenders, by count, are *KFC: Online food delivery*(20), *myCricket App*(12), and *FootballNet QPR*(12) although neither collect precise location which is reassuring. *The Weather Network*, *OpenSnow*, *Yanosik*, *imo video calls and chat*, and *MyRadar Weather Radar* are examples of apps that collect precise locations for third party advertising purposes. In fact *imo video calls and chat*, and *MyRadar Weather Radar* collect precise location for every single one of the six different purposes.
 
 *Taimi: LGBTQ+ Dating, Chat* is an LGBTQ+ dating app that collects precise location for analytics purposes. This is of particular note because in many countries LGBTQ+ people face significant risk if their status is exposed.
 
@@ -480,6 +494,8 @@ In this data set there are 434 apps that collect such oxymoron data types. The w
 We've learned that a fairly large number of apps collect none or very little data that is linked to the user for non-app functionality purposes. However there are extreme outliers, not the least of which is Facebook.
 
 Free apps collect significantly more data than paid ones and anyone who cares about their privacy should opt to pay for the apps they use.
+
+Games are especially bad as category and especially with in third party tracking they stand out.
 
 The data at this stage is sparse, because only about 1/3 of the apps in the data set have added privacy details. In the future this will reach close to 100% and I will redo this analysis.
 
