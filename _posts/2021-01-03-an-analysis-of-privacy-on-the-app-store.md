@@ -475,7 +475,7 @@ What about apps that track you across apps and websites used by other companies?
 | Yelp: Local Food & Services    | 17                      |
 | MLB Ballpark                   | 16                      |
 | onX Backcountry GPS Trail Maps | 16                      |
-| onX Hunt: GPS Tracking Tools   |                         |
+| onX Hunt: GPS Tracking Tools   | 16                      |
 
 Here Facebook's apps aren't showing up, after all they are the people who facilitate the tracking across apps and websites. Unsurprisingly, all of the above apps are free.
 
