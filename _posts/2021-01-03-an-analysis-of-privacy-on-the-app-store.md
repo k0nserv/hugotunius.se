@@ -68,12 +68,15 @@ The structure of the data returned by the App Store API is
   "type": "apps",
   "href": <href>,
   "attributes": {
-    "privacyDetails": <privacy-details>
+    "privacyDetails": {
+      "managePrivacyChoicesUrl": <string>,
+      "privacyTypes": <privacy-types>
+    }
   }
 }
 {% endhighlight %}
 
-The `<privacy-details>` section of this document is the important bit. It's an array where each item has the following structure.
+The `<privacy-types>` section of this document is the important bit. It's an array where each item has the following structure.
 
 
 {% highlight json %}
