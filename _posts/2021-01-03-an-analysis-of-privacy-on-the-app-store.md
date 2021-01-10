@@ -36,6 +36,7 @@ The full list of categories is:
 | Entertainment          |
 | Finance                |
 | Food & Drink           |
+| Games                  |
 | Graphics & Design      |
 | Health & Fitness       |
 | Lifestyle              |
