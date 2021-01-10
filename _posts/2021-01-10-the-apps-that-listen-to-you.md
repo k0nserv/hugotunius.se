@@ -11,9 +11,9 @@ An oft discussed hypothesis is that certain apps, usually Facebook, listens to a
 
 This is an extension of my previous work on [analysing privacy on the app store](https://hugotunius.se/2021/01/03/an-analysis-of-privacy-on-the-app-store.html), I'd recommend reading that post before this one.
 
-In this post we are looking at apps that collect *"Audio Data"* under the *"User Content"* category for third party tracking use i.e. `DATA_USED_TO_TRACK_YOU`. Apple defines audio data as *The user’s voice or sound recordings*, thus it's not definite if these apps listen to your microphone or use some other type of sound recording.
+In this post I am looking at apps that collect *"Audio Data"* under the *"User Content"* category for third party tracking use i.e. `DATA_USED_TO_TRACK_YOU`. Apple defines audio data as *The user’s voice or sound recordings*, thus it's not definite if these apps listen to your microphone or use some other type of sound recording.
 
-At the time I am writing this my data set contains 14480 apps, but only slightly more than a third of those have provided privacy details. Of these apps there are five that confess to collecting audio data for third party tracking purposes:
+At the time of writing my data set contains 14480 apps, but only slightly more than a third of those have provided privacy details. Of these apps there are five that confess to collecting audio data for third party tracking purposes:
 
 + [Chime - Mobile Banking](https://apps.apple.com/us/app/chime-mobile-banking/id836215269)
 + [Periscope Live Video Streaming](https://apps.apple.com/gb/app/periscope-live-video-streaming/id972909677)
