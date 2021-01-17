@@ -349,7 +349,7 @@ thead th {
   @include var-property(border-bottom-color, --code-border-color, $default-code-border-color);
 }
 
-tbody tr:nth-child(2n) {
+tbody tr:nth-child(2n+1) {
   @include var-property(background-color, --code-border-color, $default-code-border-color);
 }
 
