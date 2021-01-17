@@ -71,7 +71,7 @@ Of course, this is just a single metric to measure a programming language by and
 
 <style type="text/css">
 svg .oval {
-  fill: var(--highlight-color, #000);
+  fill: var(--primary-color, #000);
 }
 
 svg text {
