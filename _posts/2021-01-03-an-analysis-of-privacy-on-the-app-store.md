@@ -23,7 +23,7 @@ Apple makes the privacy labelling data available for each app on the App Store v
 
 This only gets me the privacy data for a single app, but I want to analyse popular apps. A good source of popular apps are the charts the App Store provides on a per app category basis. An example of this is "Top Free" apps in "Education". These listings contain up to 200 apps per category and price point(i.e. free or paid).
 
-On the UK store, which is the store I've used for all this analysis, there are 24 categories. Each of which have top charts with up to 200 paid and 200 free apps. This means the theoretical total number of apps is 9600. However, because some apps occupy chart positions in multiple categories and because the charts also contain app bundles the actual number is lower.
+On the UK store, which is the store I've used for all this analysis, there are 25 categories. Each of which have top charts with up to 200 paid and 200 free apps. This means the theoretical total number of apps is 10 000. However, because some apps occupy chart positions in multiple categories and because the charts also contain app bundles the actual number is lower.
 
 The full list of categories is:
 
