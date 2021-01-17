@@ -14,6 +14,10 @@ p {
   font-family: $text-font-computer;
 }
 
+::selection {
+  @include var-property(background, --selection-color, $default-selection-color);
+}
+
 em {
   font-style: italic;
 }
@@ -107,6 +111,15 @@ article {
   border-bottom: 1px solid $separator-color;
 }
 
+.post-time {
+  font-family: $text-font-mobile;
+}
+
+.post-title {
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
 .post-footer {
   margin-top: $spacing-xl * 2;
 }
@@ -186,11 +199,11 @@ footer {
 }
 
 ul.posts {
-  margin-top: 15px;
+  margin-top: 16px;
   width: 100%;
 
   li {
-    margin-bottom: 15px;
+    margin-bottom: 64px;
     width: 100%;
 
     @include box-sizing(border-box);
@@ -217,7 +230,7 @@ blockquote {
   border-left: 5px solid transparent;
 
   @include var-property(color, --text-color, $default-text-color);
-  @include var-property(border-left-color, --highlight-color, $default-highlight-color);
+  @include var-property(border-left-color, --highlight-color, $default-primary-color);
 
   p {
     margin: 1em 0;

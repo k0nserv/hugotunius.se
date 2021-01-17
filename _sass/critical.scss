@@ -6,7 +6,8 @@
   --background-color: #{$light-background-color};
   --text-color: #{$light-text-color};
   --text-low-contrast-color: #{$light-text-low-contrast-color};
-  --highlight-color: #{$light-highlight-color};
+  --primary-color: #{$light-primary-color};
+  --selection-color: #{rgba($light-secondary-color, 0.5)};
   --link-color: #{$light-link-color};
   --link-hover-color: #{$light-link-hover-color};
   --code-background-color: #{$light-code-background-color};
@@ -20,7 +21,8 @@
     --background-color: #{$dark-background-color};
     --text-color: #{$dark-text-color};
     --text-low-contrast-color: #{$dark-text-low-contrast-color};
-    --highlight-color: #{$dark-highlight-color};
+    --primary-color: #{$dark-primary-color};
+    --selection-color: #{rgba($dark-secondary-color, 0.5)};
     --link-color: #{$dark-link-color};
     --link-hover-color: #{$dark-link-hover-color};
     --code-background-color: #{$dark-code-background-color};
