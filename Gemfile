@@ -9,5 +9,5 @@ group :jekyll_plugins do
   gem 'jekyll-gzip', '~> 2.4.2'
 end
 
-gem 'kramdown', '~> 2.3.0'
+gem 'kramdown', '~> 2.3.1'
 gem 'rake'
