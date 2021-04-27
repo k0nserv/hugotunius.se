@@ -15,15 +15,17 @@ This is an extension of my previous work on [analysing privacy on the app store]
 
 In this post I am looking at apps that collect *"Audio Data"* under the *"User Content"* category for third party tracking use i.e. `DATA_USED_TO_TRACK_YOU`. Apple defines audio data as *The user’s voice or sound recordings*, thus it's not definite if these apps listen to your microphone or use some other type of sound recording.
 
-My data set contains 18 835 apps, but only slightly more than a third of those have provided privacy details. Of these apps there are seven that confess to collecting audio data for third party tracking purposes:
+My data set contains 22 812 apps, of which about half have provided privacy details. Of these apps there are nine that confess to collecting audio data for third party tracking purposes:
 
-+ [Chime - Mobile Banking](https://apps.apple.com/us/app/chime-mobile-banking/id836215269)
-+ [Periscope Live Video Streaming](https://apps.apple.com/gb/app/periscope-live-video-streaming/id972909677)
-+ [Football Index - Bet & Trade](https://apps.apple.com/gb/app/football-index-bet-trade/id1068187100)
-+ [Magic Piano by Smule](https://apps.apple.com/us/app/magic-piano-by-smule/id421254504)
-+ [Paxful Bitcoin Wallet](https://apps.apple.com/us/app/paxful-bitcoin-wallet/id1443813253)
-+ [Min Doktor – läkare i mobilen](https://apps.apple.com/kw/app/min-doktor-l%C3%A4kare-i-mobilen/id1104213750)
-+ [Monifi - Mobile Banking](https://apps.apple.com/us/app/monifi-mobile-banking/id1525138651)
++ [Chime - Mobile Banking](https://apps.apple.com/us/app/id836215269)
++ [Periscope Live Video Streaming](https://apps.apple.com/us/app/id972909677)
++ [Scary chat stories, text games](https://apps.apple.com/us/app/id1382123330)
++ [Football Index - Bet & Trade](https://apps.apple.com/us/app/id1068187100)
++ [Magic Piano by Smule](https://apps.apple.com/us/app/id421254504)
++ [Paxful Bitcoin Wallet](https://apps.apple.com/us/app/id1443813253)
++ [Millionaire Match: Upscale App](https://apps.apple.com/us/app/id1484587490)
++ [Min Doktor – läkare i mobilen](https://apps.apple.com/us/app/id1104213750)
++ [Monifi - Mobile Banking](https://apps.apple.com/us/app/id1525138651)
 
 
 ## Update History
@@ -32,3 +34,4 @@ My data set contains 18 835 apps, but only slightly more than a third of those h
 |------------|------------------------------|
 | 2020-01-10 | Initial publication          |
 | 2020-01-17 | Updated with larger data set |
+| 2020-04-27 | Refreshed data               |
