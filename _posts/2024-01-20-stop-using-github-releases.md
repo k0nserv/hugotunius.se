@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Stop Using (only) GitHub Releases"
-date: 2024-01-24
+date: 2024-01-20
 categories: programming culture git vsc ux opinion
 description: >
     A rant on the practice of storing release notes in GitHub's release features and the negative consequences of that
