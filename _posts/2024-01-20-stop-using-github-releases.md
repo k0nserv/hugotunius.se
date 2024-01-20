@@ -1,7 +1,10 @@
 ---
 layout: post
-title: "Stop (only) Using GitHub Releases"
-categories: programming culture git vsc ux
+title: "Stop Using (only) GitHub Releases"
+date: 2023-07-09
+categories: programming culture git vsc ux opinion
+description: >
+    A rant on the practice of storing release notes in GitHub's release features and the negative consequences of that
 ---
 
 The other day at work I, accidentally, roped myself into upgrading some dependencies in our Rust services. These were breaking changes, so not just a case of running `cargo update`. I had to understand the changes and make the appropriate modifications to our code. Adopting breaking changes can be frustrating in the best of times, but it was particularly annoying this time because none of these projects kept a `CHANGELOG.md` files, although they all had release notes on GitHub. 
