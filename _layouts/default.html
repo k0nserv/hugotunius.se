@@ -19,13 +19,13 @@
       content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
     >
     {% if page.description %}
-    <meta property="og:description" content="{{ page.description }}">
-    <meta name="twitter:description" content="{{ page.description }}">
-    <meta name="description" content="{{ page.description }}">
+    <meta property="og:description" content="{{ page.description | strip }}">
+    <meta name="twitter:description" content="{{ page.description | strip }}">
+    <meta name="description" content="{{ page.description | strip }}">
     {% else %}
-    <meta property="og:description" content="{{ site.description }}">
-    <meta name="twitter:description" content="{{ site.description }}">
-    <meta name="description" content="{{ site.description }}">
+    <meta property="og:description" content="{{ site.description | strip }}">
+    <meta name="twitter:description" content="{{ site.description | strip }}">
+    <meta name="description" content="{{ site.description | strip }}">
     {% endif %} {% if page.categories %} {% for category in page.categories
     limit:1 %}
     <meta content="{{ category }}" property="article:section">
