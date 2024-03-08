@@ -187,6 +187,30 @@ Here for each location that needs to redraw we emit the sequence `ESC[{y};{x}` f
 
 This approach works very well, it's possible to draw with only `1ms` long pauses between drawing. [This video](https://www.youtube.com/watch?v=q3ysisqmpwA) is a full demonstration of the puzzle that first explores the maze, then draws the shortest path from the origin to the oxygen system and lastly floods the maze with oxygen.
 
+## Going Faster
+
+In 2022, years after writing this post, I stumbled upon a [blog post](https://www.textualize.io/blog/posts/7-things-about-terminals) by [Will McGugan](https://twitter.com/willmcgugan) and it inspired me to revisit this code.
+
+The primary thing I learned about from Will's blog post was [Synchronized Output](https://gist.github.com/christianparpart/d8a62cc1ab659194337d73e399004036). This, relatively recent, addition to the set of ANSI escape codes allows a program to batch drawing commands. Implementing this is as simple as emitting `\x1B[?2026`(BSU) before rendering a diff, and then `\x1B[?2026l`(ESU) after the diff is rendered.
+
+{% highlight rust %}
+let draw: Vec<_> = if supports_synchronized_output {
+    // 1. BSU = Begin Synchronized Update
+    // 2. Draw commands
+    // 3. ESU = End Synchronized Update
+    std::iter::once(tmp_style.paint(BSU))
+        .chain(draw_commands)
+        .chain(std::iter::once(tmp_style.paint(ESU)))
+        .collect()
+} else {
+    draw_commands.collect()
+};
+{% endhighlight %}
+
+As an added bonus, when using synchronized output the redundant re-rendering of ~25 sprites is no longer required. 
+
+
+
 The full source is available on my [GitHub](https://github.com/k0nserv/advent-of-rust-2019/blob/005155fd22903b0fe7dbef86efa5b3919ca4a946/examples/day15.rs)
 
 ## Conclusion
