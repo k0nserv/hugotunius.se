@@ -1,71 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta
       name="google-site-verification"
       content="aGq7zAjMnnyZ0dYnL5TgY0_K2U6JkQ8m_6naHMqHneQ"
-    />
-    <link rel="me" href="https://infosec.exchange/@k0nserv" />
-    <meta name="viewport" content="width=device-width,minimum-scale=1" />
-    <meta name="theme-color" content="9226EA" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@K0nserv" />
-    <meta name="twitter:creator" content="@K0nserv" />
-    <meta property="og:title" content="{{ page.title }}" />
-    <meta property="og:type" content="blog" />
+    >
+    <link rel="me" href="https://infosec.exchange/@k0nserv">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="theme-color" content="9226EA">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@K0nserv">
+    <meta name="twitter:creator" content="@K0nserv">
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:type" content="blog">
     <meta
       property="og:url"
       content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
-    />
+    >
     {% if page.description %}
-    <meta property="og:description" content="{{ page.description }}" />
-    <meta name="twitter:description" content="{{ page.description }}" />
-    <meta name="description" content="{{ page.description }}" />
+    <meta property="og:description" content="{{ page.description }}">
+    <meta name="twitter:description" content="{{ page.description }}">
+    <meta name="description" content="{{ page.description }}">
     {% else %}
-    <meta property="og:description" content="{{ site.description }}" />
-    <meta name="twitter:description" content="{{ site.description }}" />
-    <meta name="description" content="{{ site.description }}" />
+    <meta property="og:description" content="{{ site.description }}">
+    <meta name="twitter:description" content="{{ site.description }}">
+    <meta name="description" content="{{ site.description }}">
     {% endif %} {% if page.categories %} {% for category in page.categories
     limit:1 %}
-    <meta content="{{ category }}" property="article:section" />
+    <meta content="{{ category }}" property="article:section">
     {% endfor %} {% endif %} {% if page.image %}
-    <meta property="og:image" content="{{ page.image | prepend: site.url }}" />
+    <meta property="og:image" content="{{ page.image | prepend: site.url }}">
     <meta
       name="twitter:image:src"
       content="{{ page.image | prepend: site.url }}"
-    />
+    >
     {% else %}
     <meta
       property="og:image"
       content="{{ '/favicon-192.png' | prepend: site.url}}"
-    />
+    >
     <meta
       name="twitter:image:src"
       content="{{ '/favicon-192-white-bg.png' | prepend: site.url }}"
-    />
+    >
     {% endif %}
 
     <style>
       {% capture style %}{% include critical.scss %}{% endcapture %}{{ style | sassify }}
     </style>
-    <link rel="stylesheet" href="{{ 'assets/css/styles.css' | asset_url }}" />
+    <link rel="stylesheet" href="{{ 'assets/css/styles.css' | asset_url }}">
     <link
       rel="apple-touch-icon-precomposed"
       href="{{ 'favicon-152.png' | asset_url }}"
-    />
+    >
     <link
       rel="icon"
       sizes="192x192"
       href="{{ 'favicon-192.png' | asset_url }}"
-    />
+    >
     <title>{{ page.title }}</title>
     <link
       rel="canonical"
       href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
-    />
-    <link rel="alternate" type="application/atom+xml" title="{{ site.title }}"
-    href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+    >
+    <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
   </head>
   <body>
     {% include header.html %}
