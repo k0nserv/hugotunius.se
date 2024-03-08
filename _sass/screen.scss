@@ -330,7 +330,7 @@ h5, h6 {
 p code, li code {
   font-family: $monospace-font-family;
   font-size: 0.85em;
-  padding: 0.2em 0.1em;
+  padding: 0.1em 0.2em;
 
   @include code-background;
 }
