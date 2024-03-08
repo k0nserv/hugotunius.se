@@ -21,11 +21,11 @@
     {% if page.description %}
     <meta property="og:description" content="{{ page.description }}" />
     <meta name="twitter:description" content="{{ page.description }}" />
-    <meta name="Description" content="{{ page.description }}" />
+    <meta name="description" content="{{ page.description }}" />
     {% else %}
     <meta property="og:description" content="{{ site.description }}" />
     <meta name="twitter:description" content="{{ site.description }}" />
-    <meta name="Description" content="{{ site.description }}" />
+    <meta name="description" content="{{ site.description }}" />
     {% endif %} {% if page.categories %} {% for category in page.categories
     limit:1 %}
     <meta content="{{ category }}" property="article:section" />
