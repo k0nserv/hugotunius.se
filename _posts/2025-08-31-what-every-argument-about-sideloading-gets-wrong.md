@@ -1,0 +1,17 @@
+---
+layout: post
+title: "What Every Argument About Sideloading Gets Wrong"
+categories: opinion ios android
+date: 2025-08-31
+description: > 
+    Refuting the common and flawed argument of "running software on hardware you own".
+---
+
+Sideloading has been a hot topic for the last decade. Most recently, Google has [announced](https://9to5google.com/2025/08/25/android-apps-developer-verification/) further restrictions on the practice in Android. Many hundreds of comment threads have discussed these changes over the years. One point in particular is always made: "I should be able to run whatever code I want on hardware I own". I agree entirely with this point, but within the context of this discussion it's moot.
+
+> "I should be able to run whatever code I want on hardware I own"
+
+When Google restricts your ability to install certain applications they aren't constraining what you can do with the hardware you own, they are constraining what you can do using the software they provide with said hardware. It's through this control of the operating system that Google is exerting control, not at the hardware layer. You often don't have full access to the hardware either and building new operating systems to run on mobile hardware is impossible, or at least much harder than it should be. This is a separate, and I think more fruitful, point to make. Apple is a better case study than Google here. Apple's success with iOS partially derives from the tight integration of hardware and software. An iPhone without iOS is a very different product to what we understand an iPhone to be. Forcing Apple to change core tenets of iOS by legislative means would undermine what made the iPhone successful.
+
+You shouldn't take away from this that I am some stalwart defender of the two behemoths Apple and Google, far from it. However, our critique shouldn't be of the restrictions in place in the operating systems they provide -- rather, it should focus on the ability to truly run any code we want on hardware we own. In this context this would mean having the ability and documentation to build or install alternative operating systems on this hardware. It should be possible to run Android on an iPhone and manufacturers should be required by law to provide enough technical support and documentation to make the development of new operating systems possible. If you want to play Playstation games on your PS5 you must suffer Sony's restrictions, but if you want to convert your PS5 into an emulator running Linux that should be possible.
+
