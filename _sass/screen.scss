@@ -143,8 +143,8 @@ article {
   }
 
   & li {
-    line-height: 1.4em;
-    margin-bottom: 0.3em;
+    line-height: 1.3;
+    margin-bottom: 0.25lh;
   }
 
   & ul li {
@@ -214,9 +214,9 @@ ul.posts {
 /* Typography       */
 /* ---------------- */
 p {
-  margin: 1.5em 0;
+  margin: 1lh 0;
   font-size: 1rem;
-  line-height: 1.6em;
+  line-height: 1.45;
 }
 
 strong {
@@ -231,11 +231,6 @@ blockquote {
 
   @include var-property(color, --text-color, $default-text-color);
   @include var-property(border-left-color, --primary-color, $default-primary-color);
-
-  p {
-    margin: 1em 0;
-    line-height: 1.3em;
-  }
 }
 
 sup, sub {
@@ -273,9 +268,9 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $header-font;
-  margin-top: 1em;
+  margin-top: 1lh;
   margin-bottom: 0.375em;
-  line-height: 1.05em;
+  line-height: 1.05;
 }
 
 
@@ -308,7 +303,7 @@ h5, h6 {
 .highlight {
   font-family: $monospace-font-family;
   font-size: 0.85em;
-  line-height: 1.1em;
+  line-height: 1.2;
   margin: $spacing-md 0;
   padding: $spacing-base;
 
