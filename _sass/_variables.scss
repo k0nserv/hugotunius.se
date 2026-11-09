@@ -1,5 +1,7 @@
+@use "sass:color";
+
 $border-color: rgb(120, 120, 120);
-$border-color-light: lighten($border-color, 25%);
+$border-color-light: color.adjust($border-color, $lightness: 25%);
 $separator-color: #545454;
 
 $header-font: "GillSans-Light", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
@@ -29,7 +31,7 @@ $light-text-low-contrast-color: #545157;
 $light-primary-color: #9226EA;
 $light-secondary-color: #EAA4AC;
 $light-link-color: $light-primary-color;
-$light-link-hover-color: darken($light-link-color, 15%);
+$light-link-hover-color: color.adjust($light-link-color, $lightness: -15%);
 $light-code-background-color: rgba(0, 0, 0, 0.1);
 $light-code-border-color: rgba(0, 0, 0, 0.15);
 $light-heading-anchor-filter: invert(0%);
@@ -42,7 +44,7 @@ $dark-text-low-contrast-color: #999999;
 $dark-primary-color: #6E8ECF;
 $dark-secondary-color: #CCA38F;
 $dark-link-color: $dark-primary-color;
-$dark-link-hover-color: lighten($dark-link-color, 10%);
+$dark-link-hover-color: color.adjust($dark-link-color, $lightness: 10%);
 $dark-code-background-color: rgba(255, 255, 255, 0.1);
 $dark-code-border-color: rgba(255, 255, 255, 0.15);
 $dark-heading-anchor-filter: invert(100%);

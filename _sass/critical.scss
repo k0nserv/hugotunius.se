@@ -1,6 +1,6 @@
-@import 'variables';
-@import 'reset';
-@import 'utils';
+@use 'variables' as *;
+@use 'reset';
+@use 'utils' as *;
 
 :root {
   --background-color: #{$light-background-color};

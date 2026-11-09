@@ -1,5 +1,6 @@
-@import 'variables';
-@import 'utils';
+@use 'sass:math';
+@use 'variables' as *;
+@use 'utils' as *;
 
 html, body {
   -webkit-font-smoothing: antialiased;
@@ -67,8 +68,8 @@ article, nav {
 
 /* --- Layout --- */
 article {
-  margin-bottom: $section-spacing-vertical / 2;
-  margin-top: $section-spacing-vertical / 2;
+  margin-bottom: math.div($section-spacing-vertical, 2);
+  margin-top: math.div($section-spacing-vertical, 2);
   margin: 0 auto;
 }
 

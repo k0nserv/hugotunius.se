@@ -1,4 +1,4 @@
-@import 'variables';
+@use 'variables' as *;
 
 @mixin box-sizing($box-model) {
   -webkit-box-sizing: $box-model;
