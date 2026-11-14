@@ -26,7 +26,7 @@ Of people's concerns about data centres, power consumption is perhaps most salie
 
 At least everyone's stock portfolios are up? Well, consider that only [62% of US households][7] own any stocks in the first place, and then that most of the stock market is [owned by the top 10%][8]. In fact, many might see no upside in AI-driven stock market growth, but if the bubble were to pop, the resulting reverberations are a clear downside.
 
-When these these data centres are proposed, the democratic process is often subverted, or at least undermined. Local politicians [bound by non-disclosure agreements][11] face the community's ire over shadowy developers and obscured end-clients. It's a bad look with parallels to another high-salience issue of 2026: [Flock cameras][10]. This further fuels antagonism against data centres and AI.
+When these data centres are proposed, the democratic process is often subverted, or at least undermined. Local politicians [bound by non-disclosure agreements][11] face the community's ire over shadowy developers and obscured end-clients. It's a bad look with parallels to another high-salience issue of 2026: [Flock cameras][10]. This further fuels antagonism against data centres and AI.
 
 Thus, for the median Western person, a data centre in their local community is a glaring, loud, visual reminder of AI. AI, which in the best case will free us from disease, labour, and suffering, but is more likely to further wealth inequality and rob them of their livelihood. AI, which according to its makers has a non-zero chance of killing us all. AI, which might increase their energy prices, hasten climate change, and pollute their air and water, while reducing their property value.
 
