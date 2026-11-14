@@ -2,6 +2,7 @@
 layout: post
 title: "The Sword Juggling Fallacy"
 categories: opinion rust c
+date: 2026-06-15
 description: >
     Sword juggling is simple, just don't cut your fingers off in the process
 ---
