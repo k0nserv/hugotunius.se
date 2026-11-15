@@ -7,7 +7,7 @@ layout: default
     <time class="post-time low-contrast" datetime="{{ page.date | date: '%Y-%m-%d' }}">{{page.date | date_to_string }}</time>
     <h1 class="post-title">{{page.title}}</h1>
   </header>
-  <div class="post-body">{{content}}</div>
+  <div class="post-body{% if page.indented_paragraphs %} indented-paragraphs{% endif %}">{{content}}</div>
   {% assign related_pages = page | related_pages %}
     <footer class="post-footer">
       {% if related_pages.size > 0 %}
