@@ -6,7 +6,7 @@ date: 2016-01-30
 ---
 
 Swift, unlike many other languages, does not separate primitive values from classes and structs.
-As we'll see in this post this choice allows for some interesting and powerful constructs.
+As we'll see in this post, this choice allows for some interesting and powerful constructs.
 In other languages, such as Java, the primitive types `int`, `double`, `float`, and `boolean`
 are distinctly different from classes and, because of that, you can't use them in the same way.
 
@@ -16,7 +16,7 @@ in this post utilizes extensions to extend 32 bit integer values.
 
 ## Colors
 
-A color is usually represented as a tuple of 3 or 4 values in the range 0, 255.
+A color is usually represented as a tuple of 3 or 4 values in the range [0, 255].
 In OSX and iOS development we have `UIColor` and `NSColor`.
 
 A straightforward way to implement a color value is shown below. It's
@@ -38,14 +38,14 @@ array of ints with some kind of packing. There are different ways to pack a
 color value into an int.
 
 For example using a 32 bit unsigned integer
-with 4 8 bit values. This packing is usually referred to as `ABRG`
+with 4 8-bit values. This packing is usually referred to as `ABGR`
 for `Alpha`, `Blue`, `Green`, and `Red`. The alternative `RGBA` is also used.
 
 [![]({{ 'img/swift-primitive-value-extension/32-bit-color.png' | asset_url }})](/img/swift-primitive-value-extension/32-bit-color.png)
 
-`ABGR` packing is show in the image above.
+`ABGR` packing is shown in the image above.
 
-In Swift rather than using a struct we can pack color values into integer values.
+In Swift, rather than using a struct we can pack color values into integer values.
 With extensions and typealiasing we can create something that behaves like a
 struct while retaining the compact memory layout and speed of a packed integer.
 
@@ -93,10 +93,10 @@ extension Color {
 {% endhighlight %}
 
 In other languages this pattern can still be used, but it requires that
-everyone is a aware when a 32 bit int is actually a color and not a
+everyone is aware when a 32 bit int is actually a color and not a
 normal int. The fact that Swift supports extensions of primitive types like this,
 is extremely powerful and gives us type safety, information hiding, and auto
-completion. Memory efficient layout is retained as well as comatibility with C APIS that expect arrays of ints as color values.
+completion. Memory efficient layout is retained as well as compatibility with C APIs that expect arrays of ints as color values.
 
 This code was written as a part of my [Swift
 Ray tracer](https://github.com/k0nserv/SwiftTracer-Core). The full source of this

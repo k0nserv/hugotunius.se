@@ -21,7 +21,7 @@ If you just want to read the juicy details feel free to skip to the [analysis](#
 
 Apple makes the privacy labelling data available for each app on the App Store via an API used by the App Store apps. By reverse engineering the App Store apps I've figured out how to make the API divulge this data on a per app basis.
 
-This only gets me the privacy data for a single app, but I want to analyse popular apps. A good source of popular apps are the charts the App Store provides on a per app category basis. An example of this is "Top Free" apps in "Education". These listings contain up to 200 apps per category and price point(i.e. free or paid).
+This only gets me the privacy data for a single app, but I want to analyse popular apps. A good source of popular apps are the charts the App Store provides on a per app category basis. An example of this is "Top Free" apps in "Education". These listings contain up to 200 apps per category and price point (i.e. free or paid).
 
 On the UK store, which is the store I've used for all this analysis, there are 25 categories. Each of which have top charts with up to 200 paid and 200 free apps. This means the theoretical total number of apps is 10 000. However, because some apps occupy chart positions in multiple categories and because the charts also contain app bundles the actual number is lower.
 
@@ -228,26 +228,26 @@ Let's do some analysis of this data
 
 The data set I've collected contains 9477 combinations of apps and a position in a given category chart. In total there are 9435 unique apps in this data set.
 
-Most charts contain 200 or nearly 200 apps, however **Graphics & Design(Paid)**, **Developer Tools(Paid)**, and **Magazines & Newspapers(Paid)** all have fewer than 90 apps so I'm dropping them from further analysis.
+Most charts contain 200 or nearly 200 apps, however **Graphics & Design (Paid)**, **Developer Tools (Paid)**, and **Magazines & Newspapers (Paid)** all have fewer than 90 apps so I'm dropping them from further analysis.
 
 Because the privacy details have only been required for new apps and updates since mid December, not all apps contain information about privacy details. After removing those apps 3370 apps remain in the data set. Breaking this down by chart, several charts have less than 25 apps so I am dropping them from further analysis too. This leaves 3233 apps in the data set.
 
 In total the following charts have been dropped:
 
-* Education(Paid)
-* Navigation(Paid)
-* Sports(Paid)
-* Business(Paid)
-* Food & Drink(Paid)
-* Shopping(Paid)
-* Medical(Paid)
-* Magazines & Newspapers(Paid)
+* Education (Paid)
+* Navigation (Paid)
+* Sports (Paid)
+* Business (Paid)
+* Food & Drink (Paid)
+* Shopping (Paid)
+* Medical (Paid)
+* Magazines & Newspapers (Paid)
 
 For the analysis there are a few different data points that are interesting:
 
 + Apps that collect data this is linked to the user and how many such data types they collect.<sup>*</sup>
 + Apps that collect no data.
-+ Third Party tracking, i.e. tracking users across apps and websites owned by other companies and how many(max 32) such data types they collect.
++ Third Party tracking, i.e. tracking users across apps and websites owned by other companies and how many (max 32) such data types they collect.
 
 \* Data that is linked to the user for the purpose of supporting app functionality, that is the `APP_FUNCTIONALITY` purpose, is legitimate and will be exclude from the following analysis. This leaves 160 data types spread across 5 purposes.
 
@@ -313,49 +313,49 @@ For all three metrics considered, it turns out that my Twitter followers were co
 
 Of the 40 remaining charts in the data set which are the worst? Let's again start by considering the number of data types collected and linked to the user for non-app functionality purposes.
 
-[![Box Plot with the top 5 worst charts measured by their median: "Shopping(Free)", "Travel(Free)", "Sports(Free)", "Business(Free)", and "Health & Fitness(Free)"]({{ 'img/app-privacy/worsts-charts-box-plot.svg' | asset_url }})](/img/app-privacy/worsts-charts-box-plot.svg)
+[![Box Plot with the top 5 worst charts measured by their median: "Shopping (Free)", "Travel (Free)", "Sports (Free)", "Business (Free)", and "Health & Fitness (Free)"]({{ 'img/app-privacy/worsts-charts-box-plot.svg' | asset_url }})](/img/app-privacy/worsts-charts-box-plot.svg)
 
 | **Chart**              | **Mean**  | **Median** |
 |------------------------|-----------|------------|
-| Games(Free)            | 13.668639 | 8.0        |
-| Shopping(Free)         | 11.938931 | 8.0        |
-| Travel(Free)           | 10.486486 | 6.0        |
-| Sports(Free)           | 9.410000  | 5.5        |
-| Business(Free)         | 11.558559 | 5.0        |
+| Games (Free)            | 13.668639 | 8.0        |
+| Shopping (Free)         | 11.938931 | 8.0        |
+| Travel (Free)           | 10.486486 | 6.0        |
+| Sports (Free)           | 9.410000  | 5.5        |
+| Business (Free)         | 11.558559 | 5.0        |
 
-Here *Games(Free)* is the clear winner, perhaps because the number of free games that are financed entirely by third party ads combined with the high cost of making games. *Shopping(Free)* is a close second presumably due to analytics data collected to optimise purchases and checkout experiences.
+Here *Games (Free)* is the clear winner, perhaps because the number of free games that are financed entirely by third party ads combined with the high cost of making games. *Shopping (Free)* is a close second presumably due to analytics data collected to optimise purchases and checkout experiences.
 
-Another interesting observation here is that worst 24 charts, sorted by median, are all free. The first paid chart is *Games(Paid)* at position 25.
+Another interesting observation here is that worst 24 charts, sorted by median, are all free. The first paid chart is *Games (Paid)* at position 25.
 
 
-When considering the percentage of apps in each chart that don't collect any data there's commonality with the above. *Health & Fitness(Free)*, *Shopping(Free)*, and *Travel(Free)* all show up again.
+When considering the percentage of apps in each chart that don't collect any data there's commonality with the above. *Health & Fitness (Free)*, *Shopping (Free)*, and *Travel (Free)* all show up again.
 
 | **Chart**              | **Percentage** | **#Apps** | **#Apps that don’t collect** |
 |------------------------|----------------|-----------|------------------------------|
 | Games (Free)           |          ~0.6% |       169 |                            1 |
-| Health & Fitness(Free) |            ~2% |       151 |                            3 |
-|       News(Free)       |          ~2.8% |       108 |                            3 |
-|     Shopping(Free)     |          ~3.1% |       131 |                            4 |
-|      Travel(Free)      |           ~3.6 |       111 |                            4 |
+| Health & Fitness (Free) |            ~2% |       151 |                            3 |
+|       News (Free)       |          ~2.8% |       108 |                            3 |
+|     Shopping (Free)     |          ~3.1% |       131 |                            4 |
+|      Travel (Free)      |           ~3.6 |       111 |                            4 |
 
-The same divide between paid and free apps occur again here. The first paid app shows up only at position 24(it's Games again, *Games(Paid)* at ~24.3%).
+The same divide between paid and free apps occur again here. The first paid app shows up only at position 24 (it's Games again, *Games (Paid)* at ~24.3%).
 
 When considering tracking across other apps and websites this is the result:
 
-[![Box Plot with the top 5 worst measured by their median data types collected for third party tracking: "News(Free)", "Entertainment(Free)", "Sports(Free)", "Shopping(Free)", and "Health & Fitness(Free)"]({{ 'img/app-privacy/worsts-charts-tpt-box-plot.svg' | asset_url }})](/img/app-privacy/worsts-charts-tpt-box-plot.svg)
+[![Box Plot with the top 5 worst measured by their median data types collected for third party tracking: "News (Free)", "Entertainment (Free)", "Sports (Free)", "Shopping (Free)", and "Health & Fitness (Free)"]({{ 'img/app-privacy/worsts-charts-tpt-box-plot.svg' | asset_url }})](/img/app-privacy/worsts-charts-tpt-box-plot.svg)
 
 | **Chart**              | **Mean** | **Median** |
 |------------------------|----------|------------|
-| Games(Free)            | 6.088757 | 6          |
-| News(Free)             | 2.731481 | 3          |
-| Shopping(Free)         | 3.488550 | 2          |
-| Sports(Free)           | 3.020000 | 2          |
-| Entertainment(Free)    | 2.390000 | 2          |
-| Health & Fitness(Free) | 2.125828 | 2          |
+| Games (Free)            | 6.088757 | 6          |
+| News (Free)             | 2.731481 | 3          |
+| Shopping (Free)         | 3.488550 | 2          |
+| Sports (Free)           | 3.020000 | 2          |
+| Entertainment (Free)    | 2.390000 | 2          |
+| Health & Fitness (Free) | 2.125828 | 2          |
 
-Again *Games(Free)* is the worst, as I speculate above the reason is surely the amount of third party advertising used in games for monetisation.
+Again *Games (Free)* is the worst, as I speculate above the reason is surely the amount of third party advertising used in games for monetisation.
 
-The trend with paid vs free apps repeats again, the first paid chart is, you guessed it, *Games(Paid)* at position 24.
+The trend with paid vs free apps repeats again, the first paid chart is, you guessed it, *Games (Paid)* at position 24.
 
 ### Worst Apps
 
@@ -391,7 +391,7 @@ Let's start by again considering data collected and linked to the user for non-a
 | NFL                            | 52.0                      |
 | Ring - Always Home             | 51.0                      |
 
-Can you spot the pattern? The top 12 apps are all from the same company, Facebook. All of Facebook's apps collect an ungodly amount of data, the nearest other app is LinkedIn which collects 37 fewer data types. Keep in mind that the maximum number of data types an app can collect and link to the user outside of app functionality is 160(32 data types, across 5 purposes), Facebook manages to get almost all the way there at 128. All of Facebook's apps declare the same set of data types collected. It's easier to look at the data Facebook **does not collect** than the data they do collect.
+Can you spot the pattern? The top 12 apps are all from the same company, Facebook. All of Facebook's apps collect an ungodly amount of data, the nearest other app is LinkedIn which collects 37 fewer data types. Keep in mind that the maximum number of data types an app can collect and link to the user outside of app functionality is 160 (32 data types, across 5 purposes), Facebook manages to get almost all the way there at 128. All of Facebook's apps declare the same set of data types collected. It's easier to look at the data Facebook **does not collect** than the data they do collect.
 
 **Data types not collected by Facebook:**
 
@@ -438,12 +438,12 @@ This is how the data breaks down for Facebook's apps:
 
 | **Purpose/Category**                    | **#Data Types** |
 |-----------------------------------------|-----------------|
-| Used to Track(3rd Party)                 | 7               |
-| Linked To You(Analytics)                | 30.0            |
-| Linked To You(Developer Advertising)    | 24.0            |
-| Linked To You(Other Purposes)           | 25.0            |
-| Linked To Your(Product Personalisation) | 25.0            |
-| Linked To You(Third Party Advertising)  | 24.0            |
+| Used to Track (3rd Party)                 | 7               |
+| Linked To You (Analytics)                | 30.0            |
+| Linked To You (Developer Advertising)    | 24.0            |
+| Linked To You (Other Purposes)           | 25.0            |
+| Linked To Your (Product Personalisation) | 25.0            |
+| Linked To You (Third Party Advertising)  | 24.0            |
 
 
 What about apps that track you across apps and websites used by other companies?

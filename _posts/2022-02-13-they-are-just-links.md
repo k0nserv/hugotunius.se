@@ -7,7 +7,7 @@ description: >
   On the promises of NFTs and they're actual purpose as a speculative asset with no regard for artists or decentralisation.
 ---
 
-NFTs exploded into mainstream popularity in the latter half of 2021 and if you follow me on Twitter you'll know I'm not a fan. In "crypto"-speak I'm [NGMI(not gonna make it)](https://blog.libertasbella.com/glossary/ngmi/). But what are NFTs anyway?
+NFTs exploded into mainstream popularity in the latter half of 2021 and if you follow me on Twitter you'll know I'm not a fan. In "crypto"-speak I'm [NGMI (not gonna make it)](https://blog.libertasbella.com/glossary/ngmi/). But what are NFTs anyway?
 
 The common meme is that NFTs are kind of like receipts or, more charitably, certificates of ownership. The ugly monkey you buy is actually a piece of state maintained in a smart contract on a Blockchain, typically Ethereum. Ethereum based NFTs implement the [EIP-721](https://eips.ethereum.org/EIPS/eip-721) standard. This standard describes the behaviour that a smart contract should implement to be an NFT. NFTs aren't exclusively visual art, but that's the most common form so let's roll with it. 
 
@@ -17,7 +17,7 @@ Let's use the [ugly monkeys](https://boredapeyachtclub.com/#/) as an example. Th
 tokenURI(uint256 tokenId) external view returns (string);
 {% endhighlight %}
 
-Given a token id return a URI that points to its metadata. For the ugly monkeys the URI looks like this `https://us-central1-bayc-metadata.cloudfunctions.net/api/tokens/{token_id}`. That domain doesn't look particularly decentralised, in fact it's part of Google cloud. If Google goes out of business or otherwise lose access to this domain who knows what your ugly monkey will be pointing to in the future. To boot Google are [notorious](https://killedbygoogle.com/) for sun setting products. With GCP maybe they'll not be as aggressive, but it's not hard to imagine a future were Google changes the structure of cloud function URLs. A change like that would have a long grace period and most users would easily migrate since changing a URL is not that hard. Except if you have locked the URL inside an immutable smart contract on the Ethereum Blockchain that is.
+Given a token id return a URI that points to its metadata. For the ugly monkeys the URI looks like this `https://us-central1-bayc-metadata.cloudfunctions.net/api/tokens/{token_id}`. That domain doesn't look particularly decentralised, in fact it's part of Google Cloud. If Google goes out of business or otherwise lose access to this domain who knows what your ugly monkey will be pointing to in the future. To boot Google are [notorious](https://killedbygoogle.com/) for sun setting products. With GCP maybe they'll not be as aggressive, but it's not hard to imagine a future were Google changes the structure of cloud function URLs. A change like that would have a long grace period and most users would easily migrate since changing a URL is not that hard. Except if you have locked the URL inside an immutable smart contract on the Ethereum Blockchain that is.
 
 Here's a concrete example with ugly monkey `#5465`.
 
@@ -63,7 +63,7 @@ The image of the ugly monkey is stored on [IPFS](https://en.wikipedia.org/wiki/I
 
 NFT ~~shillers~~ proponents will tell you NFTs are all about proving ownership. What does a given NFT actually prove? Mostly that there's some state locked in an Ethereum contract where your wallet is recorded as the owner.
 
-Here's a pop quiz: Which of these two is the BAYC contract and which is my own NFT UMBC(Ugly Monkey Boat Cabal)?
+Here's a pop quiz: Which of these two is the BAYC contract and which is my own NFT UMBC (Ugly Monkey Boat Cabal)?
 
 1. `0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D` 
 1. `0xBC4CA0EdA9647A8aB7C2061c2E118A18a936f13D`

@@ -38,9 +38,9 @@ If you spend your time on better things than tweeting and thus have fewer than 3
 
 When I first read about the 3200 tweets limitation I assumed that after deleting the most recent 3200 tweets I could just run the script again, but no such luck. After deleting 3200 tweets the timeline endpoint returns nothing, regardless of the number of remaining undeleted tweets. In my case I had about 5000 tweets left after running Chris's script.
 
-The crux of the matter is that we need the tweets, well their ids anyway, in order to delete them, a bit of a catch 22. I dug through the Twitter API documentation and some discussion online but there doesn't seem to exist a programmatic way to access all the tweets for a given account. One neat trick I found used browser automation to search for tweets from the given account day by day, but this would have required 3285(9 years) searches for my account.
+The crux of the matter is that we need the tweets, well their ids anyway, in order to delete them, a bit of a catch 22. I dug through the Twitter API documentation and some discussion online but there doesn't seem to exist a programmatic way to access all the tweets for a given account. One neat trick I found used browser automation to search for tweets from the given account day by day, but this would have required 3285 (9 years) searches for my account.
 
-I was about to give up, but then I realised that Twitter has to give me all the data they hold about me if I ask them(thank you EU!). I [asked Twitter for an archive of my data](https://twitter.com/settings/download_your_data) and waited. It took a couple of days but eventually Twitter sent me a comprehensive archive of everything I had ever done on Twitter, including every tweet and their ids.
+I was about to give up, but then I realised that Twitter has to give me all the data they hold about me if I ask them (thank you EU!). I [asked Twitter for an archive of my data](https://twitter.com/settings/download_your_data) and waited. It took a couple of days but eventually Twitter sent me a comprehensive archive of everything I had ever done on Twitter, including every tweet and their ids.
 
 In the archive there's a file called `data/tweets.js` which starts with the line:
 

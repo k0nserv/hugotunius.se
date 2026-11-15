@@ -10,7 +10,7 @@ redirect_from:
 
 [Elasticsearch](https://www.elastic.co/products/elasticsearch) is an awesome tool for building fast and powerful search experiences. However integration testing with Elasticsearch can be painful. Elasticsearch uses a HTTP REST API to modify, setup, and search indices. The nature of this API is eventually consistent, creating an index will not be done when the HTTP call returns. This eventual consistency can become painful in test since creating, indexing, searching and then removing the index needs to happen in rapid succession.
 
-When this happens test will start failing for seemingly unexplainable reasons at random times. The errors will look like this:
+When this happens tests will start failing for seemingly unexplainable reasons at random times. The errors will look like this:
 
 {% highlight text line %}
 Elasticsearch::Transport::Transport::Errors::ServiceUnavailable at /users
@@ -34,7 +34,7 @@ The solution I've found to work is using the `refresh_index!` method after creat
 
 > The refresh API allows to explicitly refresh one or more index, making all operations performed since the last refresh available for search. The (near) real-time capabilities depend on the index engine used. For example, the internal one requires refresh to be called, but by default a refresh is scheduled periodically.
 
-Putting it all together a test for a users endpoint might have the following `before` and `after` actions
+Putting it all together, a test for a users endpoint might have the following `before` and `after` actions
 
 {% highlight ruby line %}
 RSpec.describe '/users' do

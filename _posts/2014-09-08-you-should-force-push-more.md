@@ -14,7 +14,7 @@ The atlassian [guide](https://www.atlassian.com/git/tutorial/remote-repositories
 
 > Use force push only as a last resort when everything else fails. Things might get ugly for you and for your repository.
 
-In November 2013 the developers of [Jenkins](http://jenkins-ci.org/) had a huge problem at their hands when one of the developers accidentally [force pushed more than 150 repositories](https://news.ycombinator.com/item?id=6713742).
+In November 2013 the developers of [Jenkins](http://jenkins-ci.org/) had a huge problem on their hands when one of the developers accidentally [force pushed more than 150 repositories](https://news.ycombinator.com/item?id=6713742).
 
 ### Ground rules
 
@@ -24,9 +24,9 @@ As warned above force push is quite a powerful feature which will cause issues w
 
 **2** Work should not be done in master or development, but in [feature branches](https://www.atlassian.com/git/workflows#!workflow-feature-branch). Features should be small enough that only one developer work in the each branch or in a fork of the main repository.
 
-**3** Commits are considered immutable only after they have been merged into master or development. Before that they maybe be reordered, squashed and deleted at will.
+**3** Commits are considered immutable only after they have been merged into master or development. Before that they may be be reordered, squashed and deleted at will.
 
-With these grounds rules established we can now look at a few scenarios when it's useful to use force push.
+With these ground rules established we can now look at a few scenarios when it's useful to use force push.
 
 ### Cleaning up the intention of a feature branch
 
@@ -209,7 +209,7 @@ git push origin branch-name -f
 Force push is an extremely powerful ally when utilised correctly. It helps a team keep the git log clean from surplus and misleading commits by instead making the intent of each feature branch and each commit clearer. However a good branching model and workflow is required to support heavy usage of force push. The fact that commits are not considered immutable and sacred until they have been merged into a stable branch is very important if force push is to be used heavily. The forking model used for open source projects on GitHub works very well with this paradigm of force pushing. As a policy I always use rebase and force push to clean-up my pull request just before being merged into the forked repository.
 
 ### Log comparison
-The following is a comparison between using and not using the techniques I've showed in this post.
+The following is a comparison between using and not using the techniques shown in this post.
 
 **Without force push**
 {% highlight text line %}

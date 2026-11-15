@@ -4,7 +4,7 @@ title:  "Custom Control Structures in Swift"
 categories: swift ios xcode
 redirect_from: /swift/ios/xcode/2014/08/19/custom-control-structures-in-swift.html
 ---
-Apple's new language `Swift` has some really nice syntactic sugar for common operations. One of the new features is closures which are similar to blocks in Objective-C, but they have a few tricks that blocks don't have. When the last argument to a function is a closure it's possible to put it outside the parenthesis of the call to the function. This makes it possible to write control structures which look(almost) identical to the normal control structures.
+Apple's new language `Swift` has some really nice syntactic sugar for common operations. One of the new features is closures, which are similar to blocks in Objective-C, but they have a few tricks that blocks don't have. When the last argument to a function is a closure it's possible to put it outside the parentheses of the call to the function. This makes it possible to write control structures which look (almost) identical to the normal control structures.
 
 ### Reimplementing the if-statement
 Let's use these trailing closures to reimplement the if-statement
@@ -15,12 +15,13 @@ func _if(condition: BooleanType, action: () -> ()) {
   }
 }
 
+
 _if(1 < 2) {
   println("1 is less than 2")
 }
 {% endhighlight %}
 
-The second argument to the function `_if` is a closure with no parameters and no return value. It has the type `() -> ()`. Because the last argument is a closure it can be moved outside of parenthesis that make up the method call. Unfortunately we still need to parenthesis to invoke the function which is not the case for the real if statement, but we can just pretend this is `C`.
+The second argument to the function `_if` is a closure with no parameters and no return value. It has the type `() -> ()`. Because the last argument is a closure it can be moved outside of parentheses that make up the method call. Unfortunately, we still need the parentheses to invoke the function, which is not the case for the real if statement, but we can just pretend this is `C`.
 
 > The `BooleanType` is a protocol that can be adopted to allow any type to work with the various control structures in the language such as if and while
 
@@ -33,7 +34,7 @@ func _if_without_if(condition: BooleanType, action: () -> ()) {
     let actions = [{}, action]
 
     // boolValue returns a Bool and we can abuse the fact that
-    // hashValue of true is 1 and then hashValue of false is 0 to
+    // hashValue of true is 1 and the hashValue of false is 0 to
     // get the correct closure to run
     actions[condition.boolValue.hashValue]()
 }
@@ -62,10 +63,10 @@ _while(i < 10) {
 }
 {% endhighlight %}
 
-Here I am using a Swift feature called auto closure which wraps any expression passed in a closure. This is why the condition is prefixed with `@autoclosure`. Without this there would be no way to reevaluate if the condition had changed as a cause of the loop body, we would have an infinite loop or no loop at all. Again we can use the trailing closure syntax to closely emulate the native `while`.
+Here I am using a Swift feature called auto closure which wraps any expression passed in a closure. This is why the condition is prefixed with `@autoclosure`. Without this there would be no way to reevaluate if the condition had changed as a result of the loop body, we would have an infinite loop or no loop at all. Again we can use the trailing closure syntax to closely emulate the native `while`.
 
 #### While without while
-Again the `_while` function is cheating and uses the `while` statement to accomplish it's function. Here's my solution without using `while`.
+Again the `_while` function is cheating and uses the `while` statement to accomplish its function. Here's my solution without using `while`.
 
 {% highlight swift line %}
 func _while_without_while(condition: @autoclosure () -> BooleanType, 
@@ -75,7 +76,7 @@ func _while_without_while(condition: @autoclosure () -> BooleanType,
     // The condition is called each time to 
     // see if the loop should continue
     if condition() {
-      // Then the acutal action is called
+      // Then the actual action is called
       action()
 
       // Lastly the closure calls itself recursively
@@ -97,13 +98,13 @@ _while_without_while(j < 10) {
 
 ### Useful examples
 
-The examples shown above are nothing but hacks for the sake of fun. Let's now look at some examples of control structure which are more useful. Starting with a something that ruby and perl programmers will recognize, `unless`.
+The examples shown above are nothing but hacks for the sake of fun. Let's now look at some examples of control structure which are more useful. Starting with something that Ruby and Perl programmers will recognize, `unless`.
 
 #### Unless
 
-`unless` is a keyword found in ruby and perl. It's essentially a reverse if statement which will branch if the condition is false.
+`unless` is a keyword found in Ruby and Perl. It's essentially a reverse if statement which will branch if the condition is false.
 
-Here it is in swift
+Here it is in Swift
 {% highlight swift line %}
 func unless(condition: BooleanType, action: () -> ()) {
   if condition.boolValue == false {
@@ -133,7 +134,7 @@ var x = 1
 
 println("\(x)")
 {% endhighlight %}
->Don't do do that in real code though. Operator overloading and definition should be used sparsely.
+>Don't do that in real code though. Operator overloading and definition should be used sparingly.
 
 #### Maybe
 
@@ -153,7 +154,7 @@ maybe {
 {% endhighlight %}
 #### Threads
 
-As most iOS developer learn the hard way modifying the UI from any thread but the main thread is not a good idea. This task is so common that it deserves a control structure. As does the task of performing a task in the background.
+As most iOS developers learn the hard way modifying the UI from any thread but the main thread is not a good idea. This task is so common that it deserves a control structure. As does the task of performing a task in the background.
 
 {% highlight swift line %}
 func onMainThread(action: () -> ()) {
