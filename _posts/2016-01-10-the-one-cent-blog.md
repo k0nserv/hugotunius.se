@@ -13,22 +13,22 @@ description: >
 
 This post details how I run this website for about $0.01/month with great scaling and HTTPS using [S3][aws_s3], [Jekyll][jekyll], [Cloudflare][cloudflare] and [Travis-CI][travis_ci]. It should be noted that the cost varies depending on how much traffic your site sees, $0.01/month is just what I typically see on this website.
 
-This post outlines how this site is setup and how you can created your own. Variables that will be different for each site are written as `<variable_name>`, everything should be replaced including `<` and `>` for example `<author_name>` is replaced by `Hugo Tunius` for my site.
+This post outlines how this site is setup and how you can create your own. Variables that will be different for each site are written as `<variable_name>`, everything should be replaced including `<` and `>` for example `<author_name>` is replaced by `Hugo Tunius` for my site.
 
 If you have any questions feel free to ask me about it on [Twitter](https://twitter.com/k0nserv).
 
 ## Domain
 
-Any website needs a domain. If you don't have one you'll have to register one, this will also cost you some money(around $10/year is what I pay). Register a domain with a domain registrar, for example [Namecheap][namecheap]. It's not important which registrar you use as long as they support changing the name servers for your domain.
+Any website needs a domain. If you don't have one you'll have to register one, this will also cost you some money (around $10/year is what I pay). Register a domain with a domain registrar, for example [Namecheap][namecheap]. It's not important which registrar you use as long as they support changing the name servers for your domain.
 
-## Github
+## GitHub
 
-This blog is hosted on [Github][github_hugotunius_se] for free because it's open source. I've created a template blog based on this one which can be forked and modified to create your own. It's available [here](https://github.com/k0nserv/one-cent-blog). The template features some basic CSS and [AMP](https://www.ampproject.org) support. I am by no means a CSS genius, but the provided template is responsive, lightweight and clean. After forking the template there are some steps to set up Jekyll.
+This blog is hosted on [GitHub][github_hugotunius_se] for free because it's open source. I've created a template blog based on this one which can be forked and modified to create your own. It's available [here](https://github.com/k0nserv/one-cent-blog). The template features some basic CSS and [AMP](https://www.ampproject.org) support. I am by no means a CSS genius, but the provided template is responsive, lightweight and clean. After forking the template there are some steps to set up Jekyll.
 
 * Run `bundle install`.
 * Copy the `_config.yml.sample` file to `_config.yml` and open it in your favourite text editor.
 * Fill in the variables `name_of_site`, `timezone`, `url`, and `author_name`.
-* At this point you should be able to use use `bundle exec rake watch` to start Jekyll.
+* At this point you should be able to use `bundle exec rake watch` to start Jekyll.
 * Navigate to http://localhost:4000 to see your site.
 * At this point you can also make any modifications to the CSS and layout if you wish.
 
@@ -38,7 +38,7 @@ The next step is getting your site up on S3
 
 ## AWS
 
-[S3][aws_s3] is a file storage solution by [AWS(Amazon Web Services)](https://aws.amazon.com/). It's the only part of this setup that actually incurs any cost. This is were the one cent per month comes from.
+[S3][aws_s3] is a file storage solution by [AWS (Amazon Web Services)](https://aws.amazon.com/). It's the only part of this setup that actually incurs any cost. This is where the one cent per month comes from.
 
 **Note:** AWS S3 is charged based on usage so it could cost you more than one cent per month. I recommend setting up a billing alert somewhere around $5
 
@@ -50,7 +50,7 @@ The next step is getting your site up on S3
 
 In the template repo there's a readymade [CloudFormation script](https://aws.amazon.com/cloudformation/) that will setup all the resources you need. These are an S3 bucket configured for website hosting, and a deployment user that can upload to the bucket.
 
-+ Using your AWS root account got to the [CloudFormation Console](https://console.aws.amazon.com/cloudformation/home) in your AWS region of choice.
++ Using your AWS root account go to the [CloudFormation Console](https://console.aws.amazon.com/cloudformation/home) in your AWS region of choice.
 + Click `Create Stack`
 + Upload the `cloudformation.yml` file from the template blog and click next.
 + Fill in the name of the stack. The bucket name has to be the same as the domain for the routing via Cloudflare to work, in my case `hugotunius.se`.
@@ -59,9 +59,9 @@ In the template repo there's a readymade [CloudFormation script](https://aws.ama
 
 ## Travis-CI
 
-Travis CI is used to deploy the site to S3 every time a new commit is pushed to master. With open source repositories on Github Travis-CI is free. Setting up travis is simple
+Travis CI is used to deploy the site to S3 every time a new commit is pushed to master. With open source repositories on GitHub Travis-CI is free. Setting up Travis is simple
 
-+ Sign in using your Github account.
++ Sign in using your GitHub account.
 + Go to [Account](https://travis-ci.org/profile/) and click `Sync account`.
 + Find the repository for your website and switch it on.
 
@@ -71,7 +71,7 @@ Travis CI is used to deploy the site to S3 every time a new commit is pushed to 
 + Run `$ travis encrypt S3_ACCESS_ID=< BucketAccessKey from stack output > --add env.global`.
 + Run `$ travis encrypt S3_ACCESS_SECRET=< BucketSecretKey from stack output > --add env.global`.
 + Update `s3_website.yml` with the real bucket name instead of `<BUCKET_NAME>`.
-+ At this point committing and pushing will deploy the site to your s3 bucket.
++ At this point committing and pushing will deploy the site to your S3 bucket.
 + It will be accessible at `http://<bucket_name>.s3-website-<aws-region>.amazonaws.com/`. Mine is at `hugotunius.s3-website-us-east-1.amazonaws.com`.
 
 It's possible to deploy directly from the command line using:
@@ -80,13 +80,13 @@ It's possible to deploy directly from the command line using:
 $ S3_ACCESS_ID=< BucketAccessKey from stack output > S3_ACCESS_SECRET=< BucketSecretKey from stack output > bundle exec rake deploy
 {% endhighlight %}
 
-Remember to put a space infront of the command to prevent the secret values ending up in your history.
+Remember to put a space in front of the command to prevent the secret values ending up in your history.
 
 ## Cloudflare
 
-Cloudflare is a company that provides a set of service based around caching, DDOS protection, DNS, and security. I use them primarily for caching, security, and DNS. Two things they offer that are very valuable is free HTTPs and having traffic to the root of your domain be served from your s3 bucket(this removes the need for a www subdomain). Before using Cloudflare I had a digitalocean droplet under the A record for `hugotunius.se` that simply redirect HTTP traffic to `www.hugotunius.se` which was a CNAME for my s3 bucket. With Cloudflare's feature [CNAME Flattening](https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root/) Cloudflare can handle traffic to the root domain as a CNAME of the s3 bucket.
+Cloudflare is a company that provides a set of service based around caching, DDOS protection, DNS, and security. I use them primarily for caching, security, and DNS. Two things they offer that are very valuable are free HTTPs and having traffic to the root of your domain be served from your S3 bucket (this removes the need for a www subdomain). Before using Cloudflare I had a DigitalOcean droplet under the A record for `hugotunius.se` that simply redirect HTTP traffic to `www.hugotunius.se` which was a CNAME for my S3 bucket. With Cloudflare's feature [CNAME Flattening](https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root/) Cloudflare can handle traffic to the root domain as a CNAME of the S3 bucket.
 
-Simply signup to Cloudflare and follow their great on boarding tutorial and configure your DNS settings to use CNAME Flattening for your root record pointing it to your s3 bucket.
+Simply signup to Cloudflare and follow their great on boarding tutorial and configure your DNS settings to use CNAME Flattening for your root record pointing it to your S3 bucket.
 
 
 ![]({{ 'img/one-cent-blog/cloudflare-dns.png' | asset_url }})
@@ -94,16 +94,16 @@ Simply signup to Cloudflare and follow their great on boarding tutorial and conf
 
 Under `Crypto` set SSL to `Flexible` and enable HTTP Strict Transport Security.
 
-To force traffic to be HTTP setup a page rule for `http://<domain>/*` in Cloudflare under `Page Rules`
+To force traffic to be HTTPS setup a page rule for `http://<domain>/*` in Cloudflare under `Page Rules`
 ![]({{ 'img/one-cent-blog/force-https.png' | asset_url }})
 
 ## Additions
 
-This sections contains some features that can be added to the site.
+This section contains some features that can be added to the site.
 
 #### Google Analytics
 
-Adding Google Analytics is as simply as adding the small script tag they provide to `_includes/head.html`.
+Adding Google Analytics is as simple as adding the small script tag they provide to `_includes/head.html`.
 
 #### Comments
 

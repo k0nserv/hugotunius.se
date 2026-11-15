@@ -12,7 +12,7 @@ This post is based on version 0.8.0 which is currently the recommended version.
 
 ## View Caching
 
-While AMS is quite a bit faster than jbuilder it is still painfuly slow without caching the resulting json in a few scenarios. Luckily caching is extremely simple. In its simplest form this is all it takes
+While AMS is quite a bit faster than jbuilder it is still painfully slow without caching the resulting json in a few scenarios. Luckily caching is extremely simple. In its simplest form this is all it takes
 
 {% highlight ruby line %}
 class PostSerializer < ActiveModel::Serializer
@@ -51,11 +51,11 @@ components = [self.class.to_s.underscore, cache_key, 'serializable-hash']
 cache.fetch expand_cache_key(components)
 {% endhighlight %}
 
-As seen here the actual serializer is not part of the cache key. This will cause any changes made to serializer to not appear before the cache is invalidated either manually or over time as the `updated_at` fields of the models change. ActionView solves this by calculating a Digest for each view. The digest will change when ever the view or any of it's dependencies change. I will show a simpler approach to solving this problem.
+As seen here the actual serializer is not part of the cache key. This will cause any changes made to serializer to not appear before the cache is invalidated either manually or over time as the `updated_at` fields of the models change. ActionView solves this by calculating a Digest for each view. The digest will change whenever the view or any of its dependencies change. I will show a simpler approach to solving this problem.
 
 ### Versioning the view
 
-The general idea is to keep a version number for each serializer, this is quite prone to human error, but with a defined step during code reviews it should be caught. To facilitate this we will create a base serializer with this functionallity.
+The general idea is to keep a version number for each serializer, this is quite prone to human error, but with a defined step during code reviews it should be caught. To facilitate this we will create a base serializer with this functionality.
 
 {% highlight ruby line %}
 class BaseSerializer < ActiveModel::Serializer
@@ -101,7 +101,7 @@ The new cache key will look like this
 
 > version/1/post/1-20150121205945000000000
 
-and after AMS applies their extra key components like this:
+and after AMS applies its extra key components like this:
 
 > post_serializer/version/1/post/1-20150121205945000000000
 
@@ -130,9 +130,9 @@ if stale? etag: components, last_modified: @post.updated_at
 end
 {% endhighlight %}
 
-We leave the `last_modified` set to `@post.updated_at` because as long as the Etag changes the request will be considered to be stale by rails.
+We leave the `last_modified` set to `@post.updated_at` because as long as the Etag changes the request will be considered to be stale by Rails.
 
-**Warning:** If the client only uses `If-Modified-Since` and skips `If-None-Match` this can still cause staleness of the view. To combat this the version of the Serializer could be changed to a unixtimestamp and the maximum of the version and the model's `updated_at` could be for the `last_modified` value.
+**Warning:** If the client only uses `If-Modified-Since` and skips `If-None-Match` this can still cause staleness of the view. To combat this the version of the Serializer could be changed to a unixtimestamp and the maximum of the version and the model's `updated_at` could be used for the `last_modified` value.
 
 ## Removing the human error
 

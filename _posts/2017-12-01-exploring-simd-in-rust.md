@@ -7,13 +7,13 @@ description: >
   My experience exploring the use of SIMD instructions in Rust to speed up Vector dot products for Raytracing.
 ---
 
-**Update:** [Cameron Hart](https://twitter.com/bitshifternz) did some further [research](https://twitter.com/bitshifternz/status/937803758657929217) on my methodologies in this post and what he found was quite interesting. In my benchmarks I forgot to account for the role of, the now removed, black box in the rust `test` crate. The purpose of the black box is to trick the optimizer into not optiziming the benchmarks. This is exactly what happened unfortunately. Based on this I went back and re-did the SIMD implementation in my raytracer fully. This resulted in a 60% increase in performance much more in line with what I expected initially. Much like my [f64 vs f32](https://hugotunius.se/2017/12/04/rust-f64-vs-f32.html) experiment showed the lesson is that micro benchmarks are dangerous and it is easy to be fooled by them. The original post is presented without modification below. I suggest reading Cameron's research to understand my mistakes.
+**Update:** [Cameron Hart](https://twitter.com/bitshifternz) did some further [research](https://twitter.com/bitshifternz/status/937803758657929217) on my methodologies, and what he found was quite interesting. In my benchmarks, I forgot to account for the role of, the now removed, black box in the Rust `test` crate. The purpose of the black box is to trick the optimizer into not optimising the benchmarks. Unfortunately, this is exactly what happened. Based on this, I went back and re-did the SIMD implementation in my raytracer. This resulted in a 60% increase in performance, much more in line with what my initial expectation. Much like my [f64 vs f32](https://hugotunius.se/2017/12/04/rust-f64-vs-f32.html) experiment showed, the lesson is that micro benchmarks are dangerous and it is easy to be fooled by them. The original post is presented without modification below. I suggest reading Cameron's research to understand my mistakes.
 
-If you follow me on [Twitter](https://twitter.com/K0nserv) it is unlikely you have missed that I have been building a [Raytracer](http://github.com/k0nserv/rusttracer) in [Rust](https://www.rust-lang.org/en-US/). Unsatisfied with the performance I have been profiling it and considering ways to speed up rendering. Among the techniques I have been interested in are SIMD instructions.
+If you follow me on [Twitter](https://twitter.com/K0nserv), it is unlikely you have missed that I have been building a [Raytracer](http://github.com/k0nserv/rusttracer) in [Rust](https://www.rust-lang.org/en-US/). Unsatisfied with its performance, I have been profiling it and considering ways to speed up rendering. Among the techniques I have been interested in are SIMD instructions.
 
-[SIMD](https://en.wikipedia.org/wiki/SIMD), Single Instruction, multiple data, are special CPU instructions in modern CPUs. They enable the processor to compute several values with a single cycle. On Intel platforms these instructions are called SSE for Streaming SMID Extensions.
+[SIMD](https://en.wikipedia.org/wiki/SIMD), Single Instruction, Multiple Data, are special CPU instructions in modern CPUs. They enable the processor to compute several values with a single instruction. On Intel platforms, these instructions are called SSE for Streaming SIMD Extensions.
 
-In my Raytracer the most critical code is the ray-triangle intersection tests. When rendering most scenes a lot of time is spent in this part of code and millions or even billions of tests are performed. Core to the ray-triangle intersection algorithm are vector dots products and cross products. Given this I figured that using SIMD instructions for the dot product would speed up the rendering significantly. It did not and what follows is a summary of why this is.
+In my Raytracer, the most critical code is the ray-triangle intersection tests. When rendering most scenes, a lot of time is spent in this part of code; millions or even billions of tests are performed. Core to the ray-triangle intersection algorithm are vector dot products and cross products. Given this, I figured that using SIMD instructions for the dot product would speed up the rendering significantly. It did not; what follows is a summary of why this is.
 
 At the time of writing this is the definition of my `Vector3` datatype
 
@@ -36,7 +36,7 @@ impl Vector {
 {% endhighlight %}
 
 
-Given my assumption that using SIMD instructions to compute the dot product would improve performance I integrated the [stdsmid](https://docs.rs/stdsimd/0.0.3/stdsimd/) crate and wrote a new implementation of the dot product using SSE.
+Given my assumption that using SIMD instructions to compute the dot product would improve performance, I integrated the [stdsimd](https://docs.rs/stdsimd/0.0.3/stdsimd/) crate and wrote a new implementation of the dot product using SSE.
 
 {% highlight rust line %}
 pub struct Vector3 {
@@ -70,13 +70,13 @@ impl Vector3 {
     }
 {% endhighlight %}
 
-I suspected that creating the required `stdsimd::simd::f64x4` value twice for very dot product would annihilate any performance improvement from the SIMD instructions so I opted to create it when creating the vector itself.
+I suspected that creating the required `stdsimd::simd::f64x4` value twice for every dot product would annihilate any performance improvement from the SIMD instructions, so I opted to create it when creating the vector itself.
 
-I ran a few benchmarks by rendering the same scene several times. To my surprise I found that the performance degraded by roughly 20%. Somehow the new SIMD version of the code was slower, not faster.
+I ran a few benchmarks by rendering the same scene several times. To my surprise, I found that the performance degraded by roughly 20%. Somehow, the new SIMD version of the code was slower, not faster.
 
-This result confused me. I was sure I had messed up the implementation somehow. While researching I discovered [`_mm_dp_ps`](https://msdn.microsoft.com/en-us/library/bb514054(v=vs.120).aspx), an SIMD instruction designed specifically to compute dot products. Unfortunately this instructions uses 128bit registers and is implemented for single precision floats. I use double precision floats in my raytracer. However I was convinced that my implementation was incorrect and decided to create a new project to investigate this.
+This result confused me. I was sure I had messed up the implementation somehow. While researching I discovered [`_mm_dp_ps`](https://msdn.microsoft.com/en-us/library/bb514054(v=vs.120).aspx), a SIMD instruction designed specifically to compute dot products. Unfortunately, this instruction uses 128bit registers and is implemented for single precision floats. I use double precision floats in my raytracer. However, I was convinced that my implementation was incorrect and decided to create a new project to investigate this.
 
-I decided that I would also test how a vector type with single precision floats(`f32`) components compared to one with double precision floats(`f64`). Modern processors use 64bit registers and instructions, so surely there should be no difference between the two. I created a benchmark that compared the performance of computing the dot product between three cases:
+I decided that I would also test how a vector type with single precision floats (`f32`) components compared to one with double precision floats (`f64`). Modern processors use 64bit registers and instructions, so surely there should be no difference between the two. I created a benchmark that compared the performance of computing the dot product between three cases:
 
 + Naive implementation with `f32` components.
 + Naive implementation with `f64` components.
@@ -84,10 +84,10 @@ I decided that I would also test how a vector type with single precision floats(
 
 ![]({{ 'img/exploring-simd-in-rust/benchmark.png' | asset_url }})
 
-This confirmed that the `f32` and `f64` versions were indeed equally fast. However contrary to my expectation the SIMD version was again the slowest. In fact it was about **10 times slower** than the other two.
+This confirmed that the `f32` and `f64` versions were indeed equally fast. However, contrary to my expectation, the SIMD version was again the slowest. In fact it was about **10 times slower** than the other two.
 
 
-I was getting more confused the more time I spent trying to understand this. I thought SIMD instructions were supposed to be fast. Surely doing something with one CPU instruction would be faster than doing it with more than one? I decided that I should look at the assembly emitted by the Rust compiler to verify SIMD instructions where actually being used. With this implementation for the SIMD dot product
+I was getting more confused the more time I spent trying to understand this. I thought SIMD instructions were supposed to be fast. Surely, doing something with one CPU instruction would be faster than doing it with more than one? I decided that I should look at the assembly emitted by the Rust compiler to verify SIMD instructions were actually being used. With this implementation for the SIMD dot product
 
 {% highlight rust line %}
 #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
@@ -122,7 +122,7 @@ Lcfi2:
 	.cfi_endproc
 {% endhighlight %}
 
-Notably a `dpps` SIMD instruction is generated for the `_mm_dp_ps` call.
+Notably, a `dpps` SIMD instruction is generated for the `_mm_dp_ps` call.
 
 As expected the naive implementation
 
@@ -159,7 +159,7 @@ Lcfi8:
 	.cfi_endproc
 {% endhighlight %}
 
-Notably there are 8 CPU instructions dealing with the dot product calculation here. Would this not imply that the SIMD version should be 8 times faster? My benchmark was definitely not showing that. At this point I decided that I could not trust the [bencher](https://docs.rs/bencher/0.1.4/bencher/) crate I was using to run the benchmarks. Instead I would use the true and tested `time` utility and a small program to exercise the different options. I wrote a small program that just calculated the dot product of two vectors many times.
+Notably there are 8 CPU instructions dealing with the dot product calculation here. Would this not imply that the SIMD version should be 8 times faster? My benchmark was definitely not showing that. At this point I decided that I could not trust the [bencher](https://docs.rs/bencher/0.1.4/bencher/) crate I was using to run the benchmarks. Instead I would use the tried and true `time` utility and a small program to exercise the different options. I wrote a small program that just calculated the dot product of two vectors many times.
 
 
 {% highlight rust line %}
@@ -184,7 +184,7 @@ fn main() {
 }
 {% endhighlight %}
 
-By commenting out the different implementations I could test both with `time`. I found that under these conditions the SIMD version was still about **5 times slower** than the naive implementation. I decided to look at the assembly for this code when both implementations were included. Here is the code for the for loop body:
+By commenting out the different implementations, I could test both with `time`. I found that under these conditions the SIMD version was still about **5 times slower** than the naive implementation. I decided to look at the assembly for this code when both implementations were included. Here is the code for the for loop body:
 
 {% highlight nasm line %}
 LBB0_1:
@@ -204,19 +204,19 @@ LBB0_1:
 	jb	LBB0_1
 {% endhighlight %}
 
-Notice anything that's out of place? As it turns out the Rust compiler did not inline the implementation of the SIMD version, but did inline the naive implementation. The overhead from the function call is enough to completely destroy the performance of the SIMD version. Nothing that `#[inline(always)]` can not take care of right?
+Notice anything that's out of place? As it turns out the Rust compiler did not inline the implementation of the SIMD version, but did inline the naive implementation. The overhead from the function call is enough to completely destroy the performance of the SIMD version. Nothing that `#[inline(always)]` cannot take care of, right?
 
 {% highlight plain line %}
 LLVM ERROR: Cannot select: intrinsic %llvm.x86.sse41.dpps
 error: Could not compile `vector_benchmarks`.
 {% endhighlight %}
 
-As it turns out the Rust compiler does not handle conditional compilation and inlining very well 😞. However what if we just inline the SIMD nstructions in the loop? Surely this will solve it and unlock the promised performance boost of the SIMD instructions? Replacing the call to `dot_sse(a, b)` with `unsafe { x += vendor::_mm_dp_ps(a, b, 0x71).extract(0) }` did speed things up considerably.
+As it turns out, the Rust compiler does not handle conditional compilation and inlining very well 😞. However, what if we just inline the SIMD instructions in the loop? Surely this will solve it and unlock the promised performance boost of the SIMD instructions? Replacing the call to `dot_sse(a, b)` with `unsafe { x += vendor::_mm_dp_ps(a, b, 0x71).extract(0) }` did speed things up considerably.
 
 ![]({{ 'img/exploring-simd-in-rust/benchmark-sse-inline.png' | asset_url }})
 
-But sadly the SIMD version is still not any faster than the naive implementation. I can only conclude that this is because the difference between 1 and 8 CPU instructions is negligible in the presence of CPU cache misses and main memory access.
+Sadly the SIMD version is still not any faster than the naive implementation. I can only conclude that this is because the difference between 1 and 8 CPU instructions is negligible in the presence of CPU cache misses and main memory access.
 
-The code for the benchmarks are available on [Github](https://github.com/k0nserv/vector-benchmarks). Feel free to reach out to me on Twitter if you discover something I have missed.
+The code for the benchmarks is available on [Github](https://github.com/k0nserv/vector-benchmarks). Feel free to reach out to me on Twitter if you discover something I have missed.
 
 Now I should really consider implementing some better acceleration structures to speed up performance instead.

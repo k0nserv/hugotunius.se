@@ -6,6 +6,6 @@ categories: introduction
 redirect_from: /introduction/2014/01/04/hello-world.html
 ---
 
-My names is Hugo Tunius, as you're reading this you've found my website. This website will slowly be filled with **my** code, experiments, reflections and thoughts.
+My name is Hugo Tunius. As you're reading this, you've found my website. This website will slowly be filled with **my** code, experiments, reflections and thoughts.
 
 **Welcome!**
